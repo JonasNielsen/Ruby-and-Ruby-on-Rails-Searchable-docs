@@ -1,0 +1,2661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>CHANGELOG</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            CHANGELOG
+        </h1>
+        <ul class="files">
+            <li>activesupport/CHANGELOG</li>
+            <li>Last modified: 2011-10-26 15:21:41 +0200</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.1.1 (October 7, 2011)*</p>
+<ul><li>
+<p>ruby193: String#prepend is also unsafe [Akira Matsuda]</p>
+</li><li>
+<p>Fix obviously breakage of <a href="../../classes/Time.html">Time</a>.===
+for <a href="../../classes/Time.html">Time</a> subclasses [jeremyevans]</p>
+</li><li>
+<p>Added fix so that file store does not raise an exception when cache dir
+does</p>
+</li></ul>
+
+<p>not exist yet. This can happen if a delete_matched is called before
+anything is saved in the cache. [Philippe Huibonhoa]</p>
+<ul><li>
+<p>Fixed performance issue where TimeZone lookups would require tzinfo each
+time [Tim Lucas]</p>
+</li><li>
+<p>ActiveSupport::OrderedHash is now marked as extractable when using <a
+href="../../classes/Array.html#method-i-extract_options-21">Array#extract_options!</a>
+[Prem Sichanugrist]</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.1.0 (August 30, 2011)*</p>
+<ul><li>
+<p>ActiveSupport::Dependencies#load and ActiveSupport::Dependencies#require
+now</p>
+</li></ul>
+
+<p>return the value from `super` [Aaron Patterson]</p>
+<ul><li>
+<p>Fixed <a
+href="../../classes/ActiveSupport/Gzip.html">ActiveSupport::Gzip</a> to
+work properly in Ruby 1.8 [Guillermo Iguaran]</p>
+</li><li>
+<p><a
+href="../../classes/Kernel.html#method-i-require_library_or_gem">Kernel#require_library_or_gem</a>
+was deprecated and will be removed in <a
+href="../../classes/Rails.html">Rails</a> 3.2.0 [Josh Kalderimis]</p>
+</li><li>
+<p>ActiveSupport::Duration#duplicable? was fixed for Ruby 1.8 [thedarkone]</p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/BufferedLogger.html">ActiveSupport::BufferedLogger</a>
+set log encoding to BINARY, but still use text</p>
+</li></ul>
+
+<p>mode to output portable newlines. [fxn]</p>
+<ul><li>
+<p><a
+href="../../classes/ActiveSupport/Dependencies.html">ActiveSupport::Dependencies</a>
+now raises <a href="../../classes/NameError.html">NameError</a> if it finds
+an existing constant in load_missing_constant. This better reflects the
+nature of the error which is usually caused by calling constantize on a
+nested constant. [Andrew White]</p>
+</li><li>
+<p>Deprecated ActiveSupport::SecureRandom in favour of SecureRandom from the
+standard library [Jon Leighton]</p>
+</li><li>
+<p>New reporting method <a
+href="../../classes/Kernel.html#method-i-quietly">Kernel#quietly</a>. [fxn]</p>
+</li><li>
+<p>Add <a href="../../classes/String.html#method-i-inquiry">String#inquiry</a>
+as a convenience method for turning a string into a StringInquirer object
+[DHH]</p>
+</li><li>
+<p>Add <a href="../../classes/Object.html#method-i-in-3F">Object#in?</a> to
+test if an object is included in another object [Prem Sichanugrist, Brian
+Morearty, John Reitano]</p>
+</li><li>
+<p>LocalCache strategy is now a real middleware class, not an anonymous class</p>
+</li></ul>
+
+<p>posing for pictures.</p>
+<ul><li>
+<p><a
+href="../../classes/ActiveSupport/Dependencies/ClassCache.html">ActiveSupport::Dependencies::ClassCache</a>
+class has been introduced for</p>
+</li></ul>
+
+<p>holding references to reloadable classes.</p>
+<ul><li>
+<p>ActiveSupport::Dependencies::Reference has been refactored to take direct</p>
+</li></ul>
+
+<p>advantage of the new ClassCache.</p>
+<ul><li>
+<p>Backports Range#cover? as an alias for Range#include? in Ruby 1.8 [Diego
+Carrion, fxn]</p>
+</li><li>
+<p>Added weeks_ago and prev_week to Date/DateTime/Time. [Rob Zolkos, fxn]</p>
+</li><li>
+<p>Added before_remove_const callback to
+ActiveSupport::Dependencies.remove_unloadable_constants! [Andrew White]</p>
+</li><li>
+<p>JSON decoding now uses the multi_json gem which also vendors a json engine
+called OkJson. The yaml backend has been removed in favor of OkJson as a
+default engine for 1.8.x, while the built in 1.9.x json implementation will
+be used by default. [Josh Kalderimis]</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.7 (April 18, 2011)*</p>
+<ul><li>
+<p><a href="../../classes/Hash.html#method-c-from_xml">Hash.from_xml</a> no
+longer loses attributes on tags containing only whitespace [André Arko]</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.6 (April 5, 2011)</p>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.5 (February 26, 2011)*</p>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.4 (February 8, 2011)*</p>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.3 (November 16, 2010)*</p>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.2 (November 15, 2010)*</p>
+<ul><li>
+<p>Added before_remove_const callback to
+ActiveSupport::Dependencies.remove_unloadable_constants! [Andrew White]</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.1 (October 15, 2010)*</p>
+<ul><li>
+<p>No Changes, just a version bump.</p>
+</li></ul>
+
+<p>*<a href="../../classes/Rails.html">Rails</a> 3.0.0 (August 29, 2010)*</p>
+<ul><li>
+<p>Implemented <a
+href="../../classes/String.html#method-i-strip_heredoc">String#strip_heredoc</a>.
+[fxn]</p>
+</li><li>
+<p>Pluggable cache stores: setting config.cache_store = “custom_store” will
+require ‘active_support/cache/custom_store’ and look for the CustomStore
+constant.  #5486 [Mike Perham]</p>
+</li><li>
+<p>Removed Object#returning, Object#tap should be used instead. [Santiago
+Pastorino]</p>
+</li><li>
+<p>Deprecation behavior is no longer hardcoded to the name of the environment.
+Instead, it is set via config.active_support.deprecation and can be one of
+:log, :stderr or :notify. :notify is a new style that sends the warning via
+<a
+href="../../classes/ActiveSupport/Notifications.html">ActiveSupport::Notifications</a>,
+and is the new default for production</p>
+<dl class="rdoc-list label-list"><dt>Yehuda Katz
+<dd></dd></dl>
+</li><li>
+<p>Renamed ActiveSupport::Dependecies.load_(once_)paths to
+autoload_(once_)paths. [fxn]</p>
+</li><li>
+<p>Added <a
+href="../../classes/ActiveSupport/FileUpdateChecker.html">ActiveSupport::FileUpdateChecker</a>
+to execute a block only if a set of files changed, used by Router and <a
+href="../../classes/I18n.html">I18n</a> locale files. [José Valim]</p>
+</li><li>
+<p>Added <a
+href="../../classes/ActiveSupport/DescendantsTracker.html">ActiveSupport::DescendantsTracker</a>
+to track descendants with support to constants reloading. [José Valim]</p>
+</li><li>
+<p>ActiveSupport::OrderedHash#merge and merge! accept a block. #4838 [Paul
+Mucur, fxn]</p>
+</li><li>
+<p><a href="../../classes/Date.html#method-i-since">Date#since</a>, ago,
+beginning_of_day, end_of_day, and xmlschema honor now the user time zone if
+set. [Geoff Buesing]</p>
+</li><li>
+<p>Extracted <a
+href="../../classes/String.html#method-i-truncate">String#truncate</a> from
+TextHelper#truncate [DHH]</p>
+</li><li>
+<p>Ruby 1.9: support UTF-8 case folding.  #4595 [Norman Clarke]</p>
+</li><li>
+<p>Removes Array#rand and backports <a
+href="../../classes/Array.html#method-i-sample">Array#sample</a> from Ruby
+1.9, thanks to Marc-Andre Lafortune. [fxn]</p>
+</li><li>
+<p>Ruby 1.9: Renames last_(month|year) to prev_(month|year) in <a
+href="../../classes/Date.html">Date</a> and <a
+href="../../classes/Time.html">Time</a>. [fxn]</p>
+</li><li>
+<p>Aliases <a href="../../classes/Date.html#method-i-sunday">Date#sunday</a>
+to <a
+href="../../classes/Date.html#method-i-end_of_week">Date#end_of_week</a>.
+[fxn]</p>
+</li><li>
+<p>Backports Date#&gt;&gt; from 1.9 so that calculations do the right thing
+around the calendar reform. [fxn]</p>
+</li><li>
+<p><a href="../../classes/Date.html#method-i-to_time">Date#to_time</a> handles
+properly years in the range 0..138. [fxn]</p>
+</li><li>
+<p>Deprecate {{}} as interpolation syntax for <a
+href="../../classes/I18n.html">I18n</a> in favor of %{} [José Valim]</p>
+</li><li>
+<p><a href="../../classes/Array.html#method-i-to_xml">Array#to_xml</a> is more
+powerful and able to handle the same types as <a
+href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> #4490
+[Neeraj Singh]</p>
+</li><li>
+<p>Harmonize the caching API and refactor the backends.  #4452 [Brian Durand]
+All caches:</p>
+<ul><li>
+<p>Add default options to initializer that will be sent to all read, write,
+fetch, exist?, increment, and decrement</p>
+</li><li>
+<p>Add support for the :expires_in option to fetch and write for all caches.
+Cache entries are stored with the create timestamp and a ttl so that
+expiration can be handled independently of the implementation.</p>
+</li><li>
+<p>Add support for a :namespace option. This can be used to set a global
+prefix for cache entries.</p>
+</li><li>
+<p>Deprecate expand_cache_key on <a
+href="../../classes/ActiveSupport/Cache.html">ActiveSupport::Cache</a> and
+move it to <a
+href="../../classes/ActionController/Caching.html">ActionController::Caching</a>
+and <a
+href="../../classes/ActionDispatch/Http/Cache.html">ActionDispatch::Http::Cache</a>
+since the logic in the method used some <a
+href="../../classes/Rails.html">Rails</a> specific environment variables
+and was only used by <a href="../../classes/ActionPack.html">ActionPack</a>
+classes. Not very DRY but there didn’t seem to be a good shared spot and <a
+href="../../classes/ActiveSupport.html">ActiveSupport</a> really shouldn’t
+be <a href="../../classes/Rails.html">Rails</a> specific.</p>
+</li><li>
+<p>Add support for :race_condition_ttl to fetch. This setting can prevent race
+conditions on fetch calls where several processes try to regenerate a
+recently expired entry at once.</p>
+</li><li>
+<p>Add support for :compress option to fetch and write which will compress any
+data over a configurable threshold.</p>
+</li><li>
+<p>Nil values can now be stored in the cache and are distinct from cache
+misses for fetch.</p>
+</li><li>
+<p>Easier API to create new implementations. Just need to implement the
+methods read_entry, write_entry, and delete_entry instead of overwriting
+existing methods.</p>
+</li><li>
+<p>Since all cache implementations support storing objects, update the docs to
+state that ActiveCache::Cache::Store implementations should store objects.
+Keys, however, must be strings since some implementations require that.</p>
+</li><li>
+<p>Increase test coverage.</p>
+</li><li>
+<p>Document methods which are provided as convenience but which may not be
+universally available.</p>
+</li></ul>
+
+<p>MemoryStore:</p>
+<ul><li>
+<p>MemoryStore can now safely be used as the cache for single server sites.</p>
+</li><li>
+<p>Make thread safe so that the default cache implementation used by <a
+href="../../classes/Rails.html">Rails</a> is thread safe. The overhead is
+minimal and it is still the fastest store available.</p>
+</li><li>
+<p>Provide :size initialization option indicating the maximum size of the
+cache in memory (defaults to 32Mb).</p>
+</li><li>
+<p>Add prune logic that removes the least recently used cache entries to keep
+the cache size from exceeding the max.</p>
+</li><li>
+<p>Deprecated SynchronizedMemoryStore since it isn’t needed anymore.</p>
+</li></ul>
+
+<p>FileStore:</p>
+<ul><li>
+<p>Escape key values so they will work as file names on all file systems, be
+consistent, and case sensitive</p>
+</li><li>
+<p>Use a hash algorithm to segment the cache into sub directories so that a
+large cache doesn’t exceed file system limits.</p>
+</li><li>
+<p>FileStore can be slow so implement the LocalCache strategy to cache reads
+for the duration of a request.</p>
+</li><li>
+<p>Add cleanup method to keep the disk from filling up with expired entries.</p>
+</li><li>
+<p>Fix increment and decrement to use file system locks so they are consistent
+between processes.</p>
+</li></ul>
+
+<p>MemCacheStore:</p>
+<ul><li>
+<p>Support all keys. Previously keys with spaces in them would fail</p>
+</li><li>
+<p>Deprecate <a
+href="../../classes/CompressedMemCacheStore.html">CompressedMemCacheStore</a>
+since it isn’t needed anymore (use :compress =&gt; true)</p>
+</li></ul>
+</li><li>
+<p>JSON: encode objects that don’t have a native JSON representation using
+to_hash, if available, instead of instance_values (the old fallback) or
+to_s (other encoders’ default). Encode <a
+href="../../classes/BigDecimal.html">BigDecimal</a> and <a
+href="../../classes/Regexp.html">Regexp</a> encode as strings to conform
+with other encoders. Try to transcode non-UTF-8 strings.  [Jeremy Kemper]</p>
+</li><li>
+<p>HashWithIndifferentAccess: remove inherited symbolize_keys! since its keys
+are always strings.  [Santiago Pastorino]</p>
+</li><li>
+<p>Improve transliteration quality.  #4374 [Norman Clarke]</p>
+</li><li>
+<p>Speed up and add Ruby 1.9 support for <a
+href="../../classes/ActiveSupport/Multibyte/Chars.html#method-i-tidy_bytes">ActiveSupport::Multibyte::Chars#tidy_bytes</a>.
+#4350 [Norman Clarke]</p>
+</li><li>
+<p>Reduced load time by deferring configuration of classes using <a
+href="../../classes/ActiveSupport.html#method-c-on_load">ActiveSupport.on_load</a>(:component_name)
+[YK]</p>
+</li><li>
+<p>Rename metaclass to singleton_class now that ruby-core has decided [JK]</p>
+</li><li>
+<p>New assertions assert_blank and assert_present.  #4299 [Juanjo Bazan]</p>
+</li><li>
+<p>Use Object#singleton_class instead of metaclass. Prefer Ruby’s choice. 
+[Jeremy Kemper]</p>
+</li><li>
+<p>JSON backend for YAJL. Preferred if available.  #2666 [Brian Lopez]</p>
+</li><li>
+<p>Introduce class_attribute to declare inheritable class attributes. Writing
+an attribute on a subclass behaves just like overriding the superclass
+reader method.  Unifies and replaces most usage of cattr_accessor,
+class_inheritable_attribute, superclass_delegating_attribute, and
+extlib_inheritable_attribute.  [Jeremy Kemper, Yehuda Katz]</p>
+</li><li>
+<p>Time#- with a <a href="../../classes/DateTime.html">DateTime</a> argument
+behaves the same as with a <a href="../../classes/Time.html">Time</a>
+argument, i.e. returns the difference between self and arg as a <a
+href="../../classes/Float.html">Float</a> #3476 [Geoff Buesing]</p>
+</li><li>
+<p>YAML serialization for OrderedHash.  #3608 [Gregor Schmidt]</p>
+</li><li>
+<p>Update bundled TZInfo to v0.3.16 [Geoff Buesing]</p>
+</li><li>
+<p>Georgetown TimeZone is now mapped to “America/Guyana” instead of
+“America/Argentina/San_Juan” #1821 [Geoff Buesing, Reuben Sivan]</p>
+</li><li>
+<p>Changed the default ActiveSupport.use_standard_json_time_format from false
+to true and</p>
+</li></ul>
+
+<p>ActiveSupport.escape_html_entities_in_json from true to false to match
+previously announced <a href="../../classes/Rails.html">Rails</a> 3
+defaults [DHH]</p>
+<ul><li>
+<p>Added <a
+href="../../classes/Object.html#method-i-presence">Object#presence</a> that
+returns the object if it’s present? otherwise returns nil [DHH/Colin
+Kelley]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Enumerable.html#method-i-exclude-3F">Enumerable#exclude?</a>
+to bring parity to Enumerable#include? and avoid if !x.include?/else calls
+[DHH]</p>
+</li><li>
+<p>Update Edinburgh TimeZone to use “Europe/London” instead of “Europe/Dublin”
+#3310 [Phil Ross]</p>
+</li><li>
+<p>Update bundled TZInfo to v0.3.15 [Geoff Buesing]</p>
+</li><li>
+<p>JSON: +Object#to_json+ calls <code>as_json</code> to coerce itself into
+something natively encodable like <code>Hash</code>, <code>Integer</code>,
+or <code>String</code>. Override <code>as_json</code> instead of
+<code>to_json</code> so you’re JSON library agnostic.  [Jeremy Kemper]</p>
+</li><li>
+<p><a href="../../classes/String.html">String</a> to_time and to_datetime:
+handle fractional seconds #864 [Jason Frey]</p>
+</li><li>
+<p>Update bundled TZInfo to v0.3.13 [Geoff Buesing]</p>
+</li><li>
+<p>Allow MemCacheStore to be initialized with a MemCache-like object instead
+of addresses and options [Bryan Helmkamp]</p>
+</li><li>
+<p>Change spelling of Kyev timezone to Kyiv #2613 [Alexander Dymo]</p>
+</li><li>
+<p>Add ActiveSupport.parse_json_times to disable time parsing in JSON backends
+that don’t support it or don’t need it. [rick]</p>
+</li><li>
+<p>Add pluggable JSON backends with support for the JSON gem. [rick]</p>
+
+<pre>Example: ActiveSupport::JSON.backend = &quot;JSONGem&quot;</pre>
+</li></ul>
+
+<pre class="ruby"><span class="ruby-constant">All</span> <span class="ruby-identifier">internal</span> <span class="ruby-constant">Rails</span> <span class="ruby-constant">JSON</span> <span class="ruby-identifier">encoding</span> <span class="ruby-identifier">is</span> <span class="ruby-identifier">now</span> <span class="ruby-identifier">handled</span> <span class="ruby-identifier">by</span> <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">encode</span>().  <span class="ruby-constant">Use</span> <span class="ruby-identifier">of</span> <span class="ruby-comment">#to_json is not recommended, as it may clash with other libraries that overwrite it.  However, you can recover Rails specific functionality</span>
+<span class="ruby-keyword">if</span> <span class="ruby-identifier">you</span> <span class="ruby-identifier">really</span> <span class="ruby-identifier">want</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">use</span> <span class="ruby-comment">#to_json.</span>
+
+   <span class="ruby-identifier">gem</span> <span class="ruby-string">'json'</span>
+   <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">JSON</span>.<span class="ruby-identifier">backend</span> = <span class="ruby-string">&quot;JSONGem&quot;</span>
+
+   <span class="ruby-keyword">class</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+     <span class="ruby-keyword">alias</span> <span class="ruby-identifier">to_json</span> <span class="ruby-identifier">rails_to_json</span>
+   <span class="ruby-keyword">end</span>
+</pre>
+<ul><li>
+<p>require ‘active_support’ no longer orders the whole menu of core
+extensions. Ask for just what you need: e.g. require
+‘active_support/core/time’ to use timezones, durations, and stdlib
+date/time extensions. [Jeremy Kemper]</p>
+</li><li>
+<p>Removed rarely-used DRb cache store.  [Jeremy Kemper]</p>
+</li><li>
+<p>TimeWithZone.name returns ‘Time’, to further thwart type checking [Geoff
+Buesing]</p>
+</li><li>
+<p>Time.local instances: Adding 24.hours across the DST boundary adds 24 hours
+instead of one day #2066 [Michael Curtis]</p>
+</li></ul>
+
+<p>*2.3.2 [Final] (March 15, 2009)*</p>
+<ul><li>
+<p>XmlMini supports LibXML and Nokogiri backends.  #2084, #2190 [Bart ten
+Brinke, Aaron Patterson]</p>
+
+<pre>Example: XmlMini.backend = 'Nokogiri'</pre>
+</li><li>
+<p>Vendorize i18n 0.1.3 gem (fixes issues with incompatible character
+encodings in Ruby 1.9) #2038 [Akira Matsuda]</p>
+</li><li>
+<p>Update bundled memcache-client from 1.5.0.5 to 1.6.4.99. See <a
+href="http://www.mikeperham.com/2009/02/15/memcache-client-performance/">www.mikeperham.com/2009/02/15/memcache-client-performance/</a>
+[Mike Perham]</p>
+</li><li>
+<p>Ruby 1.9.1p0 fix: URI.unescape can decode multibyte chars.  #2033
+[MOROHASHI Kyosuke]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-i-to_s">Time#to_s</a>(:rfc822) uses
+formatted_offset instead of unreliable and non-standard %z directive #1899
+[Zachary Zolton]</p>
+</li><li>
+<p>Make TimeWithZone#to_formatted_s an alias to TimeWithZone#to_s #1796 [Levin
+Alexander]</p>
+</li><li>
+<p>Introduce <a href="../../classes/Array.html#method-c-wrap">Array.wrap</a>
+to wrap the argument in an array unless it’s already an array. Wraps nil as
+an empty array. Use instead of Array(foo) and foo.to_a since they treat <a
+href="../../classes/String.html">String</a> as <a
+href="../../classes/Enumerable.html">Enumerable</a>.  [Jeremy Kemper]</p>
+</li><li>
+<p>TimeWithZone#xmlschema accepts optional fraction_digits argument [#1725
+state:resolved] [Nicholas Dainty]</p>
+</li><li>
+<p>Object#tap shim for Ruby &lt; 1.8.7. Similar to Object#returning, tap
+yields self then returns self.  [Jeremy Kemper]</p>
+
+<pre>array.select { ... }.tap(&amp;:inspect).map { ... }</pre>
+</li><li>
+<p>TimeWithZone#- gives correct result with wrapped <a
+href="../../classes/DateTime.html">DateTime</a>, and with <a
+href="../../classes/DateTime.html">DateTime</a> argument [Geoff Buesing]</p>
+</li><li>
+<p>Updated i18n gem to version 0.1.1 #1635 [Yaroslav Markin]</p>
+</li><li>
+<p>Add :allow_nil option to delegate. #1127 [Sergio Gil]</p>
+</li><li>
+<p>Add <a href="../../classes/Benchmark.html#method-c-ms">Benchmark.ms</a>
+convenience method to benchmark realtime in milliseconds.  [Jeremy Kemper]</p>
+</li><li>
+<p>Updated included memcache-client to the 1.5.0.5 version which includes
+fixes from fiveruns and 37signals to deal with failover and timeouts #1535
+[Joshua Sierles]</p>
+</li><li>
+<p>Multibyte: add multibyte-safe Chars#ord rather than falling back to <a
+href="../../classes/String.html#method-i-ord">String#ord</a>.  #1483 [Jason
+Cheow]</p>
+</li><li>
+<p><a href="../../classes/I18n.html">I18n</a> support for <a
+href="../../classes/Array.html#method-i-to_sentence">Array#to_sentence</a>.
+Introduces support.array.words_connector, .two_words_connector, and
+.last_word_connector translation keys.  #1397 [Akira Matsuda]</p>
+</li><li>
+<p>Added ActiveSupport::OrderedHash#each_key and
+ActiveSupport::OrderedHash#each_value #1410 [Christoffer Sawicki]</p>
+</li><li>
+<p>Added <a
+href="../../classes/ActiveSupport/MessageVerifier.html">ActiveSupport::MessageVerifier</a>
+and MessageEncryptor to aid users who need to store signed and/or encrypted
+messages. [Michael Koziarski]</p>
+</li><li>
+<p>Added <a
+href="../../classes/ActiveSupport/BacktraceCleaner.html">ActiveSupport::BacktraceCleaner</a>
+to cut down on backtrace noise according to filters and silencers [David
+Heinemeier Hansson]</p>
+</li><li>
+<p>Added <a href="../../classes/Object.html#method-i-try">Object#try</a>. (
+Taken from <a
+href="http://ozmm.org/posts/try.html">ozmm.org/posts/try.html</a> ) [Chris
+Wanstrath]</p>
+</li><li>
+<p>Added Enumerable#none? to check that none of the elements match the block
+#1408 [Damian Janowski]</p>
+</li><li>
+<p>TimeZone offset tests: use current_period, to ensure TimeZone#utc_offset is
+up-to-date [Geoff Buesing]</p>
+</li><li>
+<p>Update bundled TZInfo to 0.3.12 [Geoff Buesing]</p>
+</li><li>
+<p>Added lambda merging to OptionMerger (especially useful with named_scope
+and with_options) #726 [Paweł Kondzior]</p>
+</li></ul>
+
+<p>*2.2.1 [RC2] (November 14th, 2008)*</p>
+<ul><li>
+<p>Increment the version of our altered memcache-client to prevent confusion
+caused when the 1.5.0 gem is installed.</p>
+</li><li>
+<p>Fixed the option merging in <a
+href="../../classes/Array.html#method-i-to_xml">Array#to_xml</a> #1126
+[Rudolf Gavlas]</p>
+</li><li>
+<p>Make I18n::Backend::Simple reload its translations in development mode
+[David Heinemeier Hansson/Sven Fuchs]</p>
+</li></ul>
+
+<p>*2.2.0 [RC1] (October 24th, 2008)*</p>
+<ul><li>
+<p>TimeWithZone#freeze: preload instance variables so that we can actually
+freeze [Geoff Buesing]</p>
+</li><li>
+<p>Fix Brasilia timezone #1180 [Marcus Derencius, Kane]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-i-advance">Time#advance</a>
+recognizes fractional days and weeks. Deprecate Durations of fractional
+months and years #970 [Tom Lea]</p>
+</li><li>
+<p>Add <a
+href="../../classes/ActiveSupport/Rescuable.html">ActiveSupport::Rescuable</a>
+module abstracting <a
+href="../../classes/ActionController/Base.html">ActionController::Base</a>
+rescue_from features. [Norbert Crombach, Pratik Naik]</p>
+</li><li>
+<p>Switch from String#chars to <a
+href="../../classes/String.html#method-i-mb_chars">String#mb_chars</a> for
+the unicode proxy.  [Manfred Stienstra]</p>
+
+<p>This helps with 1.8.7 compatibility and also improves performance for some
+operations by reducing indirection.</p>
+</li><li>
+<p>TimeWithZone wday, yday and to_date avoid trip through method_missing
+[Geoff Buesing]</p>
+</li><li>
+<p>Added <a href="../../classes/Time.html">Time</a>, <a
+href="../../classes/Date.html">Date</a>, <a
+href="../../classes/DateTime.html">DateTime</a> and TimeWithZone past?,
+future? and today? #720 [Clemens Kofler, Geoff Buesing]</p>
+</li><li>
+<p>Fixed Sri Jayawardenepura time zone to map to Asia/Colombo [Jamis Buck]</p>
+</li><li>
+<p>Added Inflector#parameterize for easy slug generation (“Donald <a
+href="../../classes/E.html">E</a>. Knuth”.parameterize =&gt;
+“donald-e-knuth”) #713 [Matt Darby]</p>
+</li><li>
+<p>Changed cache benchmarking to be reported in milliseconds [David Heinemeier
+Hansson]</p>
+</li><li>
+<p>Fix Ruby’s <a href="../../classes/Time.html">Time</a> marshaling bug in
+pre-1.9 versions of Ruby: utc instances are now correctly unmarshaled with
+a utc zone instead of the system local zone [#900 state:resolved] [Luca
+Guidi, Geoff Buesing]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Array.html#method-i-in_groups">Array#in_groups</a>
+which splits or iterates over the array in specified number of groups.
+#579. [Adrian Mugnolo] Example:</p>
+
+<p>a = (1..10).to_a a.in_groups(3)        # =&gt; [[1, 2, 3, 4], [5, 6, 7,
+nil], [8, 9, 10, nil]] a.in_groups(3, false) # =&gt; [[1, 2, 3, 4], [5, 6,
+7], [8, 9, 10]]</p>
+</li><li>
+<p>Fix TimeWithZone unmarshaling: coerce unmarshaled <a
+href="../../classes/Time.html">Time</a> instances to utc, because Ruby’s
+marshaling of <a href="../../classes/Time.html">Time</a> instances doesn’t
+respect the zone [Geoff Buesing]</p>
+</li><li>
+<p>Added Memoizable mixin for caching simple lazy loaded attributes [Josh
+Peek]</p>
+</li><li>
+<p>Move the test related core_ext stuff out of core_ext so it’s only loaded by
+the test helpers.  [Michael Koziarski]</p>
+</li><li>
+<p>Add Inflection rules for <a
+href="../../classes/String.html#method-i-humanize">String#humanize</a>.
+#535 [Dan Manges]</p>
+
+<p><a
+href="../../classes/ActiveSupport/Inflector.html#method-i-inflections">ActiveSupport::Inflector#inflections</a>
+do |inflect|</p>
+
+<pre>inflect.human(/_cnt$/i, '\1_count')</pre>
+
+<p>end</p>
+
+<p>‘jargon_cnt’.humanize # =&gt; ‘Jargon count’</p>
+</li><li>
+<p>TimeWithZone: when crossing DST boundary, treat Durations of days, months
+or years as variable-length, and all other values as absolute length. <a
+href="../../classes/A.html">A</a> time + 24.hours will advance exactly 24
+hours, but a time + 1.day will advance 23-25 hours, depending on the day.
+Ensure consistent behavior across all advancing methods [Geoff Buesing]</p>
+</li><li>
+<p>Added TimeZone #=~, to support matching zones by regex in time_zone_select.
+#195 [Ernie Miller]</p>
+</li><li>
+<p>Added <a href="../../classes/Array.html#method-i-second">Array#second</a>
+through <a href="../../classes/Array.html#method-i-fifth">Array#fifth</a>
+as aliases for <a href="http://1">Array#</a> through <a
+href="http://4">Array#</a> + <a
+href="../../classes/Array.html#method-i-forty_two">Array#forty_two</a> as
+alias for <a href="http://41">Array</a> [David Heinemeier Hansson]</p>
+</li><li>
+<p>Added test/do declaration style testing to <a
+href="../../classes/ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+[DHH via Jay Fields]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Object.html#method-i-present-3F">Object#present?</a>
+which is equivalent to !<a
+href="../../classes/Object.html#method-i-blank-3F">Object#blank?</a> [David
+Heinemeier Hansson]</p>
+</li><li>
+<p>Added Enumberable#many? to encapsulate collection.size &gt; 1 [David
+Heinemeier Hansson/Damian Janowski]</p>
+</li><li>
+<p>Add more standard <a href="../../classes/Hash.html">Hash</a> methods to
+ActiveSupport::OrderedHash [Steve Purcell]</p>
+</li><li>
+<p><a href="../../classes/Namespace.html">Namespace</a> Inflector,
+Dependencies, OrderedOptions, and TimeZone under <a
+href="../../classes/ActiveSupport.html">ActiveSupport</a> [Josh Peek]</p>
+</li><li>
+<p>Added StringInquirer for doing things like
+StringInquirer.new(“production”).production? # =&gt; true and
+StringInquirer.new(“production”).development? # =&gt; false [David
+Heinemeier Hansson]</p>
+</li><li>
+<p>Fixed <a
+href="../../classes/Date.html#method-i-end_of_quarter">Date#end_of_quarter</a>
+to not blow up on May 31st [#289 state:resolved] (Danger)</p>
+</li></ul>
+
+<p>*2.1.0 (May 31st, 2008)*</p>
+<ul><li>
+<p>TimeZone#to_s shows offset as GMT instead of UTC, because GMT will be more
+familiar to end users (see time zone selects used by Windows OS, google.com
+and yahoo.com.) Reverts [8370] [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-c-from_xml">Hash.from_xml</a>:
+datetime xml types overflow to Ruby <a
+href="../../classes/DateTime.html">DateTime</a> class when out of range of
+<a href="../../classes/Time.html">Time</a>. Adding tests for utc offsets
+[Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone #+ and #- : ensure overflow to <a
+href="../../classes/DateTime.html">DateTime</a> with <a
+href="../../classes/Numeric.html">Numeric</a> arg [Geoff Buesing]</p>
+</li><li>
+<p>Time#to_json: don’t convert to utc before encoding. References #175 [Geoff
+Buesing]</p>
+</li><li>
+<p>Remove unused JSON::RESERVED_WORDS, JSON.valid_identifier? and
+JSON.reserved_word? methods. Resolves #164. [Cheah Chu Yeow]</p>
+</li><li>
+<p>Adding <a href="../../classes/Date.html#method-c-current">Date.current</a>,
+which returns <a
+href="../../classes/Time.html#method-c-zone">Time.zone</a>.today if
+config.time_zone is set; otherwise returns Date.today [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone: date part getter methods (year mon day etc) are defined on
+class; no longer relying on method_missing [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-c-zone">Time.zone</a>.parse return
+nil for strings with no date information [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-c-zone">Time.zone</a>.parse
+respects offset information in string. Resolves #105. [Scott Fleckenstein,
+Geoff Buesing]</p>
+</li><li>
+<p>Added Ruby 1.8 implementation of <a
+href="../../classes/Process.html#method-c-daemon">Process.daemon</a></p>
+</li><li>
+<p>Duration since and ago with no argument (e.g., 5.days.ago) return
+TimeWithZone when config.time_zone is set. Introducing <a
+href="../../classes/Time.html#method-c-current">Time.current</a>, which
+returns <a href="../../classes/Time.html#method-c-zone">Time.zone</a>.now
+if config.time_zone is set, otherwise just returns <a
+href="../../classes/Time.html#method-c-now">Time.now</a> [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-i-since">Time#since</a> behaves
+correctly when passed a Duration. Closes #11527 [kemiller]</p>
+</li><li>
+<p>Add getutc alias for <a
+href="../../classes/DateTime.html#method-i-utc">DateTime#utc</a> [Geoff
+Buesing]</p>
+</li><li>
+<p>Refactor TimeWithZone: don’t send since, ago, #+, #-, advance through
+method_missing [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone respects config.active_support.use_standard_json_time_format
+[Geoff Buesing]</p>
+</li><li>
+<p>Add config.active_support.escape_html_entities_in_json to allow disabling
+of html entity escaping.  [Rick Olson]</p>
+</li><li>
+<p>Improve documentation. [Xavier Noria]</p>
+</li><li>
+<p>Modified ActiveSupport::Callbacks::Callback#call to accept multiple
+arguments.</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a> yesterday and tomorrow behave
+correctly crossing DST boundary. Closes #7399 [sblackstone]</p>
+</li><li>
+<p>TimeWithZone: Adding tests for dst and leap day edge cases when advancing
+time [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone#method_missing: send to utc to advance with dst correctness,
+otherwise send to time. Adding tests for time calculations methods [Geoff
+Buesing]</p>
+</li><li>
+<p>Add config.active_support.use_standard_json_time_format setting so that
+Times and Dates export to ISO 8601 dates.  [Rick Olson]</p>
+</li><li>
+<p>TZInfo: Removing unneeded TimezoneProxy class [Geoff Buesing]</p>
+</li><li>
+<p>TZInfo: Removing unneeded TimezoneIndexDefinition, since we’re not
+including Indexes::Timezones [Geoff Buesing]</p>
+</li><li>
+<p>Removing unnecessary uses_tzinfo helper from tests, given that TZInfo is
+now bundled [Geoff Buesing]</p>
+</li><li>
+<p>Bundling abbreviated version of TZInfo gem 0.3.8: only the classes and zone
+definitions required to support <a
+href="../../classes/Rails.html">Rails</a> time zone features are included.
+If a recent version of the full TZInfo gem is installed, this will take
+precedence over the bundled version [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone#marshal_load does zone lookup via Time.get_zone, so that
+tzinfo/Olson identifiers are handled [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-c-zone-3D">Time.zone=</a> accepts
+TZInfo::Timezone instances and Olson identifiers; wraps result in TimeZone
+instance [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone time conversions don’t need to be wrapped in TimeOrDateTime,
+because TZInfo does this internally [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone#usec returns 0 instead of error when <a
+href="../../classes/DateTime.html">DateTime</a> is wrapped [Geoff Buesing]</p>
+</li><li>
+<p>Improve documentation. [Ryan Bigg, Jan De Poorter, Cheah Chu Yeow, Xavier
+Shay, Jack Danger Canty, Emilio Tagua, Xavier Noria,  Sunny Ripert]</p>
+</li><li>
+<p>Ensure that TimeWithZone#to_yaml works when passed a YAML::Emitter.  [Rick
+Olson]</p>
+</li><li>
+<p>Ensure correct TimeWithZone#to_date [Geoff Buesing]</p>
+</li><li>
+<p>Make TimeWithZone work with tzinfo 0.2.x: use
+TZInfo::Timezone#zone_identifier alias for abbreviation, silence warnings
+on tests. Raise <a href="../../classes/LoadError.html">LoadError</a> when
+TZInfo version is &lt; 0.2 by sniffing for TZInfo::TimeOrDateTime constant.
+Move all tzinfo-dependent TimeZone tests into uses_tzinfo block [Geoff
+Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a>, <a
+href="../../classes/DateTime.html">DateTime</a> and TimeWithZone
+in_time_zone defaults to <a
+href="../../classes/Time.html#method-c-zone">Time.zone</a>. Removing now
+unneeded in_current_time_zone [Geoff Buesing]</p>
+</li><li>
+<p>TZInfo caches Timezone instances in its own internal hash cache, so
+TimeZone::MAPPING doesn’t need to cache them as well [Geoff Buesing]</p>
+</li><li>
+<p>Adding TimeZone#parse [Geoff Buesing]</p>
+</li><li>
+<p>Adding TimeZone#at and <a
+href="../../classes/DateTime.html#method-i-to_f">DateTime#to_f</a> [Geoff
+Buesing]</p>
+</li><li>
+<p>TimeWithZone responds to Ruby 1.9 weekday-named query methods [Geoff
+Buesing]</p>
+</li><li>
+<p>TimeWithZone caches TZInfo::TimezonePeriod used for time conversion so that
+it can be reused, and enforces DST rules correctly when instance is created
+from a local time [Geoff Buesing]</p>
+</li><li>
+<p>Fixed that BufferedLogger should create its own directory if one doesn’t
+already exist #11285 [lotswholetime]</p>
+</li><li>
+<p>Fix <a href="../../classes/Numeric.html">Numeric</a> time tests broken by
+DST change by anchoring them to fixed times instead of <a
+href="../../classes/Time.html#method-c-now">Time.now</a>. Anchor
+TimeZone#now DST test to time specified with Time.at instead of Time.local
+to work around platform differences with Time.local and DST representation
+[Geoff Buesing]</p>
+</li><li>
+<p>Removing unneeded change_time_zone method from <a
+href="../../classes/Time.html">Time</a>, <a
+href="../../classes/DateTime.html">DateTime</a> and TimeWithZone [Geoff
+Buesing]</p>
+</li><li>
+<p>TimeZone local and now correctly enforce DST rules [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone instances correctly enforce DST rules. Adding
+TimeZone#period_for_utc [Geoff Buesing]</p>
+</li><li>
+<p>test_time_with_datetime_fallback expects <a
+href="../../classes/DateTime.html#method-c-local_offset">DateTime.local_offset</a>
+instead of DateTime.now.offset [Geoff Buesing]</p>
+</li><li>
+<p>Adding TimeWithZone marshal_dump and marshal_load [Geoff Buesing]</p>
+</li><li>
+<p>Add OrderedHash#to_hash [Josh Peek]</p>
+</li><li>
+<p>Adding <a
+href="../../classes/Time.html#method-i-end_of_day">Time#end_of_day</a>,
+_quarter, _week, and _year.  #9312 [Juanjo Bazan, Tarmo Tänav, BigTitus]</p>
+</li><li>
+<p>Adding TimeWithZone#between? [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a>.=== returns true for
+TimeWithZone instances [Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone #+ and #- behave consistently with numeric arguments
+regardless of whether wrapped time is a <a
+href="../../classes/Time.html">Time</a> or <a
+href="../../classes/DateTime.html">DateTime</a>; consistenty answers false
+to acts_like?(:date) [Geoff Buesing]</p>
+</li><li>
+<p>Add <a href="../../classes/String.html#method-i-squish">String#squish</a>
+and <a
+href="../../classes/String.html#method-i-squish-21">String#squish!</a> to
+remove consecutive chunks of whitespace.  #11123 [Jordi Bunster, Henrik N]</p>
+</li><li>
+<p>Serialize BigDecimals as Floats when using to_yaml. #8746 [Ernesto Jimenez]</p>
+</li><li>
+<p>Adding TimeWithZone to_yaml, to_datetime, eql? and method aliases for
+duck-typing compatibility with <a href="../../classes/Time.html">Time</a>
+[Geoff Buesing]</p>
+</li><li>
+<p>TimeWithZone in_time_zone returns <code>self</code> if zone argument is the
+same as time_zone [Geoff Buesing]</p>
+</li><li>
+<p>Adding TimeWithZone to_a, to_f, to_i, httpdate, rfc2822 [Geoff Buesing]</p>
+</li><li>
+<p>Pruning unneeded TimeWithZone#change_time_zone_to_current [Geoff Buesing]</p>
+</li><li>
+<p>Time#zone=, in_time_zone and change_time_zone accept a Duration [Geoff
+Buesing]</p>
+</li><li>
+<p><a
+href="../../classes/Time.html#method-i-in_time_zone">Time#in_time_zone</a>
+handles Time.local instances correctly [Geoff Buesing]</p>
+</li><li>
+<p>Pruning unneeded Time#change_time_zone_to_current. Enhanced docs to
+change_time_zone to explain the difference between this method and
+in_time_zone [Geoff Buesing]</p>
+</li><li>
+<p>TimeZone#new method renamed local; when used with <a
+href="../../classes/Time.html#method-c-zone">Time.zone</a>, constructor now
+reads: <a
+href="../../classes/Time.html#method-c-zone">Time.zone</a>.local() [Geoff
+Buesing]</p>
+</li><li>
+<p>Added Base64.encode64s to encode values in base64 without the newlines.
+This makes the values immediately usable as URL parameters or memcache keys
+without further processing [David Heinemeier Hansson]</p>
+</li><li>
+<p>Remove :nodoc: entries around the <a
+href="../../classes/ActiveSupport.html">ActiveSupport</a> test/unit
+assertions.  #10946 [dancroak, jamesh]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Time.html#attribute-c-zone_default">Time.zone_default</a>
+accessor for setting the default time zone.  Rails::Configuration.time_zone
+sets this.  #10982 [Geoff Buesing]</p>
+</li><li>
+<p>cache.fetch(key, :force =&gt; true) to force a cache miss.  [Jeremy Kemper]</p>
+</li><li>
+<p>Support retrieving TimeZones with a Duration.  <a
+href="http://-28800">TimeZone</a> == <a
+href="http://-480.minutes">TimeZone</a>.  [Rick Olson]</p>
+</li><li>
+<p>TimeWithZone#- added, so that #- can handle a <a
+href="../../classes/Time.html">Time</a> or TimeWithZone argument correctly
+[Geoff Buesing]</p>
+</li><li>
+<p>with_timezone test helper renamed with_env_tz, to distinguish between
+setting <a href="http://'TZ'">ENV</a> and setting <a
+href="../../classes/Time.html#method-c-zone">Time.zone</a> in tests [Geoff
+Buesing]</p>
+</li><li>
+<p>Time#- coerces TimeWithZone argument to a <a
+href="../../classes/Time.html">Time</a> instance so that difference in
+seconds can be calculated. Closes #10914 [Geoff Buesing, yyyc514]</p>
+</li><li>
+<p>Adding UTC zone to TimeZone; TimeWithZone no longer has to fake UTC zone
+with nil [Geoff Buesing]</p>
+</li><li>
+<p>Time.get_zone refactored to private method, given that the encapsulated
+logic is only useful internally [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html#method-c-zone">Time.zone</a> uses
+thread-local variable for thread safety. Adding <a
+href="../../classes/Time.html#method-c-use_zone">Time.use_zone</a>, for
+overriding <a href="../../classes/Time.html#method-c-zone">Time.zone</a>
+locally inside a block. Removing unneeded Time.zone_reset! [Geoff Buesing]</p>
+</li><li>
+<p>TimeZone#to_s uses UTC rather than GMT; reapplying change that was undone
+in [8679]. #1689 [Cheah Chu Yeow]</p>
+</li><li>
+<p><a
+href="../../classes/Time.html#method-c-days_in_month">Time.days_in_month</a>
+defaults to current year if no year is supplied as argument #10799 [Radar],
+uses Date.gregorian_leap? to determine leap year, and uses constant lookup
+to determine days in month [Geoff Buesing]</p>
+</li><li>
+<p>Adding <a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/DateTime.html">DateTime</a> compare_with_coercion,
+which layers behavior on #&lt;=&gt; so that any combination of <a
+href="../../classes/Time.html">Time</a>, <a
+href="../../classes/DateTime.html">DateTime</a> and <a
+href="../../classes/ActiveSupport/TimeWithZone.html">ActiveSupport::TimeWithZone</a>
+instances can be chronologically compared [Geoff Buesing]</p>
+</li><li>
+<p>TimeZone#now returns an <a
+href="../../classes/ActiveSupport/TimeWithZone.html">ActiveSupport::TimeWithZone</a>
+[Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a> in_current_time_zone and
+change_time_zone_to_current return self when <a
+href="../../classes/Time.html#method-c-zone">Time.zone</a> is nil [Geoff
+Buesing]</p>
+</li><li>
+<p>Remove unneeded to_datetime_default_s alias for <a
+href="../../classes/DateTime.html#method-i-to_s">DateTime#to_s</a>, given
+that we inherit a to_default_s from <a
+href="../../classes/Date.html">Date</a> that does exactly the same thing
+[Geoff Buesing]</p>
+</li><li>
+<p>Refactor <a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/DateTime.html">DateTime</a> to_formatted_s: use ternary
+instead of nested if/else [Geoff Buesing]</p>
+</li><li>
+<p>Adding <a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/DateTime.html">DateTime</a> formatted_offset, for
+outputting +HH:MM utc offset strings with cross-platform consistency [Geoff
+Buesing]</p>
+</li><li>
+<p>Adding alternate_utc_string option to TimeZone#formatted_offset. Removing
+unneeded TimeZone#offset. [Geoff Buesing]</p>
+</li><li>
+<p>Introduce <a
+href="../../classes/ActiveSupport/TimeWithZone.html">ActiveSupport::TimeWithZone</a>,
+for wrapping <a href="../../classes/Time.html">Time</a> instances with a
+TimeZone. Introduce instance methods to <a
+href="../../classes/Time.html">Time</a> for creating TimeWithZone
+instances, and class methods for managing a global time zone. [Geoff
+Buesing]</p>
+</li><li>
+<p>Replace non-dst-aware TimeZone class with dst-aware class from
+tzinfo_timezone plugin. TimeZone#adjust and unadjust are no longer
+available; tzinfo gem must now be present in order to perform time zone
+calculations, via local_to_utc and utc_to_local methods. [Geoff Buesing]</p>
+</li><li>
+<p>Extract <a
+href="../../classes/ActiveSupport/Callbacks.html">ActiveSupport::Callbacks</a>
+from Active Record, test case setup and teardown, and
+ActionController::Dispatcher.  #10727 [Josh Peek]</p>
+</li><li>
+<p>Introducing <a href="../../classes/DateTime.html">DateTime</a> utc, utc?
+and utc_offset, for duck-typing compatibility with <a
+href="../../classes/Time.html">Time</a>. Closes #10002 [Geoff Buesing]</p>
+</li><li>
+<p>Time#to_json uses Numeric#to_utc_offset_s to output a
+cross-platform-consistent representation without having to convert to <a
+href="../../classes/DateTime.html">DateTime</a>. References #9750 [Geoff
+Buesing]</p>
+</li><li>
+<p>Refactor number-to-HH:MM-string conversion logic from
+TimeZone#formatted_offset to a reusable Numeric#to_utc_offset_s method.
+[Geoff Buesing]</p>
+</li><li>
+<p>Continue evolution toward <a
+href="../../classes/ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>.
+#10679 [Josh Peek]</p>
+</li><li>
+<p>TestCase: introduce declared setup and teardown callbacks. <a
+href="../../classes/Pass.html">Pass</a> a list of methods and an optional
+block to call before setup or after teardown. Setup callbacks are run in
+the order declared; teardown callbacks are run in reverse.  [Jeremy Kemper]</p>
+</li><li>
+<p>Added <a
+href="../../classes/ActiveSupport/Gzip.html#method-c-decompress">ActiveSupport::Gzip.decompress</a>/compress(source)
+as an easy wrapper for Zlib [Tobias Lütke]</p>
+</li><li>
+<p>Included MemCache-<a href="../../classes/Client.html">Client</a> to make
+the improved <a
+href="../../classes/ActiveSupport/Cache/MemCacheStore.html">ActiveSupport::Cache::MemCacheStore</a>
+work out of the box [Bob Cottrell, Eric Hodel]</p>
+</li><li>
+<p>Added ActiveSupport::Cache::* framework as an extraction from
+ActionController::Caching::Fragments::* [David Heinemeier Hansson]</p>
+</li><li>
+<p>Fixed <a
+href="../../classes/String.html#method-i-titleize">String#titleize</a> to
+work for strings with ‘s too #10571 [trek]</p>
+</li><li>
+<p>Changed the implementation of <a
+href="../../classes/Enumerable.html#method-i-group_by">Enumerable#group_by</a>
+to use a double array approach instead of a hash such that the insert order
+is honored [David Heinemeier Hansson/Marcel Molina Jr.]</p>
+</li><li>
+<p>remove multiple enumerations from ActiveSupport::JSON#convert_json_to_yaml
+when dealing with date/time values.  [Rick Olson]</p>
+</li><li>
+<p><a
+href="../../classes/Hash.html#method-i-symbolize_keys">Hash#symbolize_keys</a>
+skips keys that can’t be symbolized.  #10500 [Brad Greenlee]</p>
+</li><li>
+<p>Ruby 1.9 compatibility.  #1689, #10466, #10468, #10554, #10594, #10632
+[Cheah Chu Yeow, Pratik Naik, Jeremy Kemper, Dirkjan Bussink, Xavier Noria]</p>
+</li><li>
+<p>TimeZone#to_s uses UTC rather than GMT.  #1689 [Cheah Chu Yeow]</p>
+</li><li>
+<p>Refactor of <a
+href="../../classes/Hash.html#method-i-symbolize_keys-21">Hash#symbolize_keys!</a>
+to use Hash#replace.  Closes #10420 [ReinH]</p>
+</li><li>
+<p>Fix HashWithIndifferentAccess#to_options! so it doesn’t clear the options
+hash.  Closes #10419 [ReinH]</p>
+</li></ul>
+
+<p><strong>2.0.1</strong> (December 7th, 2007)</p>
+<ul><li>
+<p>Added <a href="../../classes/Array.html#method-i-from">Array#from</a> and
+<a href="../../classes/Array.html#method-i-to">Array#to</a> that behaves
+just from <a href="../../classes/String.html#method-i-from">String#from</a>
+and <a href="../../classes/String.html#method-i-to">String#to</a> [David
+Heinemeier Hansson]</p>
+</li><li>
+<p>Fix that empty collections should be treated as empty arrays regardless of
+whitespace for Hash#from_xml #10255 [adamj]</p>
+</li><li>
+<p>Time#time_with_datetime_fallback, <a
+href="../../classes/Time.html#method-i-to_datetime">Time#to_datetime</a>,
+<a href="../../classes/Date.html#method-i-to_datetime">Date#to_datetime</a>
+and <a
+href="../../classes/String.html#method-i-to_datetime">String#to_datetime</a>
+honor Ruby’s default calendar reform setting. #10201 [Geoff Buesing]</p>
+</li><li>
+<p>Change <a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/DateTime.html">DateTime</a> end_of_month to return last
+second of month instead of beginning of last day of month. Closes #10200
+[Geoff Buesing]</p>
+</li><li>
+<p>Speedup <a
+href="../../classes/String.html#method-i-blank-3F">String#blank?</a> 
+[Jeremy Kemper, Michael Koziarski]</p>
+</li><li>
+<p>Add documentation for <a
+href="../../classes/Hash.html#method-i-diff">Hash#diff</a>. Closes #9306
+[Tarmo Tänav]</p>
+</li><li>
+<p>Add new superclass_delegating_accessors.  Similar to class inheritable
+attributes but with subtly different semantics. [Michael Koziarski, Tarmo
+Tänav]</p>
+</li><li>
+<p>Change JSON to encode %w(&lt; &gt; &amp;) as 4 digit hex codes to be in
+compliance with the JSON spec.  Closes #9975 [Josh Peek, Cheah Chu Yeow,
+Tim Pope]</p>
+</li><li>
+<p>Fix JSON encoding/decoding bugs dealing with /‘s.  Closes #9990 [Rick
+Olson, theamazingrando]</p>
+</li><li>
+<p>Introduce a base class for all test cases used by rails applications. <a
+href="../../classes/ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+[Michael Koziarski]</p>
+
+<p>The intention is to use this to reduce the amount of monkeypatching /
+overriding that is done to test/unit’s classes.</p>
+</li><li>
+<p>Document <a href="../../classes/Enumerable.html">Enumerable</a> and <a
+href="../../classes/Hash.html">Hash</a> to_json.  #9970 [Cheah Chu Yeow]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> handles
+symbol values.  #9954 [Assaf]</p>
+</li><li>
+<p><a
+href="../../classes/Hash.html#method-i-symbolize_keys">Hash#symbolize_keys</a>
+behaves well with integer keys.  #9890 [PotatoSalad]</p>
+</li><li>
+<p>Multibyte: String#slice supports regexp argument.  #9646 [yob]</p>
+</li><li>
+<p>object.duplicable? returns true if object.dup is safe. False for nil, true,
+false, symbols, and numbers; true otherwise.  #9333 [sur]</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a>, <a
+href="../../classes/Date.html">Date</a> and <a
+href="../../classes/DateTime.html">DateTime</a> advance accept :weeks
+option.  #9866 [Geoff Buesing]</p>
+</li><li>
+<p>Fix <a href="../../classes/Time.html#method-i-years_ago">Time#years_ago</a>
+and years_since from leap days.  #9865 [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/DateTime.html#method-i-advance">DateTime#advance</a>
+accept :hours, :minutes, and :seconds options.  #9825 [Geoff Buesing]</p>
+</li><li>
+<p>Fix <a href="../../classes/Date.html#method-i-years_ago">Date#years_ago</a>
+and years_since from leap days.  #9864 [Geoff Buesing]</p>
+</li><li>
+<p>Refactor <a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/Date.html#method-i-months_since">Date#months_since</a>
+and months_ago to use advance.  #9863 [Geoff Buesing]</p>
+</li><li>
+<p>Rebundle Builder 2.1.2 but prefer a newer RubyGem if available.  [Jeremy
+Kemper]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Range.html#method-i-overlaps-3F">Range#overlaps?</a>,
+Range#include?(range), and Range#step without a block. [brandon]</p>
+</li><li>
+<p>Correct BufferedLogger#level? checks.  #9806 [wildchild, Johan Sorensen]</p>
+</li><li>
+<p>String#to_xs uses Eric Wong’s fast_xs extension, if available, for Builder
+speedup.  <a href="http://bogomips.org/fast_xs/">bogomips.org/fast_xs/</a> 
+[Jeremy Kemper]</p>
+</li><li>
+<p>Introduce BasicObject as Builder::BlankSlate for Ruby 1.9 forward
+compatibility.  [Jeremy Kemper]</p>
+</li><li>
+<p>Unbundle Builder in favor of a gem dependency.  [Jeremy Kemper]</p>
+</li><li>
+<p>Disambiguate <a href="../../classes/Time.html">Time</a>, <a
+href="../../classes/Date.html">Date</a>, and DateTime#to_json formatting. 
+#9750 [Geoff Buesing, Cheah Chu Yeow]</p>
+</li><li>
+<p>Hash#to_json takes :only or :except options to specific or omit certain
+hash keys. Enumerable#to_json passes through its options to each element. 
+#9751 [Cheah Chu Yeow]</p>
+</li><li>
+<p>BufferedLogger#auto_flushing = N flushes the log every N messages. Buffers
+with an array instead of string. Disabling auto_flushing still flushes when
+the buffer hits a maximum size, as a failsafe against memory-gobbling. 
+[Jeremy Kemper]</p>
+</li><li>
+<p>Fixed <a
+href="../../classes/Date.html#method-i-xmlschema">Date#xmlschema</a> for
+dates outside the range of what can be created with <a
+href="../../classes/Time.html">Time</a> #9744 [Geoff Buesing]</p>
+</li><li>
+<p>Fixed that La Paz was included in -25200 and -14400 offsets when it should
+only be in -14400 #9735 [bermi]</p>
+</li><li>
+<p>Fixed JSON encoding to use quoted keys according to the JSON standard. 
+#8762 [choonkat, Cheah Chu Yeow]</p>
+</li><li>
+<p>Alias Object#send to send! for Ruby 1.9 forward compatibility.  [Jeremy
+Kemper]</p>
+</li><li>
+<p>Backport Object#instance_variable_defined? for Ruby &lt; 1.8.6.  [Jeremy
+Kemper]</p>
+</li><li>
+<p>BufferedLogger#add converts the message to a string.  #9702, #9724
+[eigentone, DrMark, Tom Ward]</p>
+</li><li>
+<p>Added <a
+href="../../classes/ActiveSupport/BufferedLogger.html">ActiveSupport::BufferedLogger</a>
+as a duck-typing alternative (albeit with no formatter) to the Ruby <a
+href="../../classes/Logger.html">Logger</a>, which provides a very nice
+speed bump (inspired by Ezra’s buffered logger) [David Heinemeier Hansson]</p>
+</li><li>
+<p>Object#instance_exec produces fewer garbage methods.  [Mauricio Fernandez]</p>
+</li><li>
+<p>Decode json strings as Dates/Times if they’re using a YAML-compatible
+format.  Closes #9614 [Rick Olson]</p>
+</li><li>
+<p>Fixed cache_page to use the request url instead of the routing options when
+picking a save path.  #8614 [Josh Peek]</p>
+</li><li>
+<p>Object.subclasses_of includes anonymous subclasses.  [Jeremy Kemper]</p>
+</li><li>
+<p>Fixed that pluralizing an empty string should return the same empty string,
+not “s”.  #7720 [Josh Peek]</p>
+</li><li>
+<p>Added call to inspect on non-string classes for the logger #8533 [Coda
+Hale]</p>
+</li><li>
+<p>Deprecation: remove deprecated :mday option from <a
+href="../../classes/Time.html">Time</a>, <a
+href="../../classes/Date.html">Date</a>, and <a
+href="../../classes/DateTime.html#method-i-change">DateTime#change</a>. 
+[Jeremy Kemper]</p>
+</li><li>
+<p>Fix JSON decoder with nested quotes and commas.  #9579 [Zach Dennis]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> doesn’t
+double-unescape.  #8806 [Ezran]</p>
+</li><li>
+<p>Added Array#rand #9170 [Norbert Crombach]. Examples:</p>
+
+<pre class="ruby">[].<span class="ruby-identifier">rand</span>       <span class="ruby-comment"># =&gt; nil</span>
+[<span class="ruby-string">'a'</span>].<span class="ruby-identifier">rand</span>    <span class="ruby-comment"># =&gt; 'a'</span>
+[<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>].<span class="ruby-identifier">rand</span>  <span class="ruby-comment"># =&gt; 1 or 2 or 3</span>
+</pre>
+</li><li>
+<p>Deprecation: removed Reloadable.  [Jeremy Kemper]</p>
+</li><li>
+<p>Make the utf-handler return the correct value for non-matching regular
+expressions. Closes #9049 [Manfred Stienstra]</p>
+</li><li>
+<p>Add ljust, rjust and center to utf8-handler. Closes #9165 [Manfred
+Stienstra]</p>
+</li><li>
+<p>Fix <a href="../../classes/Time.html#method-i-advance">Time#advance</a> bug
+when trying to advance a year from leap day.  Closes #8655 [Geoff Buesing]</p>
+</li><li>
+<p>Add support for []= on <a
+href="../../classes/ActiveSupport/Multibyte/Chars.html">ActiveSupport::Multibyte::Chars</a>.
+Closes #9142. [ewan, Manfred Stienstra]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Array.html#method-i-extract_options-21">Array#extract_options!</a>
+to encapsulate the pattern of getting an options hash out of a variable
+number of parameters.  #8759 [Norbert Crombach]</p>
+</li><li>
+<p>Let alias_attribute work with attributes with initial capital letters
+(legacy columns etc).  Closes #8596 [mpalmer]</p>
+</li><li>
+<p>Added <a href="../../classes/Hash.html#method-i-except">Hash#except</a>
+which is the inverse of <a
+href="../../classes/Hash.html#method-i-slice">Hash#slice</a> – return the
+hash except the keys that are specified [David Heinemeier Hansson]</p>
+</li><li>
+<p>Added support for pluralization with a different starting letter than the
+singular version (cow/kine) #4929 [norri_b/Josh Susser]</p>
+</li><li>
+<p>Demote <a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> to
+use XmlSimple#xml_in_string so it can’t read files or stdin.  #8453
+[candlerb, Jeremy Kemper]</p>
+</li><li>
+<p>Backport clean_logger changes to support ruby 1.8.2 [Mislav Marohnić]</p>
+</li><li>
+<p>Added proper handling of arrays #8537 [Josh Susser]</p>
+
+<p>Before:</p>
+
+<pre class="ruby"><span class="ruby-constant">Hash</span>.<span class="ruby-identifier">from_xml</span> <span class="ruby-string">'&lt;images&gt;&lt;/images&gt;'</span>
+<span class="ruby-comment"># =&gt; {:images =&gt; nil}</span>
+<span class="ruby-constant">Hash</span>.<span class="ruby-identifier">from_xml</span> <span class="ruby-string">'&lt;images&gt;&lt;image&gt;foo.jpg&lt;/image&gt;&lt;/images&gt;'</span>
+<span class="ruby-comment"># =&gt; {:images =&gt; {:image =&gt; &quot;foo.jpg&quot;}}</span>
+<span class="ruby-constant">Hash</span>.<span class="ruby-identifier">from_xml</span> <span class="ruby-string">'&lt;images&gt;&lt;image&gt;foo.jpg&lt;/image&gt;&lt;image&gt;bar.jpg&lt;/image&gt;&lt;/images&gt;'</span>
+<span class="ruby-comment"># =&gt; {:images =&gt; {:image =&gt; [&quot;foo.jpg&quot;, &quot;bar.jpg&quot;]}}</span>
+</pre>
+
+<p>After:</p>
+
+<pre class="ruby"><span class="ruby-constant">Hash</span>.<span class="ruby-identifier">from_xml</span> <span class="ruby-string">'&lt;images type=&quot;array&quot;&gt;&lt;/images&gt;'</span>
+<span class="ruby-comment"># =&gt; {:images =&gt; []}</span>
+<span class="ruby-constant">Hash</span>.<span class="ruby-identifier">from_xml</span> <span class="ruby-string">'&lt;images type=&quot;array&quot;&gt;&lt;image&gt;foo.jpg&lt;/image&gt;&lt;/images&gt;'</span>
+<span class="ruby-comment"># =&gt; {:images =&gt; [&quot;foo.jpg&quot;]}</span>
+<span class="ruby-constant">Hash</span>.<span class="ruby-identifier">from_xml</span> <span class="ruby-string">'&lt;images type=&quot;array&quot;&gt;&lt;image&gt;foo.jpg&lt;/image&gt;&lt;image&gt;bar.jpg&lt;/image&gt;&lt;/images&gt;'</span>
+<span class="ruby-comment"># =&gt; {:images =&gt; [&quot;foo.jpg&quot;, &quot;bar.jpg&quot;]}</span>
+</pre>
+</li><li>
+<p>Improve <a href="../../classes/Time.html">Time</a> and <a
+href="../../classes/Date.html">Date</a> test coverage.  #8646 [Josh Peek]</p>
+</li><li>
+<p>Add <a href="../../classes/Date.html#method-i-since">Date#since</a>, ago,
+beginning_of_day, and end_of_day. <a
+href="../../classes/Date.html">Date</a> + seconds works now.  #8575 [Geoff
+Buesing]</p>
+</li><li>
+<p><a href="../../classes/String.html#method-i-to_time">String#to_time</a>
+overflows to <a href="../../classes/DateTime.html">DateTime</a>. Add <a
+href="../../classes/String.html#method-i-to_datetime">String#to_datetime</a>.
+#8572 [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Date.html#method-c-yesterday">Date.yesterday</a> and
+.tomorrow.  #8571 [Geoff Buesing]</p>
+</li><li>
+<p>Readable <a href="../../classes/Date.html">Date</a> and <a
+href="../../classes/DateTime.html#method-i-inspect">DateTime#inspect</a>. 
+#8570 [Geoff Buesing]</p>
+</li><li>
+<p>Move common <a href="../../classes/DateTime.html">DateTime</a> calculations
+to <a href="../../classes/Date.html">Date</a>.  #8536 [Geoff Buesing]</p>
+</li><li>
+<p>Added <a href="../../classes/Date.html#method-i-change">Date#change</a>
+(like <a href="../../classes/Time.html#method-i-change">Time#change</a>)
+[David Heinemeier Hansson]</p>
+</li><li>
+<p><a href="../../classes/DateTime.html#method-i-to_time">DateTime#to_time</a>
+converts to <a href="../../classes/Time.html">Time</a> unless out of range.
+#8512 [Geoff Buesing]</p>
+</li><li>
+<p><a
+href="../../classes/Date.html#method-i-to_datetime">Date#to_datetime</a>,
+to_s(:rfc822).  #8512 [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/Time.html">Time</a> durations use since instead of +
+for accuracy.  #8513 [Geoff Buesing]</p>
+</li><li>
+<p>escape &lt;‘s and &gt;’s in JSON strings. #8371 [Rick Olson]</p>
+</li><li>
+<p>Inflections: MatrixTest -&gt; MatrixTests instead of MatricesTest.  #8496
+[jbwiv]</p>
+</li><li>
+<p>Multibyte strings respond_to the <a
+href="../../classes/String.html">String</a> methods they proxy so they can
+be duck-typed.  #6549 [Tuxie]</p>
+</li><li>
+<p><a href="../../classes/Array.html#method-i-to_xml">Array#to_xml</a> yields
+the builder just like <a href="../../classes/Hash.html">Hash</a> and <a
+href="../../classes/ActiveRecord/Base.html">ActiveRecord::Base</a>.  #8472
+[seth]</p>
+</li><li>
+<p><a href="../../classes/Date.html">Date</a>, <a
+href="../../classes/Time.html">Time</a>, and <a
+href="../../classes/DateTime.html">DateTime</a> support formatting blocks
+in addition to strftime strings. Introduce :long_ordinal format, e.g.
+“February 21st, 2005”.  #8191 [Coda Hale]</p>
+</li><li>
+<p>Document <a
+href="../../classes/Object.html#method-i-blank-3F">Object#blank?</a>. 
+#6491 [Chris Mear]</p>
+</li><li>
+<p><a href="../../classes/Date.html">Date</a>, <a
+href="../../classes/Time.html">Time</a>, and DateTime#to_json.  #8399
+[wycats]</p>
+</li><li>
+<p>Simplify API of assert_difference by passing in an expression that is
+evaluated before and after the passed in block. See documenation for
+examples of new API. [Marcel Molina Jr.]</p>
+</li><li>
+<p>Added assert_difference and assert_no_difference to test/unit assertions
+[Tobias Lütke]</p>
+</li><li>
+<p>Removed breakpointer and Binding.of_caller in favor of relying on
+ruby-debug by Kent Sibilev since the breakpointer has been broken since
+Ruby 1.8.4 and will not be coming back [David Heinemeier Hansson]</p>
+</li><li>
+<p>Added parsing of file type in Hash.xml_in so you can easily do file uploads
+with base64 from an API [David Heinemeier Hansson]</p>
+
+<pre>&lt;person&gt;
+  &lt;name&gt;David&lt;/name&gt;
+  &lt;avatar type=&quot;file&quot; name=&quot;me.jpg&quot; content_type=&quot;image/jpg&quot;&gt;R0lGODlhkACZAPUAAM5lcfjrtMQCG=\n&lt;/avatar&gt;
+&lt;/person&gt;</pre>
+
+<p>…becomes:</p>
+
+<pre class="ruby"><span class="ruby-identifier">attributes</span> = { :<span class="ruby-identifier">person</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;David&quot;</span>, :<span class="ruby-identifier">avatar</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-comment">#&lt;StringIO&gt; } }</span>
+<span class="ruby-identifier">attributes</span>[:<span class="ruby-identifier">person</span>][:<span class="ruby-identifier">avatar</span>].<span class="ruby-identifier">content_type</span>      <span class="ruby-comment"># =&gt; &quot;image/jpg&quot;</span>
+<span class="ruby-identifier">attributes</span>[:<span class="ruby-identifier">person</span>][:<span class="ruby-identifier">avatar</span>].<span class="ruby-identifier">original_filename</span> <span class="ruby-comment"># =&gt; &quot;me.jpg&quot;</span>
+<span class="ruby-identifier">attributes</span>[:<span class="ruby-identifier">person</span>][:<span class="ruby-identifier">avatar</span>].<span class="ruby-identifier">read</span> <span class="ruby-comment"># =&gt; binary data of the file</span>
+</pre>
+
+<p>Which is duck-type compatible with the files that you get when doing
+multipart uploads through <a href="../../classes/HTML.html">HTML</a>.</p>
+</li><li>
+<p>Improved multibyte performance by relying less on exception raising #8159
+[Blaine]</p>
+</li><li>
+<p>Use XSD-compatible type names for <a
+href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> and make the
+converters extendable #8047 [Tim Pope]</p>
+</li><li>
+<p>Added yielding of builder in <a
+href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> [David
+Heinemeier Hansson]</p>
+</li><li>
+<p><a
+href="../../classes/Hash.html#method-i-with_indifferent_access">Hash#with_indifferent_access</a>
+now also converts hashes kept in arrays to indifferent access (makes it
+easier to treat <a href="../../classes/HTML.html">HTML</a> and XML
+parameters the same) [David Heinemeier Hansson]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> supports
+YAML attributes.  #7502 [jonathan]</p>
+</li><li>
+<p>Refactor <a
+href="../../classes/ActiveSupport/JSON.html">ActiveSupport::JSON</a> to be
+less obtuse.  Add support for JSON decoding by way of Syck with <a
+href="../../classes/ActiveSupport/JSON.html#method-c-decode">ActiveSupport::JSON.decode</a>.
+Prevent hash keys that are JavaScript reserved words from being unquoted
+during encoding.  [Sam Stephenson]</p>
+</li><li>
+<p>alias_method_chain preserves the original method’s visibility.  #7854
+[Jonathan Viney]</p>
+</li><li>
+<p>Update Dependencies to ignore constants inherited from ancestors. Closes
+#6951. [Nicholas Seckar]</p>
+</li><li>
+<p><a href="../../classes/Array.html#method-i-to_query">Array#to_query</a>
+preserves its ordering.  #7756 [Greg Spurrier]</p>
+</li><li>
+<p>Out-of-range <a href="../../classes/Time.html">Time</a> calculations
+transparently overflow to <a
+href="../../classes/DateTime.html">DateTime</a>. Introduce <a
+href="../../classes/Time.html#method-i-to_datetime">Time#to_datetime</a>. 
+#7706, #7715 [Geoff Buesing]</p>
+</li><li>
+<p><a href="../../classes/DateTime.html">DateTime</a> calculations analogous
+to the <a href="../../classes/Date.html">Date</a> and <a
+href="../../classes/Time.html">Time</a> extensions.  #7693 [Geoff Buesing]</p>
+</li><li>
+<p>Give <a href="../../classes/DateTime.html">DateTime</a> correct .to_s
+implementations, lets it play nice with <a
+href="../../classes/ActiveRecord.html">ActiveRecord</a> quoting.  #7649
+[Geoff Buesing]</p>
+</li><li>
+<p>Add <a
+href="../../classes/File.html#method-c-atomic_write">File.atomic_write</a>,
+allows you to write large files in an atomic manner, preventing users from
+seeing half written files.  [Michael Koziarski]</p>
+</li><li>
+<p>Allow users to provide custom formatters to <a
+href="../../classes/Logger.html">Logger</a>. [Anthony Eden]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-to_query">Hash#to_query</a>
+CGI-escapes its keys.  [Jeremy Kemper]</p>
+</li><li>
+<p>Optimize <a href="../../classes/Class.html">Class</a> Inheritable
+Attributes so that unnecessary hashes are not created.  Closes #7472 [Bruce
+Perens]</p>
+</li><li>
+<p>:db format for <a
+href="../../classes/Date.html#method-i-to_s">Date#to_s</a> [Jeremy Kemper]</p>
+
+<pre class="ruby"><span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2007</span>, <span class="ruby-value">1</span>, <span class="ruby-value">27</span>).<span class="ruby-identifier">to_s</span>(:<span class="ruby-identifier">db</span>) <span class="ruby-comment"># =&gt; '2007-01-27'</span>
+</pre>
+</li><li>
+<p>Added :instance_writer option to mattr_writer/accessor,
+cattr_writer/accessor, and class_inheritable_writer to skip the creation of
+the instance writer.  [Rick Olson]</p>
+</li><li>
+<p>Added <a href="../../classes/Hash.html#method-i-to_query">Hash#to_query</a>
+to turn a hash of values into a form-encoded query string [Nicholas Seckar]</p>
+</li><li>
+<p>Increase test coverage for subclasses_of. Closes #7335. [Roman2K, Nicholas
+Seckar]</p>
+</li><li>
+<p>Remove unused code from Duration#inspect.  Closes #7180.  [Rich Collins]</p>
+</li><li>
+<p>Added test coverage for Inflector.inflections.clear.  Closes #7179. [Rich
+Collins]</p>
+</li><li>
+<p>ActiveSupport::Multibyte::Handlers::UTF8Handler should raise when a range
+and an integer are passed in (just like the native implementation).  Closes
+#7176 [Rich Collins]</p>
+</li><li>
+<p><a href="../../classes/A.html">A</a> couple extra tests for classify. 
+Closes #7273. [Josh Susser]</p>
+</li><li>
+<p>Better docs for <a href="../../classes/Object.html">Object</a> extensions
+[zackchandler, Jamis Buck]</p>
+</li><li>
+<p>Fix that Dates couldn’t be subtracted from Dates after [5940].  [Sam
+Stephenson]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Object.html#method-i-acts_like-3F">Object#acts_like?</a>
+and <a
+href="../../classes/Time.html#method-i-acts_like_time-3F">Time#acts_like_time?</a>
+and <a
+href="../../classes/Date.html#method-i-acts_like_date-3F">Date#acts_like_date?</a>
+to facilitate duck-typing. [Jamis Buck]</p>
+</li><li>
+<p>Make 1.months and friends accurate by introducing a Duration class.  #6835
+[eventualbuddha]</p>
+</li></ul>
+
+<p><strong>1.4.2</strong> (March 12th, 2007)</p>
+<ul><li>
+<p>Ruby 1.8.6 and 1.9 define private <a
+href="../../classes/Time.html#method-i-to_date">Time#to_date</a> and
+to_datetime; make them</p>
+</li></ul>
+
+<p>public for compatibility.  [Jeremy Kemper]</p>
+<ul><li>
+<p>Deprecation: warn on stderr if RAILS_DEFAULT_LOGGER isn’t set yet.  [Jeremy
+Kemper]</p>
+</li></ul>
+
+<p><strong>1.4.1</strong> (February 5th, 2007)</p>
+<ul><li>
+<p>Optimize <a href="../../classes/Class.html">Class</a> Inheritable
+Attributes so that unnecessary hashes are not created.  Closes #7472 [Bruce
+Perens]</p>
+</li><li>
+<p>Added :instance_writer option to mattr_writer/accessor,
+cattr_writer/accessor, and class_inheritable_writer to skip the creation of
+the instance writer.  [Rick Olson]</p>
+</li><li>
+<p>Full test coverage for Inflector.  #7228 [Dan Kubb]</p>
+</li></ul>
+
+<p><strong>1.4.0</strong> (January 16th, 2007)</p>
+<ul><li>
+<p>Document Inflector.ordinalize and merge docs from <a
+href="../../classes/String.html">String</a> inflections.  #7023 [smeade]</p>
+</li><li>
+<p>Unbundle flexmock.  [Jeremy Kemper]</p>
+</li><li>
+<p>Fix Dependencies.autoloaded? to ignore anonymous modules. Closes #6561.
+[Nicholas Seckar]</p>
+</li><li>
+<p>Update load once paths to prevent nested once constants from being detected
+and claimed by an external non-once load. [Nicholas Seckar]</p>
+</li><li>
+<p>Deprecation: silence warnings when reporting test errors.  [Jeremy Kemper]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-slice">Hash#slice</a> returns a
+new hash with only the given keys. slice! replaces the hash with only the
+given keys. Works with HashWithIndifferentAccess also.  [Jeremy Kemper]</p>
+</li><li>
+<p>HashWithIndifferentAccess#to_hash converts to a <a
+href="../../classes/Hash.html">Hash</a> with <a
+href="../../classes/String.html">String</a> keys and the same default
+value.  [Jeremy Kemper]</p>
+</li><li>
+<p>Fix remove_constant to correctly handle constant names of the form
+“::A::…”. References #6720. [Nicholas Seckar]</p>
+</li><li>
+<p>Fixed <a href="../../classes/Array.html#method-i-to_xml">Array#to_xml</a>
+when it contains a series of hashes (each piece would get its own XML
+declaration) #6610 [thkarcher/cyu]</p>
+</li><li>
+<p>Added <a href="../../classes/Time.html#method-i-to_s">Time#to_s</a>(:time)
+which will just return H:M, like 17:44 [David Heinemeier Hansson]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Module.html#method-i-attr_accessor_with_default">Module#attr_accessor_with_default</a>
+to initialize value of attribute before setting it. Closes #6538. [Stuart
+Halloway, Marcel Molina Jr.]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> handles
+keys with the same name as <a href="../../classes/Kernel.html">Kernel</a>
+methods.  #6613 [Jonathan del Strother]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Time.html#method-i-end_of_day">Time#end_of_day</a> to
+get 23:59:59 of that day [David Heinemeier Hansson]</p>
+</li><li>
+<p>Don’t quote hash keys in Hash#to_json if they’re valid JavaScript
+identifiers.  Disable this with
+ActiveSupport::JSON.unquote_hash_key_identifiers = false if you need strict
+JSON compliance. [Sam Stephenson]</p>
+</li><li>
+<p>Lazily load the Unicode Database in the UTF-8 Handler [Rick Olson]</p>
+</li><li>
+<p>Update dependencies to delete partially loaded constants. [Nicholas Seckar]</p>
+</li><li>
+<p>Fix unicode JSON regexp for Onigurama compatibility.  #6494 [whitley]</p>
+</li><li>
+<p>update XmlSimple to 1.0.10. Closes #6532. [Nick Sieger]</p>
+</li><li>
+<p>Update dependencies to allow constants to be defined alongside their
+siblings. <a href="../../classes/A.html">A</a> common case for this is AR
+model classes with STI; user.rb might define <a
+href="../../classes/User.html">User</a>, <a
+href="../../classes/Administrator.html">Administrator</a> and Guest for
+example. [Nicholas Seckar]</p>
+</li><li>
+<p>next_week respects DST changes.  #6483, #5617, #2353, #2509, #4551
+[marclove, Rob Biedenharn, rails@roetzel.de, jsolson@damogran.org,
+drbrain@segment7.net]</p>
+</li><li>
+<p>Expose methods added to <a
+href="../../classes/Enumerable.html">Enumerable</a> in the documentation,
+such as group_by. Closes #6170. [sergeykojin@gmail.com, Marcel Molina Jr.]</p>
+</li><li>
+<p>Ensure Chars#tidy_bytes only tidies broken bytes. Closes #6397 [Manfred
+Stienstra]</p>
+</li><li>
+<p>Add ‘unloadable’, a method used to mark any constant as requiring an unload
+after each request. [Nicholas Seckar]</p>
+</li><li>
+<p>Make core_ext/string/access.rb multibyte safe. Closes #6388 [Manfred
+Stienstra]</p>
+</li><li>
+<p>Make String#chars slicing behaviour consistent with <a
+href="../../classes/String.html">String</a>. Closes #6387 [Manfred
+Stienstra]</p>
+</li><li>
+<p>Pull in latest multibyte patch. Closes #6346 [Manfred Stienstra]</p>
+</li><li>
+<p>Add <a
+href="../../classes/ActiveSupport/Multibyte.html">ActiveSupport::Multibyte</a>.
+Provides String#chars which lets you deal with strings as a sequence of
+chars, not of bytes. Closes #6242 [Julian Tarkhanov, Manfred Stienstra,
+Thijs van der Vossen &amp; Jan Behrens]</p>
+</li><li>
+<p>Fix issue with class_inheritable_accessor saving updates to the parent
+class when initialized with an <a href="../../classes/Array.html">Array</a>
+or <a href="../../classes/Hash.html">Hash</a> [mojombo]</p>
+</li><li>
+<p><a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> supports
+Bignum and <a href="../../classes/BigDecimal.html">BigDecimal</a>.  #6313
+[edibiase]</p>
+</li><li>
+<p>Don’t undefine class in OptionMerger [Rick Olson]</p>
+</li><li>
+<p>Hash.create_from_xml has been renamed to <a
+href="../../classes/Hash.html#method-c-from_xml">Hash.from_xml</a>, alias
+will exist until <a href="../../classes/Rails.html">Rails</a> 2.0 [David
+Heinemeier Hansson]</p>
+</li><li>
+<p>alias_method_chain works with accessor= methods also.  #6153 [Caio Chassot]</p>
+</li><li>
+<p>Fix loadable_constants_for_path to handle load paths that do not end with a
+slash. [Nicholas Seckar]</p>
+</li><li>
+<p>Fix logic error in determining what was loaded by a given file. Closes
+#6039. [Nicholas Seckar]</p>
+</li><li>
+<p>Equate Kernel.const_missing with Object.const_missing. Fixes #5988.
+[Nicholas Seckar]</p>
+</li><li>
+<p>Add <a
+href="../../classes/ApplicationController.html">ApplicationController</a>
+special case to Dependencies. [Nicholas Seckar]</p>
+</li><li>
+<p>Don’t pad remaining places with in_groups_of if specified padding value is
+false. [Marcel Molina Jr.]</p>
+</li><li>
+<p>Fix cases where empty xml nodes weren’t being translated to nil in
+Hash.create_from_xml [Rick Olso n]</p>
+
+<p>&lt;written-on type=“date”&gt;&lt;/written-on&gt; # =&gt; { :type =&gt;
+‘date’ } # WRONG &lt;written-on type=“date”&gt;&lt;/written-on&gt; # =&gt;
+nil # RIGHT</p>
+</li><li>
+<p>Tighten rescue clauses.  #5985 [james@grayproductions.net]</p>
+</li><li>
+<p>Inflections: don’t singularize -ies plurals.  [foamdino@gmail.com, Mark Van
+Holstyn]</p>
+</li><li>
+<p>Update Initializer to use load_once_paths to avoid plugin reloading.
+References #5852. [Nicholas Seckar]</p>
+</li><li>
+<p>Use Array#assoc in ActiveSupport::OrderedHash. [Mauricio Fernandez]</p>
+</li><li>
+<p>Greatly increased performance of String.to_json, which speeds up RJS
+considerably on large pages, fixes #3473 [Shugo Maeda]</p>
+</li><li>
+<p>Detect missing_constants calls from removed modules and fail accordingly.
+[Nicholas Seckar]</p>
+</li><li>
+<p>Stop using defined? in Dependencies.qualified_const_defined? since defined?
+may invoke const_missing. [Nicholas Seckar]</p>
+</li><li>
+<p>Dependencies can autoload directories of nested classes. [Jeremy Kemper]</p>
+
+<pre class="ruby"><span class="ruby-constant">Example</span><span class="ruby-operator">:</span>
+  <span class="ruby-identifier">invoice</span>.<span class="ruby-identifier">rb</span>            <span class="ruby-keyword">class</span> <span class="ruby-constant">Invoice</span>
+  <span class="ruby-identifier">invoice</span><span class="ruby-operator">/</span><span class="ruby-identifier">lineitem</span>.<span class="ruby-identifier">rb</span>   <span class="ruby-keyword">class</span> <span class="ruby-constant">Invoice</span><span class="ruby-operator">::</span><span class="ruby-constant">Lineitem</span>
+</pre>
+</li><li>
+<p>Add Deprecation.silence so that Reloadable does not scold itself. [Nicholas
+Seckar]</p>
+</li><li>
+<p>Add debugging logging to Dependencies. Currently can be enabled with
+Dependencies.log_activity = true; adding to Initializer and documenting is
+forthcoming. [Nicholas Seckar]</p>
+</li><li>
+<p>Replace Reloadable with improvements to the Dependencies mechanism.
+[Nicholas Seckar]</p>
+</li><li>
+<p><a href="../../classes/DateTime.html#method-i-to_time">DateTime#to_time</a>
+gives hour/minute/second resolution.  #5747 [pobox at jon.evans.com]</p>
+</li><li>
+<p>attr_internal to support namespacing and deprecation. Like attr_* except
+backed by internally-named instance variable. Set
+attr_internal_naming_format to change the format from the default ‘@_%s’.
+[Jeremy Kemper]</p>
+
+<pre class="ruby"><span class="ruby-comment"># def foo()   @foo__rofl      end</span>
+<span class="ruby-comment"># def foo=(v) @foo__rofl = v  end</span>
+<span class="ruby-keyword">self</span>.<span class="ruby-identifier">attr_internal_naming_format</span> = <span class="ruby-string">'@%s__rofl'</span>
+<span class="ruby-identifier">attr_internal</span> :<span class="ruby-identifier">foo</span>
+</pre>
+</li><li>
+<p>Raise fully qualified names upon name errors. #5533 [Lars Pind, Nicholas
+Seckar]</p>
+</li><li>
+<p>Add extention to obtain the missing constant from <a
+href="../../classes/NameError.html">NameError</a> instances. [Nicholas
+Seckar]</p>
+</li><li>
+<p>Thoroughly document inflections.  #5700 [petermichaux@gmail.com]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Module.html#method-i-alias_attribute">Module#alias_attribute</a>
+[Jamis/David Heinemeier Hansson]. Example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Content</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-comment"># has a title attribute</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">Email</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">alias_attribute</span> :<span class="ruby-identifier">subject</span>, :<span class="ruby-identifier">title</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">e</span> = <span class="ruby-constant">Email</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">1</span>)
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">title</span>    <span class="ruby-comment"># =&gt; &quot;Superstars&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">subject</span>  <span class="ruby-comment"># =&gt; &quot;Superstars&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">subject?</span> <span class="ruby-comment"># =&gt; true</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">subject</span> = <span class="ruby-string">&quot;Megastars&quot;</span>
+<span class="ruby-identifier">e</span>.<span class="ruby-identifier">title</span>    <span class="ruby-comment"># =&gt; &quot;Megastars&quot;</span>
+</pre>
+</li><li>
+<p>Deprecation: easier to work with warning behavior as procs; default
+behaviors for each environment so users needn’t update env.rb; and testing
+pleasure with assert_deprecated, assert_not_deprecated. [Jeremy Kemper] By
+default, test prints to $stderr, dev logs, production ignores. Provide your
+own per-environment in e.g. config/environments/development.rb:</p>
+
+<pre class="ruby"><span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">behavior</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span> <span class="ruby-identifier">raise</span> <span class="ruby-identifier">message</span> }
+</pre>
+</li><li>
+<p>First cut of the <a href="../../classes/Rails.html">Rails</a> Deprecation
+system.   [Michael Koziarski]</p>
+</li><li>
+<p>Strip boolean XML content before checking for ‘true’ [Rick Olson]</p>
+</li><li>
+<p>Customize default <a href="../../classes/BigDecimal.html">BigDecimal</a>
+formatting. References #5672 [Dave Thomas]</p>
+</li><li>
+<p>Correctly convert &lt;foo nil=“true”&gt; to nil when using
+Hash.create_from_xml.  [Rick Olson]</p>
+</li><li>
+<p>Optional identity for <a
+href="../../classes/Enumerable.html#method-i-sum">Enumerable#sum</a>
+defaults to zero. #5657 [gensym@mac.com]</p>
+</li><li>
+<p>HashWithIndifferentAccess shouldn’t confuse false and nil. #5601 [Shugo
+Maeda]</p>
+</li><li>
+<p>Fixed HashWithIndifferentAccess#default #5586 [chris@seagul.co.uk]</p>
+</li><li>
+<p>More compatible Hash.create_from_xml. #5523 [nunemaker@gmail.com]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Enumerable.html#method-i-sum">Enumerable#sum</a> for
+calculating a sum from the elements [David Heinemeier Hansson,
+jonathan@daikini.com]. Examples:</p>
+
+<pre class="ruby">[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>].<span class="ruby-identifier">sum</span>
+<span class="ruby-identifier">payments</span>.<span class="ruby-identifier">sum</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">price</span> * <span class="ruby-identifier">p</span>.<span class="ruby-identifier">tax_rate</span> }
+<span class="ruby-identifier">payments</span>.<span class="ruby-identifier">sum</span>(&amp;:<span class="ruby-identifier">price</span>)
+</pre>
+
+<p>This is instead of payments.inject(0) { |sum, p| sum + p.price }</p>
+</li><li>
+<p>Correct and clarify <a
+href="../../classes/Array.html#method-i-to_sentence">Array#to_sentence</a>
+docs.  #5458 [brad@madriska.com]</p>
+</li><li>
+<p>alias_method_chain preserves method punctuation so foo, foo?, and foo! may
+be chained with the same feature. [Jeremy Kemper]</p>
+
+<pre>Example:
+  alias_method_chain :save!, :validation
+is equivalent to
+  alias_method :save_without_validation!, :save!
+  alias_method :save!, :save_with_validation!</pre>
+</li><li>
+<p>Enhance Symbol#to_proc so it works with list objects, such as
+multi-dimensional arrays. Closes #5295 [nov@yo.rim.or.jp].  Example:</p>
+
+<pre class="ruby">{<span class="ruby-value">1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;one&quot;</span>, <span class="ruby-value">2</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;two&quot;</span>, <span class="ruby-value">3</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;three&quot;</span>}.<span class="ruby-identifier">sort_by</span>(&amp;:<span class="ruby-identifier">first</span>).<span class="ruby-identifier">map</span>(&amp;:<span class="ruby-identifier">last</span>)
+<span class="ruby-comment"># =&gt; [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;]</span>
+</pre>
+</li><li>
+<p>Added Hash.create_from_xml(string) which will create a hash from a XML
+string and even typecast if possible [David Heinemeier Hansson]. Example:</p>
+
+<pre>Hash.create_from_xml &lt;&lt;-EOT
+  &lt;note&gt;
+    &lt;title&gt;This is a note&lt;/title&gt;
+    &lt;created-at type=&quot;date&quot;&gt;2004-10-10&lt;/created-at&gt;
+  &lt;/note&gt;
+EOT</pre>
+
+<p>…would return:</p>
+
+<pre class="ruby">{ :<span class="ruby-identifier">note</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">title</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;This is a note&quot;</span>, :<span class="ruby-identifier">created_at</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2004</span>, <span class="ruby-value">10</span>, <span class="ruby-value">10</span>) } }
+</pre>
+</li><li>
+<p>Added Jim Weirich’s excellent FlexMock class to vendor (Copyright 2003,
+2004 by Jim Weirich (jim@weriichhouse.org)) – it’s not automatically
+required, though, so require ‘flexmock’ is still necessary [David
+Heinemeier Hansson]</p>
+</li><li>
+<p>Fixed that <a
+href="../../classes/Module.html#method-i-alias_method_chain">Module#alias_method_chain</a>
+should work with both foo? foo! and foo at the same time #4954
+[anna@wota.jp]</p>
+</li><li>
+<p>to_xml fixes, features, and speedup: introduce :dasherize option that
+converts updated_at to updated-at if true (the existing default); binary
+columns get encoding=“base64” attribute; nil values get nil=“true”
+attribute to distinguish empty values; add type information for float
+columns; allow arbitrarily deep :include; include SQL type information as
+the type attribute.  #4989 [Blair Zajac &lt;blair@orcaware.com&gt;]</p>
+</li><li>
+<p>Add OrderedHash#values. [Sam Stephenson]</p>
+</li><li>
+<p>Added <a href="../../classes/Array.html#method-i-to_s">Array#to_s</a>(:db)
+that’ll produce a comma-separated list of ids [David Heinemeier Hansson].
+Example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Purchase</span>.<span class="ruby-identifier">find</span>(:<span class="ruby-identifier">all</span>, :<span class="ruby-identifier">conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;product_id IN (#{shops.products.to_s(:db)})&quot;</span>
+</pre>
+</li><li>
+<p>Normalize classify’s argument to a <a
+href="../../classes/String.html">String</a> so that it plays nice with
+Symbols. [Marcel Molina Jr.]</p>
+</li><li>
+<p>Strip out leading schema name in classify. References #5139. [Michael
+Schoen]</p>
+</li><li>
+<p>Remove Enumerable#first_match since break(value) handles the use case well
+enough. [Nicholas Seckar]</p>
+
+<p>Enumerable#first_match was like detect, but instead of returning the
+matching element, the yielded value returned. For example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">user_xml</span> = <span class="ruby-identifier">adapters</span>(:<span class="ruby-identifier">from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">User</span>, :<span class="ruby-identifier">to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Xml</span>).<span class="ruby-identifier">first_match</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">adapter</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">adapter</span>.<span class="ruby-identifier">adapt</span> <span class="ruby-ivar">@user</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>But this is just as easily done with:</p>
+
+<pre class="ruby"><span class="ruby-identifier">user_xml</span> = <span class="ruby-identifier">adapters</span>(:<span class="ruby-identifier">from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">User</span>, :<span class="ruby-identifier">to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Xml</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-keyword">break</span> <span class="ruby-identifier">adapter</span>.<span class="ruby-identifier">adapt</span>(<span class="ruby-ivar">@user</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+</li><li>
+<p>Make <a
+href="../../classes/Array.html#method-i-in_groups_of">Array#in_groups_of</a>
+just return the grouped collection if a block isn’t given. [Marcel Molina
+Jr.]</p>
+</li><li>
+<p>Don’t destroy a HashWithIndifferentAccess if symbolize_keys! or 
+stringify_keys! is called on it. Closes #5076. [Marcel Molina Jr., famundo
+at guy.naor.com]</p>
+</li><li>
+<p>Document Module::delegate. #5002 [pergesu@gmail.com]</p>
+</li><li>
+<p>Replace alias method chaining with <a
+href="../../classes/Module.html#method-i-alias_method_chain">Module#alias_method_chain</a>.
+[Marcel Molina Jr.]</p>
+</li><li>
+<p>Strip out punctuation on predicates or bang methods being aliased with
+alias_method_chain since target?_without_feature is not a valid method
+name. Add tests for <a
+href="../../classes/Module.html#method-i-alias_method_chain">Module#alias_method_chain</a>.
+[Marcel Molina Jr.]</p>
+</li><li>
+<p>Replace Ruby’s deprecated append_features in favor of included. [Marcel
+Molina Jr.]</p>
+</li><li>
+<p>Allow default options in with_options to be overridden. Closes #4480.
+[murphy@cYcnus.de]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Module.html#method-i-alias_method_chain">Module#alias_method_chain</a>
+[Jamis Buck]</p>
+</li><li>
+<p>Updated to Builder 2.0 [David Heinemeier Hansson]</p>
+</li><li>
+<p>Add <a href="../../classes/Array.html#method-i-split">Array#split</a> for
+dividing arrays into one or more subarrays by value or block. [Sam
+Stephenson]</p>
+</li></ul>
+
+<p><strong>1.3.1</strong> (April 6th, 2006)</p>
+<ul><li>
+<p>Clean paths inside of exception messages and traces. [Nicholas Seckar]</p>
+</li><li>
+<p>Add Pathname.clean_within for cleaning all the paths inside of a string.
+[Nicholas Seckar]</p>
+</li><li>
+<p>provide an empty Dependencies::LoadingModule.load which prints deprecation
+warnings.  Lets 1.0 applications function with .13-style environment.rb.</p>
+</li></ul>
+
+<p><strong>1.3.0</strong> (March 27th, 2006)</p>
+<ul><li>
+<p>When possible, avoid incorrectly obtaining constants from parent modules.
+Fixes #4221. [Nicholas Seckar]</p>
+</li><li>
+<p>Add more tests for dependencies; refactor existing cases. [Nicholas Seckar]</p>
+</li><li>
+<p>Move <a href="../../classes/Module.html#method-i-parent">Module#parent</a>
+and Module#as_load_path into core_ext. Add <a
+href="../../classes/Module.html#method-i-parent">Module#parent</a>.
+[Nicholas Seckar]</p>
+</li><li>
+<p>Add CachingTools::HashCaching to simplify the creation of nested,
+autofilling hashes. [Nicholas Seckar]</p>
+</li><li>
+<p>Remove a hack intended to avoid unloading the same class twice, but which
+would not work anyways. [Nicholas Seckar]</p>
+</li><li>
+<p>Update Object.subclasses_of to locate nested classes. This affects
+Object.remove_subclasses_of in that nested classes will now be unloaded.
+[Nicholas Seckar]</p>
+</li><li>
+<p>Update Object.remove_subclasses_of to use Class.remove_class, reducing
+duplication. [Nicholas Seckar]</p>
+</li><li>
+<p>Added Fixnum#seconds for consistency, so you can say 5.minutes + 30.seconds
+instead of 5.minutes + 30 #4389 [François Beausoleil]</p>
+</li><li>
+<p>Added option to <a
+href="../../classes/String.html#method-i-camelize">String#camelize</a> to
+generate lower-cased camel case by passing in :lower, like
+“super_man”.camelize(:lower) # =&gt; “superMan” [David Heinemeier Hansson]</p>
+</li><li>
+<p>Added <a href="../../classes/Hash.html#method-i-diff">Hash#diff</a> to show
+the difference between two hashes [Chris McGrath]</p>
+</li><li>
+<p>Added <a href="../../classes/Time.html#method-i-advance">Time#advance</a>
+to do precise time time calculations for cases where a month being
+approximated to 30 days won’t do #1860 [Rick Olson]</p>
+</li><li>
+<p>Enhance Inflector.underscore to convert ‘-’ into ‘_’ (as the inverse of
+Inflector.dasherize) [Jamis Buck]</p>
+</li><li>
+<p>Switched to_xml to use the xml schema format for datetimes.  This allows
+the encoding of time zones and should improve operability. [Michael
+Koziarski]</p>
+</li><li>
+<p>Added a note to the documentation for the <a
+href="../../classes/Date.html">Date</a> related <a
+href="../../classes/Numeric.html">Numeric</a> extensions to indicate that
+they’re</p>
+</li></ul>
+
+<p>approximations and shouldn’t be used for critical calculations. [Michael
+Koziarski]</p>
+<ul><li>
+<p>Added <a href="../../classes/Hash.html#method-i-to_xml">Hash#to_xml</a> and
+<a href="../../classes/Array.html#method-i-to_xml">Array#to_xml</a> that
+makes it much easier to produce XML from basic structures [David Heinemeier
+Hansson]. Examples:</p>
+
+<pre class="ruby">{ :<span class="ruby-identifier">name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;David&quot;</span>, :<span class="ruby-identifier">street_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Paulina&quot;</span>, :<span class="ruby-identifier">age</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">26</span>, :<span class="ruby-identifier">moved_on</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">2005</span>, <span class="ruby-value">11</span>, <span class="ruby-value">15</span>) }.<span class="ruby-identifier">to_xml</span>
+</pre>
+
+<p>…returns:</p>
+
+<pre>&lt;person&gt;
+  &lt;street-name&gt;Paulina&lt;/street-name&gt;
+  &lt;name&gt;David&lt;/name&gt;
+  &lt;age type=&quot;integer&quot;&gt;26&lt;/age&gt;
+  &lt;moved-on type=&quot;date&quot;&gt;2005-11-15&lt;/moved-on&gt;
+&lt;/person&gt;</pre>
+</li><li>
+<p>Moved Jim Weirich’s wonderful Builder from Action Pack to Active Support
+(it’s simply too useful to be stuck in AP) [David Heinemeier Hansson]</p>
+</li><li>
+<p>Fixed that <a
+href="../../classes/Array.html#method-i-to_sentence">Array#to_sentence</a>
+will return “” on an empty array instead of “, and” #3842, #4031
+[rubyonrails@beautifulpixel.com]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Enumerable.html#method-i-group_by">Enumerable#group_by</a>
+for grouping collections based on the result of some block. Useful, for
+example, for grouping records by date.</p>
+
+<p>ex.</p>
+
+<pre class="ruby"><span class="ruby-identifier">latest_transcripts</span>.<span class="ruby-identifier">group_by</span>(&amp;:<span class="ruby-identifier">day</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">day</span>, <span class="ruby-identifier">transcripts</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">p</span> <span class="ruby-node">&quot;#{day} -&gt; #{transcripts.map(&amp;:class) * ', '}&quot;</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-string">&quot;2006-03-01 -&gt; Transcript&quot;</span>
+<span class="ruby-string">&quot;2006-02-28 -&gt; Transcript&quot;</span>
+<span class="ruby-string">&quot;2006-02-27 -&gt; Transcript, Transcript&quot;</span>
+<span class="ruby-string">&quot;2006-02-26 -&gt; Transcript, Transcript&quot;</span>
+</pre>
+
+<p>Add <a
+href="../../classes/Array.html#method-i-in_groups_of">Array#in_groups_of</a>,
+for iterating over an array in groups of a certain size.</p>
+
+<p>ex.</p>
+
+<pre class="ruby"><span class="ruby-node">%w(1 2 3 4 5 6 7)</span>.<span class="ruby-identifier">in_groups_of</span>(<span class="ruby-value">3</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-identifier">g</span>}
+[<span class="ruby-string">&quot;1&quot;</span>, <span class="ruby-string">&quot;2&quot;</span>, <span class="ruby-string">&quot;3&quot;</span>]
+[<span class="ruby-string">&quot;4&quot;</span>, <span class="ruby-string">&quot;5&quot;</span>, <span class="ruby-string">&quot;6&quot;</span>]
+[<span class="ruby-string">&quot;7&quot;</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>]
+</pre>
+<dl class="rdoc-list label-list"><dt>Marcel Molina Jr., Sam Stephenson
+<dd></dd></dl>
+</li><li>
+<p>Added Kernel#daemonize to turn the current process into a daemon that can
+be killed with a TERM signal [David Heinemeier Hansson]</p>
+</li><li>
+<p>Add ‘around’ methods to <a href="../../classes/Logger.html">Logger</a>,  to
+make it easy to log before and after messages for a given block as
+requested in #3809. [Michael Koziarski]  Example:</p>
+
+<p>logger.around_info(“Start rendering component (#{options.inspect}): ”,</p>
+
+<pre>&quot;\n\nEnd of component rendering&quot;) { yield }</pre>
+</li><li>
+<p>Added <a
+href="../../classes/Time.html#method-i-beginning_of_quarter">Time#beginning_of_quarter</a>
+#3607 [gmail at cohen.jeff.com]</p>
+</li><li>
+<p>Fix Object.subclasses_of to only return currently defined objects [Jonathan
+Viney &lt;jonathan@bluewire.net.nz&gt;]</p>
+</li><li>
+<p>Fix constantize to properly handle names beginning with ‘::’. [Nicholas
+Seckar]</p>
+</li><li>
+<p>Make <a href="../../classes/String.html#method-i-last">String#last</a>
+return the string instead of nil when it is shorter than the limit [Scott
+Barron].</p>
+</li><li>
+<p>Added delegation support to <a href="../../classes/Module.html">Module</a>
+that allows multiple delegations at once (unlike Forwardable in the stdlib)
+[David Heinemeier Hansson]. Example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Account</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">has_one</span> :<span class="ruby-identifier">subscription</span>
+  <span class="ruby-identifier">delegate</span> :<span class="ruby-identifier">free?</span>, :<span class="ruby-identifier">paying?</span>, :<span class="ruby-identifier">to</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">subscription</span>
+  <span class="ruby-identifier">delegate</span> :<span class="ruby-identifier">overdue?</span>, :<span class="ruby-identifier">to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;subscription.last_payment&quot;</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">account</span>.<span class="ruby-identifier">free?</span>    <span class="ruby-comment"># =&gt; account.subscription.free?</span>
+<span class="ruby-identifier">account</span>.<span class="ruby-identifier">overdue?</span> <span class="ruby-comment"># =&gt; account.subscription.last_payment.overdue?</span>
+</pre>
+</li><li>
+<p>Fix Reloadable to handle the case where a class that has been ‘removed’ has
+not yet been garbage collected. [Nicholas Seckar]</p>
+</li><li>
+<p>Don’t allow Reloadable to be included into Modules.</p>
+</li><li>
+<p>Remove LoadingModule. [Nicholas Seckar]</p>
+</li><li>
+<p>Add documentation for Reloadable::Subclasses. [Nicholas Seckar]</p>
+</li><li>
+<p>Add Reloadable::Subclasses which handles the common case where a base class
+should not be reloaded, but its subclasses should be. [Nicholas Seckar]</p>
+</li><li>
+<p>Further improvements to reloading code [Nicholas Seckar, Trevor Squires]</p>
+<ul><li>
+<p>All classes/modules which include Reloadable can define reloadable? for
+fine grained control of reloading</p>
+</li><li>
+<p>Class.remove_class uses <a
+href="../../classes/Module.html#method-i-parent">Module#parent</a> to
+access the parent module</p>
+</li><li>
+<p>Class.remove_class expanded to handle multiple classes in a single call</p>
+</li><li>
+<p>LoadingModule.clear! has been removed as it is no longer required</p>
+</li><li>
+<p>Module#remove_classes_including has been removed in favor of
+Reloadable.reloadable_classes</p>
+</li></ul>
+</li><li>
+<p>Added reusable reloading support through the inclusion of the Relodable
+module that all subclasses of <a
+href="../../classes/ActiveRecord/Base.html">ActiveRecord::Base</a>, <a
+href="../../classes/ActiveRecord/Observer.html">ActiveRecord::Observer</a>,
+ActiveController::Base, and <a
+href="../../classes/ActionMailer/Base.html">ActionMailer::Base</a>
+automatically gets. This means that these classes will be reloaded by the
+dispatcher when Dependencies.mechanism = :load. You can make your own
+models reloadable easily:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Setting</span>
+  <span class="ruby-identifier">include</span> <span class="ruby-constant">Reloadable</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Reloading a class is done by removing its constant which will cause it to
+be loaded again on the next reference. [David Heinemeier Hansson]</p>
+</li><li>
+<p>Added auto-loading support for classes in modules, so Conductor::Migration
+will look for conductor/migration.rb and Conductor::Database::Settings will
+look for conductor/database/settings.rb [Nicholas Seckar]</p>
+</li><li>
+<p>Add Object#instance_exec, like instance_eval but passes its arguments to
+the block.  (Active Support will not override the Ruby 1.9 implementation
+of this method.) [Sam Stephenson]</p>
+</li><li>
+<p>Add Proc#bind(object) for changing a proc or block’s self by returning a
+Method bound to the given object. Based on why the lucky stiff’s “cloaker”
+method. [Sam Stephenson]</p>
+</li><li>
+<p>Fix merge and dup for hashes with indifferent access #3404 [Ken Miller]</p>
+</li><li>
+<p>Fix the requires in option_merger_test to unbreak AS tests. [Sam
+Stephenson]</p>
+</li><li>
+<p>Make HashWithIndifferentAccess#update behave like Hash#update by returning
+the hash. #3419, #3425 [asnem@student.ethz.ch, blauton at JanPrill.de,
+Marcel Molina Jr.]</p>
+</li><li>
+<p>Add <a href="../../classes/ActiveSupport/JSON.html">ActiveSupport::JSON</a>
+and Object#to_json for converting Ruby objects to JSON strings. [Sam
+Stephenson]</p>
+</li><li>
+<p>Add <a
+href="../../classes/Object.html#method-i-with_options">Object#with_options</a>
+for DRYing up multiple calls to methods having shared options. [Sam
+Stephenson]  Example:</p>
+
+<p>ActionController::Routing::Routes.draw do |map|</p>
+
+<pre class="ruby"><span class="ruby-comment"># Account routes</span>
+<span class="ruby-identifier">map</span>.<span class="ruby-identifier">with_options</span>(:<span class="ruby-identifier">controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'account'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">account</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">account</span>.<span class="ruby-identifier">home</span>   <span class="ruby-string">''</span>,       :<span class="ruby-identifier">action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'dashboard'</span>
+  <span class="ruby-identifier">account</span>.<span class="ruby-identifier">signup</span> <span class="ruby-string">'signup'</span>, :<span class="ruby-identifier">action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'new'</span>
+  <span class="ruby-identifier">account</span>.<span class="ruby-identifier">logout</span> <span class="ruby-string">'logout'</span>, :<span class="ruby-identifier">action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'logout'</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>end</p>
+</li><li>
+<p>Introduce Dependencies.warnings_on_first_load setting.  If true, enables
+warnings on first load of a require_dependency.  Otherwise, loads without
+warnings.  Disabled (set to false) by default.  [Jeremy Kemper]</p>
+</li><li>
+<p>Active Support is warnings-safe.  #1792 [Eric Hodel]</p>
+</li><li>
+<p>Introduce enable_warnings counterpart to silence_warnings.  Turn warnings
+on when loading a file for the first time if Dependencies.mechanism ==
+:load.  Common mistakes such as redefined methods will print warnings to
+stderr.  [Jeremy Kemper]</p>
+</li><li>
+<p>Add Symbol#to_proc, which allows for, e.g. [:foo, :bar].map(&amp;:to_s).
+[Marcel Molina Jr.]</p>
+</li><li>
+<p>Added the following methods [Marcel Molina Jr., Sam Stephenson]:</p>
+<ul><li>
+<p>Object#copy_instance_variables_from(object) to copy instance variables from
+one object to another</p>
+</li><li>
+<p>Object#extended_by to get an instance’s included/extended modules</p>
+</li><li>
+<p>Object#extend_with_included_modules_from(object) to extend an instance with
+the modules from another instance</p>
+</li></ul>
+</li></ul>
+
+<p><strong>1.2.5</strong> (December 13th, 2005)</p>
+<ul><li>
+<p>Become part of <a href="../../classes/Rails.html">Rails</a> 1.0</p>
+</li><li>
+<p>Rename Version constant to VERSION. #2802 [Marcel Molina Jr.]</p>
+</li></ul>
+
+<p><strong>1.2.3</strong> (November 7th, 2005)</p>
+<ul><li>
+<p>Change Inflector#constantize to use eval instead of const_get. [Nicholas
+Seckar]</p>
+</li><li>
+<p>Fix const_missing handler to ignore the trailing ‘.rb’ on files when
+comparing paths. [Nicholas Seckar]</p>
+</li><li>
+<p>Define kernel.rb methods in “class Object” instead of “module Kernel” to
+work around a Windows peculiarity [Sam Stephenson]</p>
+</li><li>
+<p>Fix broken tests caused by incomplete loading of active support. [Nicholas
+Seckar]</p>
+</li><li>
+<p>Fix status pluralization bug so status_codes doesn’t get pluralized as
+statuses_code.  #2758 [keithm@infused.org]</p>
+</li><li>
+<p>Added Kernel#silence_stderr to silence stderr for the duration of the given
+block [Sam Stephenson]</p>
+</li><li>
+<p>Changed Kernel#` to print a message to stderr (like Unix) instead of
+raising Errno::ENOENT on Win32 [Sam Stephenson]</p>
+</li><li>
+<p>Changed 0.blank? to false rather than true since it violates everyone’s
+expectation of blankness.  #2518, #2705 [rails@jeffcole.net]</p>
+</li><li>
+<p>When loading classes using const_missing, raise a <a
+href="../../classes/NameError.html">NameError</a> if and only if the file
+we tried to load was not present. [Nicholas Seckar]</p>
+</li><li>
+<p>Added petabytes and exebytes to numeric extensions #2397 [timct@mac.com]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Time.html#method-i-end_of_month">Time#end_of_month</a>
+to accompany <a
+href="../../classes/Time.html#method-i-beginning_of_month">Time#beginning_of_month</a>
+#2514 [Jens-Christian Fischer]</p>
+</li></ul>
+
+<p><strong>1.2.2</strong> (October 26th, 2005)</p>
+<ul><li>
+<p>Set Logger.silencer = false to disable Logger#silence.  Useful for
+debugging fixtures.</p>
+</li><li>
+<p>Add title case method to <a href="../../classes/String.html">String</a> to
+do, e.g., ‘action_web_service’.titlecase #  =&gt; ‘Action <a
+href="../../classes/Web.html">Web</a> Service’. [Marcel Molina Jr.]</p>
+</li></ul>
+
+<p><strong>1.2.1</strong> (October 19th, 2005)</p>
+<ul><li>
+<p>Classify generated routing code as framework code to avoid appearing in
+application traces. [Nicholas Seckar]</p>
+</li><li>
+<p>Show all framework frames in the framework trace. [Nicholas Seckar]</p>
+</li></ul>
+
+<p><strong>1.2.0</strong> (October 16th, 2005)</p>
+<ul><li>
+<p>Update Exception extension to show the first few framework frames in an
+application trace. [Nicholas Seckar]</p>
+</li><li>
+<p>Added Exception extension to provide support for clean backtraces.
+[Nicholas Seckar]</p>
+</li><li>
+<p>Updated whiny nil to be more concise and useful. [Nicholas Seckar]</p>
+</li><li>
+<p>Added Enumerable#first_match [Nicholas Seckar]</p>
+</li><li>
+<p>Fixed that <a
+href="../../classes/Time.html#method-i-change">Time#change</a> should also
+reset usec when also resetting minutes #2459 [ikeda@dream.big.or.jp]</p>
+</li><li>
+<p>Fix <a href="../../classes/Logger.html">Logger</a> compatibility for
+distributions that don’t keep Ruby and its standard library in sync.</p>
+</li><li>
+<p>Replace ‘%e’ from long and short time formats as Windows does not support
+it. #2344. [Tom Ward &lt;tom@popdog.net&gt;]</p>
+</li><li>
+<p>Added to_s(:db) to <a href="../../classes/Range.html">Range</a>, so you can
+get “BETWEEN ‘2005-12-10’ AND ‘2005-12-12’” from Date.new(2005, 12,
+10)..Date.new(2005, 12, 12) (and likewise with Times)</p>
+</li><li>
+<p>Moved require_library_or_gem into <a
+href="../../classes/Kernel.html">Kernel</a>. #1992 [Michael Schuerig
+&lt;michael@schuerig.de&gt;]</p>
+</li><li>
+<p>Add :rfc822 as an option for <a
+href="../../classes/Time.html#method-i-to_s">Time#to_s</a> (to get
+rfc822-formatted times)</p>
+</li><li>
+<p>Chain the const_missing hook to any previously existing hook so rails can
+play nicely with rake</p>
+</li><li>
+<p>Clean logger is compatible with both 1.8.2 and 1.8.3 <a
+href="../../classes/Logger.html">Logger</a>.  #2263 [Michael Schuerig
+&lt;michael@schuerig.de&gt;]</p>
+</li><li>
+<p>Added native, faster implementations of .blank? for the core types #2286
+[skae]</p>
+</li><li>
+<p>Fixed clean logger to work with Ruby 1.8.3 <a
+href="../../classes/Logger.html">Logger</a> class #2245</p>
+</li><li>
+<p>Fixed memory leak with Active Record classes when Dependencies.mechanism =
+:load #1704 [Chris McGrath]</p>
+</li><li>
+<p>Fixed Inflector.underscore for use with acronyms, so <a
+href="../../classes/HTML.html">HTML</a> becomes html instead of htm_l #2173
+[k@v2studio.com]</p>
+</li><li>
+<p>Fixed dependencies related infinite recursion bug when a controller file
+does not contain a controller class. Closes #1760.
+[rcolli2@tampabay.rr.com]</p>
+</li><li>
+<p>Fixed inflections for status, quiz, move #2056 [deirdre@deirdre.net]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Hash.html#method-i-reverse_merge">Hash#reverse_merge</a>,
+<a
+href="../../classes/Hash.html#method-i-reverse_merge-21">Hash#reverse_merge!</a>,
+and <a
+href="../../classes/Hash.html#method-i-reverse_update">Hash#reverse_update</a>
+to ease the use of default options</p>
+</li><li>
+<p>Added <a
+href="../../classes/Array.html#method-i-to_sentence">Array#to_sentence</a>
+that’ll turn [‘one’, ‘two’, ‘three’] into “one, two, and three” #2157
+[Manfred Stienstra]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Kernel.html#method-i-silence_warnings">Kernel#silence_warnings</a>
+to turn off warnings temporarily for the passed block</p>
+</li><li>
+<p>Added String#starts_with? and String#ends_with? #2118 [Thijs van der
+Vossen]</p>
+</li><li>
+<p>Added easy extendability to the inflector through Inflector.inflections
+(using the Inflector::Inflections singleton class). Examples:</p>
+
+<pre class="ruby"><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">inflections</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">inflect</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">inflect</span>.<span class="ruby-identifier">plural</span> <span class="ruby-regexp">/^(ox)$/</span>, <span class="ruby-string">'\1\2en'</span>
+  <span class="ruby-identifier">inflect</span>.<span class="ruby-identifier">singular</span> <span class="ruby-regexp">/^(ox)en/</span>, <span class="ruby-string">'\1'</span>
+  <span class="ruby-identifier">inflect</span>.<span class="ruby-identifier">irregular</span> <span class="ruby-string">'octopus'</span>, <span class="ruby-string">'octopi'</span>
+  <span class="ruby-identifier">inflect</span>.<span class="ruby-identifier">uncountable</span> <span class="ruby-string">&quot;equipment&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+</li><li>
+<p>Added <a href="../../classes/String.html#method-i-at">String#at</a>, <a
+href="../../classes/String.html#method-i-from">String#from</a>, <a
+href="../../classes/String.html#method-i-to">String#to</a>, <a
+href="../../classes/String.html#method-i-first">String#first</a>, <a
+href="../../classes/String.html#method-i-last">String#last</a> in
+ActiveSupport::CoreExtensions::String::Access to ease access to individual
+characters and substrings in a string serving basically as human names for
+range access.</p>
+</li><li>
+<p>Make Time#last_month work when invoked on the 31st of a month.</p>
+</li><li>
+<p>Add <a
+href="../../classes/Time.html#method-c-days_in_month">Time.days_in_month</a>,
+and make <a
+href="../../classes/Time.html#method-i-next_month">Time#next_month</a> work
+when invoked on the 31st of a month</p>
+</li><li>
+<p>Fixed that <a
+href="../../classes/Time.html#method-i-midnight">Time#midnight</a> would
+have a non-zero usec on some platforms #1836</p>
+</li><li>
+<p>Fixed inflections of “index/indices” #1766 [gmail at damn_pepe.com]</p>
+</li><li>
+<p>Added stripping of _id to <a
+href="../../classes/String.html#method-i-humanize">String#humanize</a>, so
+“employee_id” becomes “Employee” #1574 [Justin French]</p>
+</li><li>
+<p>Factor Fixnum and Bignum extensions into <a
+href="../../classes/Integer.html">Integer</a> extensions [Nicholas Seckar]</p>
+</li><li>
+<p>Hooked ordinalize into Fixnum and Bignum classes. [Nicholas Seckar, danp]</p>
+</li><li>
+<p>Added Fixnum#ordinalize to turn 1.ordinalize to “1st”, 3.ordinalize to
+“3rd”, and 10.ordinalize to “10th” and so on #1724 [paul@cnt.org]</p>
+</li></ul>
+
+<p><strong>1.1.1</strong> (11 July, 2005)</p>
+<ul><li>
+<p>Added more efficient implementation of the development mode reset of
+classes #1638 [Chris McGrath]</p>
+</li></ul>
+
+<p><strong>1.1.0</strong> (6 July, 2005)</p>
+<ul><li>
+<p>Fixed conflict with Glue gem #1606 [Rick Olson]</p>
+</li><li>
+<p>Added new rules to the Inflector to deal with more unusual plurals
+mouse/louse =&gt; mice/lice, information =&gt; information, ox =&gt; oxen,
+virus =&gt; viri, archive =&gt; archives #1571, #1583, #1490, #1599, #1608
+[foamdino@gmail.com/others]</p>
+</li><li>
+<p>Fixed memory leak with Object#remove_subclasses_of, which inflicted a <a
+href="../../classes/Rails.html">Rails</a> application running in
+development mode with a ~20KB leak per request #1289 [Chris McGrath]</p>
+</li><li>
+<p>Made 1.year == 365.25.days to account for leap years.  This allows you to
+do User.find(:all, :conditions =&gt; [‘birthday &gt; ?’, 50.years.ago])
+without losing a lot of days.  #1488 [tuxie@dekadance.se]</p>
+</li><li>
+<p>Added an exception if calling id on nil to WhinyNil #584
+[kevin-temp@writesoon.com]</p>
+</li><li>
+<p>Added Fix/Bignum#multiple_of? which returns true on 14.multiple_of?(7) and
+false on 16.multiple_of?(7) #1464 [Thomas Fuchs]</p>
+</li><li>
+<p>Added even? and odd? to work with Bignums in addition to Fixnums #1464
+[Thomas Fuchs]</p>
+</li><li>
+<p>Fixed <a
+href="../../classes/Time.html#method-i-at_beginning_of_week">Time#at_beginning_of_week</a>
+returned the next Monday instead of the previous one when called on a
+Sunday #1403 [gmail at jean.helou.com]</p>
+</li><li>
+<p>Increased the speed of indifferent hash access by using Hash#default. 
+#1436 [Nicholas Seckar]</p>
+</li><li>
+<p>Added that “   ” is now also blank? (using strip if available)</p>
+</li><li>
+<p>Fixed Dependencies so all modules are able to load missing constants #1173
+[Nicholas Seckar]</p>
+</li><li>
+<p>Fixed the Inflector to underscore strings containing numbers, so
+Area51Controller becomes area51_controller #1176 [Nicholas Seckar]</p>
+</li><li>
+<p>Fixed that HashWithIndifferentAccess stringified all keys including
+symbols, ints, objects, and arrays #1162 [Nicholas Seckar]</p>
+</li><li>
+<p>Fixed Time#last_year to go back in time, not forward #1278
+[fabien@odilat.com]</p>
+</li><li>
+<p>Fixed the pluralization of analysis to analyses #1295
+[seattle@rootimage.msu.edu]</p>
+</li><li>
+<p>Fixed that Time.local(2005,12).months_since(1) would raise “ArgumentError:
+argument out of range” #1311 [jhahn@niveon.com]</p>
+</li><li>
+<p>Added silencing to the default <a
+href="../../classes/Logger.html">Logger</a> class</p>
+</li></ul>
+
+<p><strong>1.0.4</strong> (19th April, 2005)</p>
+<ul><li>
+<p>Fixed that in some circumstances controllers outside of modules may have
+hidden ones inside modules. For example, admin/content might have been
+hidden by /content. #1075 [Nicholas Seckar]</p>
+</li><li>
+<p>Fixed inflection of perspectives and similar words #1045 [Thijs van der
+Vossen]</p>
+</li><li>
+<p>Added Fixnum#even? and Fixnum#odd?</p>
+</li><li>
+<p>Fixed problem with classes being required twice. Object#const_missing now
+uses require_dependency to load files. It used to use require_or_load which
+would cause models to be loaded twice, which was not good for validations
+and other class methods #971 [Nicholas Seckar]</p>
+</li></ul>
+
+<p><strong>1.0.3</strong> (27th March, 2005)</p>
+<ul><li>
+<p>Fixed Inflector.pluralize to handle capitalized words #932 [Jeremy Kemper]</p>
+</li><li>
+<p>Added Object#suppress which allows you to make a saner choice around with
+exceptions to swallow #980. Example:</p>
+
+<pre>suppress(ZeroDivisionError) { 1/0 }</pre>
+
+<p>…instead of:</p>
+
+<pre>1/0 rescue nil # BAD, EVIL, DIRTY.</pre>
+</li></ul>
+
+<p><strong>1.0.2</strong> (22th March, 2005)</p>
+<ul><li>
+<p>Added Kernel#returning – a Ruby-ized realization of the K combinator,
+courtesy of Mikael Brockman.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">foo</span>
+  <span class="ruby-identifier">returning</span> <span class="ruby-identifier">values</span> = [] <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'bar'</span>
+    <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'baz'</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-identifier">foo</span> <span class="ruby-comment"># =&gt; ['bar', 'baz']</span>
+</pre>
+</li></ul>
+
+<p><strong>1.0.1</strong> (7th March, 2005)</p>
+<ul><li>
+<p>Fixed Hash#indifferent_access to also deal with include? and fetch and
+nested hashes #726 [Nicholas Seckar]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Object.html#method-i-blank-3F">Object#blank?</a> – see
+<a
+href="http://redhanded.hobix.com/inspect/objectBlank.html">redhanded.hobix.com/inspect/objectBlank.html</a>
+#783 [_why the lucky stiff]</p>
+</li><li>
+<p>Added inflection rules for “sh” words, like “wish” and “fish” #755
+[phillip@pjbsoftware.com]</p>
+</li><li>
+<p>Fixed an exception when using Ajax based requests from Safari because
+Safari appends a 000 to the post body. Symbols can’t have 000 in them so
+indifferent access would throw an exception in the constructor. Indifferent
+hashes now use strings internally instead. #746 [Tobias Lütke]</p>
+</li><li>
+<p>Added <a
+href="../../classes/String.html#method-i-to_time">String#to_time</a> and <a
+href="../../classes/String.html#method-i-to_date">String#to_date</a> for
+wrapping ParseDate</p>
+</li></ul>
+
+<p><strong>1.0.0</strong> (24th February, 2005)</p>
+<ul><li>
+<p>Added TimeZone as the first of a number of value objects that among others
+Active Record can use rich value objects using composed_of #688 [Jamis
+Buck]</p>
+</li><li>
+<p>Added Date::Conversions for getting dates in different convenient string
+representations and other objects</p>
+</li><li>
+<p>Added Time::Conversions for getting times in different convenient string
+representations and other objects</p>
+</li><li>
+<p>Added Time::Calculations to ask for things like <a
+href="../../classes/Time.html#method-c-now">Time.now</a>.tomorrow, <a
+href="../../classes/Time.html#method-c-now">Time.now</a>.yesterday, <a
+href="../../classes/Time.html#method-c-now">Time.now</a>.months_ago(4) #580
+[DP|Flurin]. Examples:</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;Later today&quot;</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">in</span>(<span class="ruby-value">3</span>.<span class="ruby-identifier">hours</span>),
+<span class="ruby-string">&quot;Tomorrow morning&quot;</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">tomorrow</span>.<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>),
+<span class="ruby-string">&quot;Tomorrow afternoon&quot;</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">tomorrow</span>.<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">14</span>),
+<span class="ruby-string">&quot;In a couple of days&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">tomorrow</span>.<span class="ruby-identifier">tomorrow</span>.<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>),
+<span class="ruby-string">&quot;Next monday&quot;</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">next_week</span>.<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>),
+<span class="ruby-string">&quot;In a month&quot;</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">next_month</span>.<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>),
+<span class="ruby-string">&quot;In 6 months&quot;</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">months_since</span>(<span class="ruby-value">6</span>).<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>),
+<span class="ruby-string">&quot;In a year&quot;</span>           =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">now</span>.<span class="ruby-identifier">in</span>(<span class="ruby-value">1</span>.<span class="ruby-identifier">year</span>).<span class="ruby-identifier">change</span>(:<span class="ruby-identifier">hour</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>)
+</pre>
+</li><li>
+<p>Upgraded to breakpoint 92 which fixes:</p>
+
+<pre class="ruby">* <span class="ruby-identifier">overload</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">parse_opts</span>(), <span class="ruby-identifier">fixes</span> <span class="ruby-comment">#443</span>
+  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">breakpoints</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">tests</span> <span class="ruby-identifier">work</span> <span class="ruby-identifier">even</span> <span class="ruby-keyword">when</span> <span class="ruby-identifier">running</span> <span class="ruby-identifier">them</span> <span class="ruby-identifier">via</span> <span class="ruby-identifier">rake</span>
+* <span class="ruby-identifier">untaint</span> <span class="ruby-identifier">handlers</span>, <span class="ruby-identifier">might</span> <span class="ruby-identifier">fix</span> <span class="ruby-identifier">an</span> <span class="ruby-identifier">issue</span> <span class="ruby-identifier">discussed</span> <span class="ruby-identifier">on</span> <span class="ruby-identifier">the</span> <span class="ruby-constant">Rails</span> <span class="ruby-constant">ML</span>
+* <span class="ruby-identifier">added</span> <span class="ruby-identifier">verbose</span> <span class="ruby-identifier">mode</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">breakpoint_client</span>
+* <span class="ruby-identifier">less</span> <span class="ruby-identifier">noise</span> <span class="ruby-identifier">caused</span> <span class="ruby-identifier">by</span> <span class="ruby-identifier">breakpoint_client</span> <span class="ruby-identifier">by</span> <span class="ruby-identifier">default</span>
+* <span class="ruby-identifier">ignored</span> <span class="ruby-constant">TerminateLineInput</span> <span class="ruby-identifier">exception</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">signal</span> <span class="ruby-identifier">handler</span>
+  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">quiet</span> <span class="ruby-identifier">exit</span> <span class="ruby-identifier">on</span> <span class="ruby-constant">Ctrl</span><span class="ruby-operator">-</span><span class="ruby-constant">C</span>
+</pre>
+</li><li>
+<p>Fixed Inflector for words like “news” and “series” that are the same in
+plural and singular #603 [echion], #615 [marcenuc]</p>
+</li><li>
+<p>Added <a
+href="../../classes/Hash.html#method-i-stringify_keys">Hash#stringify_keys</a>
+and <a
+href="../../classes/Hash.html#method-i-stringify_keys-21">Hash#stringify_keys!</a></p>
+</li><li>
+<p>Added IndifferentAccess as a way to wrap a hash by a symbol-based store
+that also can be accessed by string keys</p>
+</li><li>
+<p>Added Inflector.constantize to turn “Admin::User” into a reference for the
+constant <a href="../../classes/Admin/User.html">Admin::User</a></p>
+</li><li>
+<p>Added that Inflector.camelize and Inflector.underscore can deal with
+modules like turning “Admin::User” into “admin/user” and back</p>
+</li><li>
+<p>Added Inflector.humanize to turn attribute names like employee_salary into
+“Employee salary”. Used by automated error reporting in AR.</p>
+</li><li>
+<p>Added availability of class inheritable attributes to the masses #477
+[Jeremy Kemper]</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">Foo</span>
+  <span class="ruby-identifier">class_inheritable_reader</span> :<span class="ruby-identifier">read_me</span>
+  <span class="ruby-identifier">class_inheritable_writer</span> :<span class="ruby-identifier">write_me</span>
+  <span class="ruby-identifier">class_inheritable_accessor</span> :<span class="ruby-identifier">read_and_write_me</span>
+  <span class="ruby-identifier">class_inheritable_array</span> :<span class="ruby-identifier">read_and_concat_me</span>
+  <span class="ruby-identifier">class_inheritable_hash</span> :<span class="ruby-identifier">read_and_update_me</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-comment"># Bar gets a clone of (not a reference to) Foo's attributes.</span>
+<span class="ruby-keyword">class</span> <span class="ruby-constant">Bar</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Foo</span>
+<span class="ruby-keyword">end</span>
+<span class="ruby-constant">Bar</span>.<span class="ruby-identifier">read_and_write_me</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Foo</span>.<span class="ruby-identifier">read_and_write_me</span>
+<span class="ruby-constant">Bar</span>.<span class="ruby-identifier">read_and_write_me</span> = <span class="ruby-string">'bar'</span>
+<span class="ruby-constant">Bar</span>.<span class="ruby-identifier">read_and_write_me</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Foo</span>.<span class="ruby-identifier">read_and_write_me</span>
+</pre>
+</li><li>
+<p>Added Inflections as an extension on <a
+href="../../classes/String.html">String</a>, so
+Inflector.pluralize(Inflector.classify(name)) becomes
+name.classify.pluralize #476 [Jeremy Kemper]</p>
+</li><li>
+<p>Added Byte operations to <a href="../../classes/Numeric.html">Numeric</a>,
+so 5.5.megabytes + 200.kilobytes #461 [Marcel Molina Jr.]</p>
+</li><li>
+<p>Fixed that Dependencies.reload can’t load the same file twice #420 [Kent
+Sibilev]</p>
+</li><li>
+<p>Added Fixnum#ago/until, Fixnum#since/from_now #450 [Jeremy Kemper]</p>
+</li><li>
+<p>Added that Inflector now accepts Symbols and Classes by calling .to_s on
+the word supplied</p>
+</li><li>
+<p>Added time unit extensions to Fixnum that’ll return the period in seconds,
+like 2.days + 4.hours.</p>
+</li></ul>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+    </div>
+  </body>
+</html>

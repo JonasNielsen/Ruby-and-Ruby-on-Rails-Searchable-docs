@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RDoc</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            RDoc 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/lib/rdoc_rb.html">lib/rdoc.rb</a></li>
+            
+            <li><a href="../files/lib/rdoc/known_classes_rb.html">lib/rdoc/known_classes.rb</a></li>
+            
+            <li><a href="../files/lib/rdoc/task_rb.html">lib/rdoc/task.rb</a></li>
+            
+            <li><a href="../files/lib/rdoc/tokenstream_rb.html">lib/rdoc/tokenstream.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<h1 id="label-RDoc+-+Ruby+Documentation+System">RDoc - Ruby Documentation System</h1>
+
+<p>This package contains <a href="RDoc/RDoc.html">RDoc</a> and <a
+href="RDoc/Markup.html">RDoc::Markup</a>.  <a
+href="RDoc/RDoc.html">RDoc</a> is an application that produces
+documentation for one or more Ruby source files.  It works similarly to
+JavaDoc, parsing the source, and extracting the definition for classes,
+modules, and methods (along with includes and requires).  It associates
+with these optional documentation contained in the immediately preceding
+comment block, and then renders the result using a pluggable output
+formatter. <a href="RDoc/Markup.html">RDoc::Markup</a> is a library that
+converts plain text into various output formats.  The markup library is
+used to interpret the comment blocks that <a href="RDoc/RDoc.html">RDoc</a>
+uses to document methods, classes, and so on.</p>
+
+<h2 id="label-Roadmap">Roadmap</h2>
+<ul><li>
+<p>If you want to use <a href="RDoc/RDoc.html">RDoc</a> to create
+documentation for your Ruby source files, read on.</p>
+</li><li>
+<p>If you want to generate documentation for extensions written in C, see <a
+href="RDoc/Parser/C.html">RDoc::Parser::C</a></p>
+</li><li>
+<p>If you want to drive <a href="RDoc/RDoc.html">RDoc</a> programmatically,
+see <a href="RDoc/RDoc.html">RDoc::RDoc</a>.</p>
+</li><li>
+<p>If you want to use the library to format text blocks into HTML, have a look
+at <a href="RDoc/Markup.html">RDoc::Markup</a>.</p>
+</li><li>
+<p>If you want to try writing your own HTML output template, see
+RDoc::Generator::HTML</p>
+</li></ul>
+
+<h2 id="label-Summary">Summary</h2>
+
+<p>Once installed, you can create documentation using the <code>rdoc</code>
+command</p>
+
+<pre>% rdoc [options] [names...]</pre>
+
+<p>For an up-to-date option summary, type</p>
+
+<pre>% rdoc --help</pre>
+
+<p>A typical use might be to generate documentation for a package of Ruby
+source (such as <a href="RDoc/RDoc.html">RDoc</a> itself).</p>
+
+<pre>% rdoc</pre>
+
+<p>This command generates documentation for all the Ruby and C source files in
+and below the current directory.  These will be stored in a documentation
+tree starting in the subdirectory <code>doc</code>.</p>
+
+<p>You can make this slightly more useful for your readers by having the index
+page contain the documentation for the primary file.  In our case, we could
+type</p>
+
+<pre>% rdoc --main rdoc.rb</pre>
+
+<p>You’ll find information on the various formatting tricks you can use in
+comment blocks in the documentation this generates.</p>
+
+<p><a href="RDoc/RDoc.html">RDoc</a> uses file extensions to determine how to
+process each file.  <a href="File.html">File</a> names ending
+<code>.rb</code> and <code>.rbw</code> are assumed to be Ruby source. 
+Files ending <code>.c</code> are parsed as C files.  All other files are
+assumed to contain just Markup-style markup (with or without leading ‘#’
+comment markers).  If directory names are passed to <a
+href="RDoc/RDoc.html">RDoc</a>, they are scanned recursively for C and Ruby
+source files only.</p>
+
+<h2 id="label-Options">Options</h2>
+
+<p>rdoc can be passed a variety of command-line options.  In addition, options
+can be specified via the <code>RDOCOPT</code> environment variable, which
+functions similarly to the <code>RUBYOPT</code> environment variable.</p>
+
+<pre>% export RDOCOPT=&quot;-S&quot;</pre>
+
+<p>will make rdoc default to inline method source code.  Command-line options
+always will override those in <code>RDOCOPT</code>.</p>
+
+<p>Run:</p>
+
+<pre>rdoc --help</pre>
+
+<p>for full details on rdoc’s options.</p>
+
+<h2 id="label-Documenting+Source+Code">Documenting Source Code</h2>
+
+<p>Comment blocks can be written fairly naturally, either using <code>#</code>
+on successive lines of the comment, or by including the comment in a
+=begin/=end block.  If you use the latter form, the =begin line must be
+flagged with an <a href="RDoc/RDoc.html">RDoc</a> tag:</p>
+
+<pre>=begin rdoc
+Documentation to be processed by RDoc.
+
+...
+=end</pre>
+
+<p><a href="RDoc/RDoc.html">RDoc</a> stops processing comments if it finds a
+comment line containing a <code>--</code>.  This can be used to separate
+external from internal comments, or to stop a comment being associated with
+a method, class, or module.  Commenting can be turned back on with a line
+that starts with a <code>++</code>.</p>
+
+<pre class="ruby"><span class="ruby-comment">##</span>
+<span class="ruby-comment"># Extract the age and calculate the date-of-birth.</span>
+<span class="ruby-comment">#--</span>
+<span class="ruby-comment"># FIXME: fails if the birthday falls on February 29th</span>
+<span class="ruby-comment">#++</span>
+<span class="ruby-comment"># The DOB is returned as a Time object.</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_dob</span>(<span class="ruby-identifier">person</span>)
+  <span class="ruby-comment"># ...</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Names of classes, files, and any method names containing an underscore or
+preceded by a hash character are automatically hyperlinked from comment
+text to their description.</p>
+
+<p><a href="Method.html">Method</a> parameter lists are extracted and
+displayed with the method description.  If a method calls
+<code>yield</code>, then the parameters passed to yield will also be
+displayed:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">fred</span>
+  <span class="ruby-operator">...</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">line</span>, <span class="ruby-identifier">address</span>
+</pre>
+
+<p>This will get documented as:</p>
+
+<pre class="ruby"><span class="ruby-identifier">fred</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span>, <span class="ruby-identifier">address</span><span class="ruby-operator">|</span> <span class="ruby-operator">...</span> }
+</pre>
+
+<p>You can override this using a comment containing ‘:yields: …’ immediately
+after the method definition</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">fred</span> <span class="ruby-comment"># :yields: index, position</span>
+  <span class="ruby-comment"># ...</span>
+
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">line</span>, <span class="ruby-identifier">address</span>
+</pre>
+
+<p>which will get documented as</p>
+
+<pre class="ruby"><span class="ruby-identifier">fred</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">index</span>, <span class="ruby-identifier">position</span><span class="ruby-operator">|</span> <span class="ruby-operator">...</span> }
+</pre>
+
+<p><code>:yields:</code> is an example of a documentation directive.  These
+appear immediately after the start of the document element they are
+modifying.</p>
+
+<p><a href="RDoc/RDoc.html">RDoc</a> automatically cross-references words with
+underscores or camel-case. To suppress cross-references, prefix the word
+with a \ character.  To include special characters like “\n”, you’ll need
+to use two \ characters like “\\\n”.</p>
+
+<h2 id="label-Markup">Markup</h2>
+<ul><li>
+<p>The markup engine looks for a document’s natural left margin.  This is used
+as the initial margin for the document.</p>
+</li><li>
+<p>Consecutive lines starting at this margin are considered to be a paragraph.</p>
+</li><li>
+<p>If a paragraph starts with a “*”, “-”, or with “&lt;digit&gt;.”, then it is
+taken to be the start of a list.  The margin in increased to be the first
+non-space following the list start flag.  Subsequent lines should be
+indented to this new margin until the list ends.  For example:</p>
+
+<pre>* this is a list with three paragraphs in
+  the first item.  This is the first paragraph.
+
+  And this is the second paragraph.
+
+  1. This is an indented, numbered list.
+  2. This is the second item in that list
+
+  This is the third conventional paragraph in the
+  first list item.
+
+* This is the second item in the original list</pre>
+</li><li>
+<p>You can also construct labeled lists, sometimes called description or
+definition lists.  Do this by putting the label in square brackets and
+indenting the list body:</p>
+
+<pre>[cat]  a small furry mammal
+       that seems to sleep a lot
+
+[ant]  a little insect that is known
+       to enjoy picnics</pre>
+
+<p>A minor variation on labeled lists uses two colons to separate the label
+from the list body:</p>
+
+<pre>cat::  a small furry mammal
+       that seems to sleep a lot
+
+ant::  a little insect that is known
+       to enjoy picnics</pre>
+
+<p>This latter style guarantees that the list bodies’ left margins are
+aligned: think of them as a two column table.</p>
+</li><li>
+<p>Any line that starts to the right of the current margin is treated as
+verbatim text.  This is useful for code listings.  The example of a list
+above is also verbatim text.</p>
+</li><li>
+<p>A line starting with an equals sign (=) is treated as a heading.  Level one
+headings have one equals sign, level two headings have two,and so on.</p>
+</li><li>
+<p>A line starting with three or more hyphens (at the current indent)
+generates a horizontal rule.  The more hyphens, the thicker the rule
+(within reason, and if supported by the output device)</p>
+</li><li>
+<p>You can use markup within text (except verbatim) to change the appearance
+of parts of that text.  Out of the box, <a
+href="RDoc/Markup.html">RDoc::Markup</a> supports word-based and general
+markup.</p>
+
+<p>Word-based markup uses flag characters around individual words:</p>
+<dl class="rdoc-list label-list"><dt><code>*word*</code>
+<dd>
+<p>displays word in a <strong>bold</strong> font</p>
+</dd><dt><code>_word_</code>
+<dd>
+<p>displays word in an <em>emphasized</em> font</p>
+</dd><dt><code>+word+</code>
+<dd>
+<p>displays word in a <code>code</code> font</p>
+</dd></dl>
+
+<p>General markup affects text between a start delimiter and and end
+delimiter.  Not surprisingly, these delimiters look like HTML markup.</p>
+<dl class="rdoc-list label-list"><dt><code>&lt;b&gt;text...&lt;/b&gt;</code>
+<dd>
+<p>displays word in a <strong>bold</strong> font</p>
+</dd><dt><code>&lt;em&gt;text...&lt;/em&gt;</code>
+<dd>
+<p>displays word in an <em>emphasized</em> font</p>
+</dd><dt><code>&lt;i&gt;text...&lt;/i&gt;</code>
+<dd>
+<p>displays word in an <em>italicized</em> font</p>
+</dd><dt><code>&lt;tt&gt;text...&lt;/tt&gt;</code>
+<dd>
+<p>displays word in a <code>code</code> font</p>
+</dd></dl>
+
+<p>Unlike conventional Wiki markup, general markup can cross line boundaries. 
+You can turn off the interpretation of markup by preceding the first
+character with a backslash.  This only works for simple markup, not
+HTML-style markup.</p>
+</li><li>
+<p>Hyperlinks to the web starting http:, mailto:, ftp:, or www. are
+recognized.  An HTTP url that references an external image file is
+converted into an inline &lt;IMG..&gt;.  Hyperlinks starting ‘link:’ are
+assumed to refer to local files whose path is relative to the –op
+directory.</p>
+
+<p>Hyperlinks can also be of the form <code>label[url]</code>, in which case
+the label is used in the displayed text, and <code>url</code> is used as
+the target.  If <code>label</code> contains multiple words, put it in
+braces: <em><a href="http://url">multi word label</a></em>.</p>
+
+<p>Example hyperlinks:</p>
+
+<pre>link:RDoc.html
+http://rdoc.rubyforge.org
+mailto:user@example.com
+{RDoc Documentation}[http://rdoc.rubyforge.org]
+{RDoc Markup}[link:RDoc/Markup.html]</pre>
+</li></ul>
+
+<h2 id="label-Directives">Directives</h2>
+<dl class="rdoc-list label-list"><dt><code>:nodoc:</code> / <code>:nodoc:</code> all
+<dd>
+<p>This directive prevents documentation for the element from being generated.
+For classes and modules, the methods, aliases, constants, and attributes
+directly within the affected class or module also will be omitted.  By
+default, though, modules and classes within that class of module
+<em>will</em> be documented.  This is turned off by adding the
+<code>all</code> modifier.</p>
+
+<pre class="ruby"><span class="ruby-keyword">module</span> <span class="ruby-constant">MyModule</span> <span class="ruby-comment"># :nodoc:</span>
+  <span class="ruby-keyword">class</span> <span class="ruby-constant">Input</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">module</span> <span class="ruby-constant">OtherModule</span> <span class="ruby-comment"># :nodoc: all</span>
+  <span class="ruby-keyword">class</span> <span class="ruby-constant">Output</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>In the above code, only class <code>MyModule::Input</code> will be
+documented. The <code>:nodoc:</code> directive is global across all files
+for the class or module to which it applies, so use
+<code>:stopdoc:</code>/<code>:startdoc:</code> to suppress documentation
+only for a particular set of methods, etc.</p>
+</dd><dt><code>:doc:</code>
+<dd>
+<p>Forces a method or attribute to be documented even if it wouldn’t be
+otherwise.  Useful if, for example, you want to include documentation of a
+particular private method.</p>
+</dd><dt><code>:notnew:</code>
+<dd>
+<p>Only applicable to the <code>initialize</code> instance method.  Normally
+<a href="RDoc/RDoc.html">RDoc</a> assumes that the documentation and
+parameters for <code>initialize</code> are actually for the
+<code>new</code> method, and so fakes out a <code>new</code> for the class.
+The <code>:notnew:</code> modifier stops this.  Remember that
+<code>initialize</code> is private, so you won’t see the documentation
+unless you use the <code>-a</code> command line option.</p>
+</dd></dl>
+
+<p>Comment blocks can contain other directives:</p>
+<dl class="rdoc-list label-list"><dt><code>:section: title</code>
+<dd>
+<p>Starts a new section in the output.  The title following
+<code>:section:</code> is used as the section heading, and the remainder of
+the comment containing the section is used as introductory text. 
+Subsequent methods, aliases, attributes, and classes will be documented in
+this section.  A :section: comment block may have one or more lines before
+the :section: directive. These will be removed, and any identical lines at
+the end of the block are also removed.  This allows you to add visual cues
+such as:</p>
+
+<pre># ----------------------------------------
+# :section: My Section
+# This is the section that I wrote.
+# See it glisten in the noon-day sun.
+# ----------------------------------------</pre>
+</dd><dt><code>:call-seq:</code>
+<dd>
+<p>Lines up to the next blank line in the comment are treated as the method’s
+calling sequence, overriding the default parsing of method parameters and
+yield arguments.</p>
+</dd><dt><code>:include:</code> <em>filename</em>
+<dd>
+<p>Include the contents of the named file at this point.  The file will be
+searched for in the directories listed by the <code>--include</code>
+option, or in the current directory by default.  The contents of the file
+will be shifted to have the same indentation as the ‘:’ at the start of the
+:include: directive.</p>
+</dd><dt><code>:title:</code> <em>text</em>
+<dd>
+<p>Sets the title for the document.  Equivalent to the <code>--title</code>
+command line parameter.  (The command line parameter overrides any :title:
+directive in the source).</p>
+</dd><dt><code>:enddoc:</code>
+<dd>
+<p>Document nothing further at the current level.</p>
+</dd><dt><code>:main:</code> <em>name</em>
+<dd>
+<p>Equivalent to the <code>--main</code> command line parameter.</p>
+</dd><dt><code>:stopdoc:</code> / <code>:startdoc:</code>
+<dd>
+<p>Stop and start adding new documentation elements to the current container.
+For example, if a class has a number of constants that you don’t want to
+document, put a <code>:stopdoc:</code> before the first, and a
+<code>:startdoc:</code> after the last.  If you don’t specify a
+<code>:startdoc:</code> by the end of the container, disables documentation
+for the entire class or module.</p>
+</dd></dl>
+
+<p>Further directives can be found in <a
+href="RDoc/Parser/Ruby.html">RDoc::Parser::Ruby</a> and <a
+href="RDoc/Parser/C.html">RDoc::Parser::C</a></p>
+
+<h2 id="label-Other+stuff">Other stuff</h2>
+
+<p><a href="RDoc/RDoc.html">RDoc</a> is currently being maintained by Eric
+Hodel &lt;drbrain@segment7.net&gt;</p>
+
+<p>Dave Thomas &lt;dave@pragmaticprogrammer.com&gt; is the original author of
+<a href="RDoc/RDoc.html">RDoc</a>.</p>
+
+<h2 id="label-Credits">Credits</h2>
+<ul><li>
+<p>The Ruby parser in rdoc/parse.rb is based heavily on the outstanding work
+of Keiju ISHITSUKA of Nippon <a href="Rational.html">Rational</a> Inc, who
+produced the Ruby parser for irb and the rtags package.</p>
+</li><li>
+<p>Charset patch from MoonWolf.</p>
+</li><li>
+<p>Rich Kilmer wrote the kilmer.rb output template.</p>
+</li><li>
+<p>Dan Brickley led the design of the RDF format.</p>
+</li></ul>
+
+<h2 id="label-License">License</h2>
+
+<p><a href="RDoc/RDoc.html">RDoc</a> is Copyright © 2001-2003 Dave Thomas, The
+Pragmatic Programmers.  It is free software, and may be redistributed under
+the terms specified in the <a href="../files/lib/README.html">README</a>
+file of the Ruby distribution.</p>
+
+<h2 id="label-Warranty">Warranty</h2>
+
+<p>This software is provided “as is” and without any express or implied
+warranties, including, without limitation, the implied warranties of
+merchantibility and fitness for a particular purpose.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="RDoc/Generator.html">RDoc::Generator</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="RDoc/RI.html">RDoc::RI</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="RDoc/RubyToken.html">RDoc::RubyToken</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="RDoc/Text.html">RDoc::Text</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="RDoc/TokenStream.html">RDoc::TokenStream</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Alias.html">RDoc::Alias</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/AnonClass.html">RDoc::AnonClass</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/AnyMethod.html">RDoc::AnyMethod</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Attr.html">RDoc::Attr</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/ClassModule.html">RDoc::ClassModule</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/CodeObject.html">RDoc::CodeObject</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Constant.html">RDoc::Constant</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Context.html">RDoc::Context</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Error.html">RDoc::Error</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/GhostMethod.html">RDoc::GhostMethod</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Include.html">RDoc::Include</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Markup.html">RDoc::Markup</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/MetaMethod.html">RDoc::MetaMethod</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/NormalClass.html">RDoc::NormalClass</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/NormalModule.html">RDoc::NormalModule</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Options.html">RDoc::Options</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Parser.html">RDoc::Parser</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/RDoc.html">RDoc::RDoc</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Require.html">RDoc::Require</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/RubyLex.html">RDoc::RubyLex</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/SingleClass.html">RDoc::SingleClass</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/Stats.html">RDoc::Stats</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RDoc/TopLevel.html">RDoc::TopLevel</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">VERSION</td>
+            <td>=</td>
+            <td class="attr-value">'2.5.8'</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p><a href="RDoc/RDoc.html">RDoc</a> version you are using</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DOT_DOC_FILENAME</td>
+            <td>=</td>
+            <td class="attr-value">&quot;.document&quot;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>Name of the dotfile that contains the description of files to be processed
+in the current directory</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">GENERAL_MODIFIERS</td>
+            <td>=</td>
+            <td class="attr-value">%w[nodoc].freeze</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>General <a href="RDoc/RDoc.html">RDoc</a> modifiers</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CLASS_MODIFIERS</td>
+            <td>=</td>
+            <td class="attr-value">GENERAL_MODIFIERS</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p><a href="RDoc/RDoc.html">RDoc</a> modifiers for classes</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ATTR_MODIFIERS</td>
+            <td>=</td>
+            <td class="attr-value">GENERAL_MODIFIERS</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p><a href="RDoc/RDoc.html">RDoc</a> modifiers for attributes</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">CONSTANT_MODIFIERS</td>
+            <td>=</td>
+            <td class="attr-value">GENERAL_MODIFIERS</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p><a href="RDoc/RDoc.html">RDoc</a> modifiers for constants</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">METHOD_MODIFIERS</td>
+            <td>=</td>
+            <td class="attr-value">GENERAL_MODIFIERS +
+%w[arg args yield yields notnew not-new not_new doc]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p><a href="RDoc/RDoc.html">RDoc</a> modifiers for methods</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">KNOWN_CLASSES</td>
+            <td>=</td>
+            <td class="attr-value">{
+&quot;rb_cArray&quot;            =&gt; &quot;Array&quot;,
+&quot;rb_cBasicObject&quot;      =&gt; &quot;BasicObject&quot;,
+&quot;rb_cBignum&quot;           =&gt; &quot;Bignum&quot;,
+&quot;rb_cClass&quot;            =&gt; &quot;Class&quot;,
+&quot;rb_cData&quot;             =&gt; &quot;Data&quot;,
+&quot;rb_cDir&quot;              =&gt; &quot;Dir&quot;,
+&quot;rb_cFalseClass&quot;       =&gt; &quot;FalseClass&quot;,
+&quot;rb_cFile&quot;             =&gt; &quot;File&quot;,
+&quot;rb_cFixnum&quot;           =&gt; &quot;Fixnum&quot;,
+&quot;rb_cFloat&quot;            =&gt; &quot;Float&quot;,
+&quot;rb_cHash&quot;             =&gt; &quot;Hash&quot;,
+&quot;rb_cIO&quot;               =&gt; &quot;IO&quot;,
+&quot;rb_cInteger&quot;          =&gt; &quot;Integer&quot;,
+&quot;rb_cModule&quot;           =&gt; &quot;Module&quot;,
+&quot;rb_cNilClass&quot;         =&gt; &quot;NilClass&quot;,
+&quot;rb_cNumeric&quot;          =&gt; &quot;Numeric&quot;,
+&quot;rb_cObject&quot;           =&gt; &quot;Object&quot;,
+&quot;rb_cProc&quot;             =&gt; &quot;Proc&quot;,
+&quot;rb_cRange&quot;            =&gt; &quot;Range&quot;,
+&quot;rb_cRegexp&quot;           =&gt; &quot;Regexp&quot;,
+&quot;rb_cRubyVM&quot;           =&gt; &quot;RubyVM&quot;,
+&quot;rb_cString&quot;           =&gt; &quot;String&quot;,
+&quot;rb_cStruct&quot;           =&gt; &quot;Struct&quot;,
+&quot;rb_cSymbol&quot;           =&gt; &quot;Symbol&quot;,
+&quot;rb_cThread&quot;           =&gt; &quot;Thread&quot;,
+&quot;rb_cTime&quot;             =&gt; &quot;Time&quot;,
+&quot;rb_cTrueClass&quot;        =&gt; &quot;TrueClass&quot;,
+
+&quot;rb_eArgError&quot;         =&gt; &quot;ArgError&quot;,
+&quot;rb_eEOFError&quot;         =&gt; &quot;EOFError&quot;,
+&quot;rb_eException&quot;        =&gt; &quot;Exception&quot;,
+&quot;rb_eFatal&quot;            =&gt; &quot;Fatal&quot;,
+&quot;rb_eFloatDomainError&quot; =&gt; &quot;FloatDomainError&quot;,
+&quot;rb_eIOError&quot;          =&gt; &quot;IOError&quot;,
+&quot;rb_eIndexError&quot;       =&gt; &quot;IndexError&quot;,
+&quot;rb_eInterrupt&quot;        =&gt; &quot;Interrupt&quot;,
+&quot;rb_eLoadError&quot;        =&gt; &quot;LoadError&quot;,
+&quot;rb_eNameError&quot;        =&gt; &quot;NameError&quot;,
+&quot;rb_eNoMemError&quot;       =&gt; &quot;NoMemError&quot;,
+&quot;rb_eNotImpError&quot;      =&gt; &quot;NotImpError&quot;,
+&quot;rb_eRangeError&quot;       =&gt; &quot;RangeError&quot;,
+&quot;rb_eRuntimeError&quot;     =&gt; &quot;RuntimeError&quot;,
+&quot;rb_eScriptError&quot;      =&gt; &quot;ScriptError&quot;,
+&quot;rb_eSecurityError&quot;    =&gt; &quot;SecurityError&quot;,
+&quot;rb_eSignal&quot;           =&gt; &quot;Signal&quot;,
+&quot;rb_eStandardError&quot;    =&gt; &quot;StandardError&quot;,
+&quot;rb_eSyntaxError&quot;      =&gt; &quot;SyntaxError&quot;,
+&quot;rb_eSystemCallError&quot;  =&gt; &quot;SystemCallError&quot;,
+&quot;rb_eSystemExit&quot;       =&gt; &quot;SystemExit&quot;,
+&quot;rb_eTypeError&quot;        =&gt; &quot;TypeError&quot;,
+&quot;rb_eZeroDivError&quot;     =&gt; &quot;ZeroDivError&quot;,
+
+&quot;rb_mComparable&quot;       =&gt; &quot;Comparable&quot;,
+&quot;rb_mEnumerable&quot;       =&gt; &quot;Enumerable&quot;,
+&quot;rb_mErrno&quot;            =&gt; &quot;Errno&quot;,
+&quot;rb_mFileTest&quot;         =&gt; &quot;FileTest&quot;,
+&quot;rb_mGC&quot;               =&gt; &quot;GC&quot;,
+&quot;rb_mKernel&quot;           =&gt; &quot;Kernel&quot;,
+&quot;rb_mMath&quot;             =&gt; &quot;Math&quot;,
+&quot;rb_mProcess&quot;          =&gt; &quot;Process&quot;
+}</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>Ruby’s built-in classes, modules and exceptions</p></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+    </div>
+  </body>
+</html>    

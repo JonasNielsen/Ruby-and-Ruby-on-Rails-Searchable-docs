@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RDoc::CodeObject</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            RDoc::CodeObject 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/rdoc/code_object_rb.html">lib/rdoc/code_object.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Base class for the <a href="RDoc.html">RDoc</a> code tree.</p>
+
+<p>We contain the common stuff for contexts (which are containers) and other
+elements (methods, attributes and so on)</p>
+
+<p>Here’s the tree of the <a href="CodeObject.html">CodeObject</a> subclasses:</p>
+<ul><li>
+<p><a href="Context.html">RDoc::Context</a></p>
+<ul><li>
+<p><a href="TopLevel.html">RDoc::TopLevel</a></p>
+</li><li>
+<p><a href="ClassModule.html">RDoc::ClassModule</a></p>
+<ul><li>
+<p><a href="AnonClass.html">RDoc::AnonClass</a></p>
+</li><li>
+<p><a href="NormalClass.html">RDoc::NormalClass</a></p>
+</li><li>
+<p><a href="NormalModule.html">RDoc::NormalModule</a></p>
+</li><li>
+<p><a href="SingleClass.html">RDoc::SingleClass</a></p>
+</li></ul>
+</li></ul>
+</li><li>
+<p><a href="AnyMethod.html">RDoc::AnyMethod</a></p>
+<ul><li>
+<p><a href="GhostMethod.html">RDoc::GhostMethod</a></p>
+</li><li>
+<p><a href="MetaMethod.html">RDoc::MetaMethod</a></p>
+</li></ul>
+</li><li>
+<p><a href="Alias.html">RDoc::Alias</a></p>
+</li><li>
+<p><a href="Attr.html">RDoc::Attr</a></p>
+</li><li>
+<p><a href="Constant.html">RDoc::Constant</a></p>
+</li><li>
+<p><a href="Require.html">RDoc::Require</a></p>
+</li><li>
+<p><a href="Include.html">RDoc::Include</a></p>
+</li></ul>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-comment-3D">comment=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-document_children-3D">document_children=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-document_self-3D">document_self=</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-documented-3F">documented?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parent_file_name">parent_file_name</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parent_name">parent_name</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-remove_classes_and_modules">remove_classes_and_modules</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-remove_methods_etc">remove_methods_etc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-start_doc">start_doc</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-stop_doc">stop_doc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="Text.html">
+              RDoc::Text
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>comment</td>
+            <td class='attr-desc'><p>Our comment</p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>document_children</td>
+            <td class='attr-desc'><p>Do we document our children?</p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>document_self</td>
+            <td class='attr-desc'><p>Do we document ourselves?</p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>done_documenting</td>
+            <td class='attr-desc'><p>Are we done documenting (ie, did we come across a :enddoc:)?</p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>force_documentation</td>
+            <td class='attr-desc'><p>Force documentation of this <a href="CodeObject.html">CodeObject</a></p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>metadata</td>
+            <td class='attr-desc'><p><a href="../Hash.html">Hash</a> of arbitrary metadata for this <a
+href="CodeObject.html">CodeObject</a></p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>parent</td>
+            <td class='attr-desc'><p>Our parent <a href="CodeObject.html">CodeObject</a></p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>section</td>
+            <td class='attr-desc'><p>Which section are we in</p></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>viewer</td>
+            <td class='attr-desc'><p>We are the model of the code, but we know that at some point we will be
+worked on by viewers. By implementing the Viewable protocol, viewers can
+associated themselves with these objects.</p></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new <a href="CodeObject.html">CodeObject</a> that will document
+itself and its children</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@metadata</span> = {}
+  <span class="ruby-ivar">@comment</span> = <span class="ruby-string">''</span>
+
+  <span class="ruby-ivar">@document_children</span>   = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@document_self</span>       = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@done_documenting</span>    = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@force_documentation</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-ivar">@parent</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-comment-3D">
+            
+              <a name="method-i-comment-3D"></a><b>comment=</b>(comment)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Replaces our comment with <code>comment</code>, unless it is empty.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-comment-3D_source')" id="l_method-i-comment-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-comment-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">comment=</span>(<span class="ruby-identifier">comment</span>)
+  <span class="ruby-ivar">@comment</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">comment</span>
+             <span class="ruby-keyword">when</span> <span class="ruby-constant">NilClass</span>               <span class="ruby-keyword">then</span> <span class="ruby-string">''</span>
+             <span class="ruby-keyword">when</span> <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">comment</span>
+             <span class="ruby-keyword">else</span>
+               <span class="ruby-keyword">if</span> <span class="ruby-identifier">comment</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">then</span>
+                 <span class="ruby-identifier">normalize_comment</span> <span class="ruby-identifier">comment</span>
+               <span class="ruby-keyword">else</span>
+                 <span class="ruby-ivar">@comment</span>
+               <span class="ruby-keyword">end</span>
+             <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-document_children-3D">
+            
+              <a name="method-i-document_children-3D"></a><b>document_children=</b>(document_children)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Enables or disables documentation of this CodeObject’s children.  Calls <a
+href="CodeObject.html#method-i-remove_classes_and_modules">#remove_classes_and_modules</a>
+when disabling.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-document_children-3D_source')" id="l_method-i-document_children-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-document_children-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">document_children=</span>(<span class="ruby-identifier">document_children</span>)
+  <span class="ruby-ivar">@document_children</span> = <span class="ruby-identifier">document_children</span>
+  <span class="ruby-identifier">remove_classes_and_modules</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">document_children</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-document_self-3D">
+            
+              <a name="method-i-document_self-3D"></a><b>document_self=</b>(document_self)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Enables or disables documentation of this <a
+href="CodeObject.html">CodeObject</a>.  Calls <a
+href="CodeObject.html#method-i-remove_methods_etc">#remove_methods_etc</a>
+when disabling.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-document_self-3D_source')" id="l_method-i-document_self-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-document_self-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">document_self=</span>(<span class="ruby-identifier">document_self</span>)
+  <span class="ruby-ivar">@document_self</span> = <span class="ruby-identifier">document_self</span>
+  <span class="ruby-identifier">remove_methods_etc</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">document_self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-documented-3F">
+            
+              <a name="method-i-documented-3F"></a><b>documented?</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Does this class have a comment with content or is <a
+href="CodeObject.html#attribute-i-document_self">#document_self</a> false.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-documented-3F_source')" id="l_method-i-documented-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-documented-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 131</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">documented?</span>
+  <span class="ruby-operator">!</span>(<span class="ruby-ivar">@document_self</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@comment</span>.<span class="ruby-identifier">empty?</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent_file_name">
+            
+              <a name="method-i-parent_file_name"></a><b>parent_file_name</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p><a href="../File.html">File</a> name of our parent</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent_file_name_source')" id="l_method-i-parent_file_name_source">show</a>
+                
+              </p>
+              <div id="method-i-parent_file_name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent_file_name</span>
+  <span class="ruby-ivar">@parent</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">base_name</span> <span class="ruby-operator">:</span> <span class="ruby-string">'(unknown)'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parent_name">
+            
+              <a name="method-i-parent_name"></a><b>parent_name</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Name of our parent</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parent_name_source')" id="l_method-i-parent_name_source">show</a>
+                
+              </p>
+              <div id="method-i-parent_name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 145</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parent_name</span>
+  <span class="ruby-ivar">@parent</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">full_name</span> <span class="ruby-operator">:</span> <span class="ruby-string">'(unknown)'</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-remove_classes_and_modules">
+            
+              <a name="method-i-remove_classes_and_modules"></a><b>remove_classes_and_modules</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Callback called upon disabling documentation of children.  See <a
+href="CodeObject.html#method-i-document_children-3D">#document_children=</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-remove_classes_and_modules_source')" id="l_method-i-remove_classes_and_modules_source">show</a>
+                
+              </p>
+              <div id="method-i-remove_classes_and_modules_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove_classes_and_modules</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-remove_methods_etc">
+            
+              <a name="method-i-remove_methods_etc"></a><b>remove_methods_etc</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Callback called upon disabling documentation of ourself.  See <a
+href="CodeObject.html#method-i-document_self-3D">#document_self=</a></p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-remove_methods_etc_source')" id="l_method-i-remove_methods_etc_source">show</a>
+                
+              </p>
+              <div id="method-i-remove_methods_etc_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">remove_methods_etc</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-start_doc">
+            
+              <a name="method-i-start_doc"></a><b>start_doc</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Enable capture of documentation</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-start_doc_source')" id="l_method-i-start_doc_source">show</a>
+                
+              </p>
+              <div id="method-i-start_doc_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">start_doc</span>
+  <span class="ruby-ivar">@document_self</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@document_children</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stop_doc">
+            
+              <a name="method-i-stop_doc"></a><b>stop_doc</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Disable capture of documentation</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-stop_doc_source')" id="l_method-i-stop_doc_source">show</a>
+                
+              </p>
+              <div id="method-i-stop_doc_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/code_object.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">stop_doc</span>
+  <span class="ruby-ivar">@document_self</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@document_children</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

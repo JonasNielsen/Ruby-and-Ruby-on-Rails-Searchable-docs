@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RDoc::Markup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            RDoc::Markup 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/rdoc/markup/formatter_rb.html">lib/rdoc/markup/formatter.rb</a></li>
+            
+            <li><a href="../../files/lib/rdoc/markup/inline_rb.html">lib/rdoc/markup/inline.rb</a></li>
+            
+            <li><a href="../../files/lib/rdoc/markup_rb.html">lib/rdoc/markup.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="Markup.html">RDoc::Markup</a> parses plain text documents and
+attempts to decompose them into their constituent parts.  Some of these
+parts are high-level: paragraphs, chunks of verbatim text, list entries and
+the like.  Other parts happen at the character level: a piece of bold text,
+a word in code font.  This markup is similar in spirit to that used on
+WikiWiki webs, where folks create web pages using a simple set of
+formatting rules.</p>
+
+<p><a href="Markup.html">RDoc::Markup</a> itself does no output formatting:
+this is left to a different set of classes.</p>
+
+<p><a href="Markup.html">RDoc::Markup</a> is extendable at runtime: you can
+add new markup elements to be recognised in the documents that <a
+href="Markup.html">RDoc::Markup</a> parses.</p>
+
+<p><a href="Markup.html">RDoc::Markup</a> is intended to be the basis for a
+family of tools which share the common requirement that simple, plain-text
+should be rendered in a variety of different output formats and media.  It
+is envisaged that <a href="Markup.html">RDoc::Markup</a> could be the basis
+for formatting <a href="RDoc.html">RDoc</a> style comment blocks, Wiki
+entries, and online FAQs.</p>
+
+<h2 id="label-Synopsis">Synopsis</h2>
+
+<p>This code converts <code>input_string</code> to HTML.  The conversion takes
+place in the <code>convert</code> method, so you can use the same <a
+href="Markup.html">RDoc::Markup</a> converter to convert multiple input
+strings.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'rdoc/markup/to_html'</span>
+
+<span class="ruby-identifier">h</span> = <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span><span class="ruby-operator">::</span><span class="ruby-constant">ToHtml</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">h</span>.<span class="ruby-identifier">convert</span>(<span class="ruby-identifier">input_string</span>)
+</pre>
+
+<p>You can extend the <a href="Markup.html">RDoc::Markup</a> parser to
+recognise new markup sequences, and to add special processing for text that
+matches a regular expression.  Here we make WikiWords significant to the
+parser, and also make the sequences {word} and &lt;no&gt;text…&lt;/no&gt;
+signify strike-through text.  When then subclass the HTML output class to
+deal with these:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'rdoc/markup'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'rdoc/markup/to_html'</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">WikiHtml</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span><span class="ruby-operator">::</span><span class="ruby-constant">ToHtml</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">handle_special_WIKIWORD</span>(<span class="ruby-identifier">special</span>)
+    <span class="ruby-string">&quot;&lt;font color=red&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">special</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;&lt;/font&gt;&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">m</span> = <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">m</span>.<span class="ruby-identifier">add_word_pair</span>(<span class="ruby-string">&quot;{&quot;</span>, <span class="ruby-string">&quot;}&quot;</span>, :<span class="ruby-constant">STRIKE</span>)
+<span class="ruby-identifier">m</span>.<span class="ruby-identifier">add_html</span>(<span class="ruby-string">&quot;no&quot;</span>, :<span class="ruby-constant">STRIKE</span>)
+
+<span class="ruby-identifier">m</span>.<span class="ruby-identifier">add_special</span>(<span class="ruby-regexp">/\b([A-Z][a-z]+[A-Z]\w+)/</span>, :<span class="ruby-constant">WIKIWORD</span>)
+
+<span class="ruby-identifier">wh</span> = <span class="ruby-constant">WikiHtml</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">wh</span>.<span class="ruby-identifier">add_tag</span>(:<span class="ruby-constant">STRIKE</span>, <span class="ruby-string">&quot;&lt;strike&gt;&quot;</span>, <span class="ruby-string">&quot;&lt;/strike&gt;&quot;</span>)
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&lt;body&gt;#{wh.convert ARGF.read}&lt;/body&gt;&quot;</span>
+</pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/AttrChanger.html">RDoc::Markup::AttrChanger</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/AttrSpan.html">RDoc::Markup::AttrSpan</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Attribute.html">RDoc::Markup::Attribute</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/AttributeManager.html">RDoc::Markup::AttributeManager</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/BlankLine.html">RDoc::Markup::BlankLine</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Document.html">RDoc::Markup::Document</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Formatter.html">RDoc::Markup::Formatter</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/FormatterTestCase.html">RDoc::Markup::FormatterTestCase</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Heading.html">RDoc::Markup::Heading</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/List.html">RDoc::Markup::List</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ListItem.html">RDoc::Markup::ListItem</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Paragraph.html">RDoc::Markup::Paragraph</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Parser.html">RDoc::Markup::Parser</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/PreProcess.html">RDoc::Markup::PreProcess</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Raw.html">RDoc::Markup::Raw</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Rule.html">RDoc::Markup::Rule</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Special.html">RDoc::Markup::Special</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ToAnsi.html">RDoc::Markup::ToAnsi</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ToBs.html">RDoc::Markup::ToBs</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ToHtml.html">RDoc::Markup::ToHtml</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ToHtmlCrossref.html">RDoc::Markup::ToHtmlCrossref</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ToRdoc.html">RDoc::Markup::ToRdoc</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/ToTest.html">RDoc::Markup::ToTest</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Markup/Verbatim.html">RDoc::Markup::Verbatim</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add_html">add_html</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_special">add_special</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_word_pair">add_word_pair</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-convert">convert</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Take a block of text and use various heuristics to determine it’s structure
+(paragraphs, lists, and so on).  Invoke an event handler as we identify
+significant chunks.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/markup.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>
+  <span class="ruby-ivar">@attribute_manager</span> = <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeManager</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@output</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-add_html">
+            
+              <a name="method-i-add_html"></a><b>add_html</b>(tag, name)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Add to the sequences recognized as general markup.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_html_source')" id="l_method-i-add_html_source">show</a>
+                
+              </p>
+              <div id="method-i-add_html_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/markup.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_html</span>(<span class="ruby-identifier">tag</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@attribute_manager</span>.<span class="ruby-identifier">add_html</span>(<span class="ruby-identifier">tag</span>, <span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_special">
+            
+              <a name="method-i-add_special"></a><b>add_special</b>(pattern, name)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Add to other inline sequences.  For example, we could add WikiWords using
+something like:</p>
+
+<pre>parser.add_special(/\b([A-Z][a-z]+[A-Z]\w+)/, :WIKIWORD)</pre>
+
+<p>Each wiki word will be presented to the output formatter via the
+accept_special method.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_special_source')" id="l_method-i-add_special_source">show</a>
+                
+              </p>
+              <div id="method-i-add_special_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/markup.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_special</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@attribute_manager</span>.<span class="ruby-identifier">add_special</span>(<span class="ruby-identifier">pattern</span>, <span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_word_pair">
+            
+              <a name="method-i-add_word_pair"></a><b>add_word_pair</b>(start, stop, name)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Add to the sequences used to add formatting to an individual word (such as
+<strong>bold</strong>).  Matching entries will generate attributes that the
+output formatters can recognize by their <code>name</code>.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_word_pair_source')" id="l_method-i-add_word_pair_source">show</a>
+                
+              </p>
+              <div id="method-i-add_word_pair_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/markup.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_word_pair</span>(<span class="ruby-identifier">start</span>, <span class="ruby-identifier">stop</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@attribute_manager</span>.<span class="ruby-identifier">add_word_pair</span>(<span class="ruby-identifier">start</span>, <span class="ruby-identifier">stop</span>, <span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-convert">
+            
+              <a name="method-i-convert"></a><b>convert</b>(text, formatter)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>We take <code>text</code>, parse it then invoke the output
+<code>formatter</code> using a Visitor to render the result.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-convert_source')" id="l_method-i-convert_source">show</a>
+                
+              </p>
+              <div id="method-i-convert_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/markup.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">convert</span> <span class="ruby-identifier">text</span>, <span class="ruby-identifier">formatter</span>
+  <span class="ruby-identifier">document</span> = <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Markup</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">text</span>
+
+  <span class="ruby-identifier">document</span>.<span class="ruby-identifier">accept</span> <span class="ruby-identifier">formatter</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

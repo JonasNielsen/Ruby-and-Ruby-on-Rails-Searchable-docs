@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>JSON::Editor::OptionsMenu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            JSON::Editor::OptionsMenu 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/ext/json/lib/json/editor_rb.html">ext/json/lib/json/editor.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-collapsed_nodes">collapsed_nodes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-create">create</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-pretty_saving">pretty_saving</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="MenuExtension.html">
+              JSON::Editor::MenuExtension
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>pretty_item</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-collapsed_nodes">
+            
+              <a name="method-i-collapsed_nodes"></a><b>collapsed_nodes</b>(item)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Collapse/Expand all nodes by default.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-collapsed_nodes_source')" id="l_method-i-collapsed_nodes_source">show</a>
+                
+              </p>
+              <div id="method-i-collapsed_nodes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/json/lib/json/editor.rb, line 663</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">collapsed_nodes</span>(<span class="ruby-identifier">item</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">expanded</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expanded</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">collapse_all</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expanded</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">expand_all</span> 
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-create">
+            
+              <a name="method-i-create"></a><b>create</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create the menu.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-create_source')" id="l_method-i-create_source">show</a>
+                
+              </p>
+              <div id="method-i-create_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/json/lib/json/editor.rb, line 682</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">create</span>
+  <span class="ruby-identifier">title</span> = <span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'Options'</span>)
+  <span class="ruby-identifier">title</span>.<span class="ruby-identifier">submenu</span> = <span class="ruby-identifier">menu</span>
+  <span class="ruby-identifier">add_item</span>(<span class="ruby-string">'Collapsed nodes'</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-constant">CheckMenuItem</span>, &amp;<span class="ruby-identifier">method</span>(<span class="ruby-value">:collapsed_nodes</span>))
+  <span class="ruby-ivar">@pretty_item</span> = <span class="ruby-identifier">add_item</span>(<span class="ruby-string">'Pretty saving'</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-constant">CheckMenuItem</span>,
+    &amp;<span class="ruby-identifier">method</span>(<span class="ruby-value">:pretty_saving</span>))
+  <span class="ruby-ivar">@pretty_item</span>.<span class="ruby-identifier">active</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">window</span>.<span class="ruby-identifier">unchange</span>
+  <span class="ruby-identifier">title</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pretty_saving">
+            
+              <a name="method-i-pretty_saving"></a><b>pretty_saving</b>(item)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Toggle pretty saving mode on/off.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pretty_saving_source')" id="l_method-i-pretty_saving_source">show</a>
+                
+              </p>
+              <div id="method-i-pretty_saving_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/json/lib/json/editor.rb, line 674</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pretty_saving</span>(<span class="ruby-identifier">item</span>)
+  <span class="ruby-ivar">@pretty_item</span>.<span class="ruby-identifier">toggled</span>
+  <span class="ruby-identifier">window</span>.<span class="ruby-identifier">change</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

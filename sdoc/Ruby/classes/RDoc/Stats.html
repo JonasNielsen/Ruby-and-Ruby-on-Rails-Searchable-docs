@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RDoc::Stats</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            RDoc::Stats 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/rdoc/stats_rb.html">lib/rdoc/stats.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="RDoc.html">RDoc</a> stats collector</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Stats/Normal.html">RDoc::Stats::Normal</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Stats/Quiet.html">RDoc::Stats::Quiet</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Stats/Verbose.html">RDoc::Stats::Verbose</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add_alias">add_alias</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_class">add_class</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_constant">add_constant</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_file">add_file</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_method">add_method</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_module">add_module</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-begin_adding">begin_adding</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-done_adding">done_adding</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-print">print</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>nodoc_constants</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>nodoc_methods</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>num_constants</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>num_files</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>num_methods</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>total_files</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(total_files, verbosity = 1)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">total_files</span>, <span class="ruby-identifier">verbosity</span> = <span class="ruby-number">1</span>)
+  <span class="ruby-ivar">@nodoc_constants</span> = <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@nodoc_methods</span>   = <span class="ruby-number">0</span>
+
+  <span class="ruby-ivar">@num_constants</span> = <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@num_files</span>     = <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@num_methods</span>   = <span class="ruby-number">0</span>
+
+  <span class="ruby-ivar">@total_files</span> = <span class="ruby-identifier">total_files</span>
+
+  <span class="ruby-ivar">@start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+
+  <span class="ruby-ivar">@display</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">verbosity</span>
+             <span class="ruby-keyword">when</span> <span class="ruby-number">0</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Quiet</span>.<span class="ruby-identifier">new</span>   <span class="ruby-identifier">total_files</span>
+             <span class="ruby-keyword">when</span> <span class="ruby-number">1</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">Normal</span>.<span class="ruby-identifier">new</span>  <span class="ruby-identifier">total_files</span>
+             <span class="ruby-keyword">else</span>        <span class="ruby-constant">Verbose</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">total_files</span>
+             <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-add_alias">
+            
+              <a name="method-i-add_alias"></a><b>add_alias</b>(as)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_alias_source')" id="l_method-i-add_alias_source">show</a>
+                
+              </p>
+              <div id="method-i-add_alias_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_alias</span>(<span class="ruby-identifier">as</span>)
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">print_alias</span> <span class="ruby-identifier">as</span>
+  <span class="ruby-ivar">@num_methods</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+  <span class="ruby-ivar">@nodoc_methods</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">as</span>.<span class="ruby-identifier">document_self</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">as</span>.<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_class">
+            
+              <a name="method-i-add_class"></a><b>add_class</b>(klass)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_class_source')" id="l_method-i-add_class_source">show</a>
+                
+              </p>
+              <div id="method-i-add_class_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_class</span>(<span class="ruby-identifier">klass</span>)
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">print_class</span> <span class="ruby-identifier">klass</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_constant">
+            
+              <a name="method-i-add_constant"></a><b>add_constant</b>(constant)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_constant_source')" id="l_method-i-add_constant_source">show</a>
+                
+              </p>
+              <div id="method-i-add_constant_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_constant</span>(<span class="ruby-identifier">constant</span>)
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">print_constant</span> <span class="ruby-identifier">constant</span>
+  <span class="ruby-ivar">@num_constants</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+  <span class="ruby-ivar">@nodoc_constants</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">constant</span>.<span class="ruby-identifier">document_self</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">constant</span>.<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_file">
+            
+              <a name="method-i-add_file"></a><b>add_file</b>(file)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_file_source')" id="l_method-i-add_file_source">show</a>
+                
+              </p>
+              <div id="method-i-add_file_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_file</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">print_file</span> <span class="ruby-ivar">@num_files</span>, <span class="ruby-identifier">file</span>
+  <span class="ruby-ivar">@num_files</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_method">
+            
+              <a name="method-i-add_method"></a><b>add_method</b>(method)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_method_source')" id="l_method-i-add_method_source">show</a>
+                
+              </p>
+              <div id="method-i-add_method_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_method</span>(<span class="ruby-identifier">method</span>)
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">print_method</span> <span class="ruby-identifier">method</span>
+  <span class="ruby-ivar">@num_methods</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+  <span class="ruby-ivar">@nodoc_methods</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">document_self</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_module">
+            
+              <a name="method-i-add_module"></a><b>add_module</b>(mod)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_module_source')" id="l_method-i-add_module_source">show</a>
+                
+              </p>
+              <div id="method-i-add_module_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_module</span>(<span class="ruby-identifier">mod</span>)
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">print_module</span> <span class="ruby-identifier">mod</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-begin_adding">
+            
+              <a name="method-i-begin_adding"></a><b>begin_adding</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-begin_adding_source')" id="l_method-i-begin_adding_source">show</a>
+                
+              </p>
+              <div id="method-i-begin_adding_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">begin_adding</span>
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">begin_adding</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-done_adding">
+            
+              <a name="method-i-done_adding"></a><b>done_adding</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-done_adding_source')" id="l_method-i-done_adding_source">show</a>
+                
+              </p>
+              <div id="method-i-done_adding_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">done_adding</span>
+  <span class="ruby-ivar">@display</span>.<span class="ruby-identifier">done_adding</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-print">
+            
+              <a name="method-i-print"></a><b>print</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-print_source')" id="l_method-i-print_source">show</a>
+                
+              </p>
+              <div id="method-i-print_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rdoc/stats.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">print</span>
+  <span class="ruby-identifier">classes</span> = <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">TopLevel</span>.<span class="ruby-identifier">classes</span>
+  <span class="ruby-identifier">num_classes</span>   = <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-identifier">nodoc_classes</span> = <span class="ruby-identifier">classes</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">klass</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">document_self</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">length</span>
+
+  <span class="ruby-identifier">modules</span> = <span class="ruby-constant">RDoc</span><span class="ruby-operator">::</span><span class="ruby-constant">TopLevel</span>.<span class="ruby-identifier">modules</span>
+  <span class="ruby-identifier">num_modules</span> = <span class="ruby-identifier">modules</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-identifier">nodoc_modules</span> = <span class="ruby-identifier">modules</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">mod</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">document_self</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">mod</span>.<span class="ruby-identifier">comment</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">length</span>
+
+  <span class="ruby-identifier">items</span> = <span class="ruby-identifier">num_classes</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@num_constants</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">num_modules</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@num_methods</span>
+  <span class="ruby-identifier">doc_items</span> = <span class="ruby-identifier">items</span> <span class="ruby-operator">-</span>
+    <span class="ruby-identifier">nodoc_classes</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@nodoc_constants</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">nodoc_modules</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@nodoc_methods</span>
+
+  <span class="ruby-identifier">percent_doc</span> = <span class="ruby-identifier">doc_items</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">items</span> * <span class="ruby-number">100</span>
+
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Files:     %5d&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@num_files</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Classes:   %5d (%5d undocumented)&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">num_classes</span>, <span class="ruby-identifier">nodoc_classes</span>]
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Constants: %5d (%5d undocumented)&quot;</span> <span class="ruby-operator">%</span>
+    [<span class="ruby-ivar">@num_constants</span>, <span class="ruby-ivar">@nodoc_constants</span>]
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Modules:   %5d (%5d undocumented)&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">num_modules</span>, <span class="ruby-identifier">nodoc_modules</span>]
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Methods:   %5d (%5d undocumented)&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-ivar">@num_methods</span>, <span class="ruby-ivar">@nodoc_methods</span>]
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;%6.2f%% documented&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">percent_doc</span>
+  <span class="ruby-identifier">puts</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Elapsed: %0.1fs&quot;</span> <span class="ruby-operator">%</span> (<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@start</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    

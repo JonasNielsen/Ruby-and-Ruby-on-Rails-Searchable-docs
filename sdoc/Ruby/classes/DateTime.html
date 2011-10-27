@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>DateTime</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            DateTime 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Date.html">Date</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/lib/date/format_rb.html">lib/date/format.rb</a></li>
+            
+            <li><a href="../files/lib/date_rb.html">lib/date.rb</a></li>
+            
+            <li><a href="../files/ext/json/lib/json/add/core_rb.html">ext/json/lib/json/add/core.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="Class.html">Class</a> representing a date and time.</p>
+
+<p>See the documentation to the file date.rb for an overview.</p>
+
+<p><a href="DateTime.html">DateTime</a> objects are immutable once created.</p>
+
+<h2 id="label-Other+methods.">Other methods.</h2>
+
+<p>The following methods are defined in <a href="Date.html">Date</a>, but
+declared private there.  They are made public in <a
+href="DateTime.html">DateTime</a>.  They are documented here.</p>
+
+<h3 id="label-hour%28%29">hour()</h3>
+
+<p>Get the hour-of-the-day of the time.  This is given using the 24-hour
+clock, counting from midnight.  The first hour after midnight is hour 0;
+the last hour of the day is hour 23.</p>
+
+<h3 id="label-min%28%29">min()</h3>
+
+<p>Get the minute-of-the-hour of the time.</p>
+
+<h3 id="label-sec%28%29">sec()</h3>
+
+<p>Get the second-of-the-minute of the time.</p>
+
+<h3 id="label-sec_fraction%28%29">sec_fraction()</h3>
+
+<p>Get the fraction of a second of the time.  This is returned as a
+<code>Rational</code>.</p>
+
+<h3 id="label-zone%28%29">zone()</h3>
+
+<p>Get the time zone as a String.  This is representation of the time offset
+such as “+1000”, not the true time-zone name.</p>
+
+<h3 id="label-offset%28%29">offset()</h3>
+
+<p>Get the time zone offset as a fraction of a day.  This is returned as a
+<code>Rational</code>.</p>
+
+<h3 id="label-new_offset%28of%3D0%29">new_offset(of=0)</h3>
+
+<p>Create a new <a href="DateTime.html">DateTime</a> object, identical to the
+current one, except with a new time zone offset of <code>of</code>. 
+<code>of</code> is the new offset from UTC as a fraction of a day.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-_strptime">_strptime</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-civil">civil</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-commercial">commercial</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-iso8601">iso8601</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>J</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-jd">jd</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-jisx0301">jisx0301</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-json_create">json_create</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-now">now</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-ordinal">ordinal</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-parse">parse</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-rfc3339">rfc3339</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-strftime">strftime</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-strptime">strptime</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_date">to_date</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_datetime">to_datetime</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_json">to_json</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_time">to_time</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>X</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-xmlschema">xmlschema</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-_strptime">
+            
+              <a name="method-c-_strptime"></a><b>_strptime</b>(str, fmt='%FT%T%z')
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-_strptime_source')" id="l_method-c-_strptime_source">show</a>
+                
+              </p>
+              <div id="method-c-_strptime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date/format.rb, line 1285</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">_strptime</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">fmt</span>=<span class="ruby-string">'%FT%T%z'</span>)
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">fmt</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-civil">
+            
+              <a name="method-c-civil"></a><b>civil</b>(y=-4712, m=1, d=1, h=0, min=0, s=0, of=0, sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object corresponding to
+the specified Civil <a href="Date.html">Date</a> and hour <code>h</code>,
+minute <code>min</code>, second <code>s</code>.</p>
+
+<p>The 24-hour clock is used.  Negative values of <code>h</code>,
+<code>min</code>, and <code>sec</code> are treating as counting backwards
+from the end of the next larger unit (e.g. a <code>min</code> of -2 is
+treated as 58).  No wraparound is performed.  If an invalid time portion is
+specified, an <a href="ArgumentError.html">ArgumentError</a> is raised.</p>
+
+<p><code>of</code> is the offset from UTC as a fraction of a day (defaults to
+0). <code>sg</code> specifies the Day of Calendar Reform.</p>
+
+<p><code>y</code> defaults to -4712, <code>m</code> to 1, and <code>d</code>
+to 1; this is Julian Day Number day 0.  The time values default to 0.</p>
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="DateTime.html#method-c-new">new</a>
+            </div>
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-civil_source')" id="l_method-c-civil_source">show</a>
+                
+              </p>
+              <div id="method-c-civil_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1621</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">civil</span>(<span class="ruby-identifier">y</span>=<span class="ruby-number">-4712</span>, <span class="ruby-identifier">m</span>=<span class="ruby-number">1</span>, <span class="ruby-identifier">d</span>=<span class="ruby-number">1</span>, <span class="ruby-identifier">h</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">min</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">s</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">of</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">jd</span> = <span class="ruby-identifier">_valid_civil?</span>(<span class="ruby-identifier">y</span>, <span class="ruby-identifier">m</span>, <span class="ruby-identifier">d</span>, <span class="ruby-identifier">sg</span>)) <span class="ruby-operator">&amp;&amp;</span>
+         (<span class="ruby-identifier">fr</span> = <span class="ruby-identifier">_valid_time?</span>(<span class="ruby-identifier">h</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">s</span>))
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'invalid date'</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">of</span>
+    <span class="ruby-identifier">of</span> = <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">zone_to_diff</span>(<span class="ruby-identifier">of</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>, <span class="ruby-number">86400</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">new!</span>(<span class="ruby-identifier">jd_to_ajd</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-identifier">fr</span>, <span class="ruby-identifier">of</span>), <span class="ruby-identifier">of</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-commercial">
+            
+              <a name="method-c-commercial"></a><b>commercial</b>(y=-4712, w=1, d=1, h=0, min=0, s=0, of=0, sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object corresponding to
+the specified Commercial <a href="Date.html">Date</a> and hour
+<code>h</code>, minute <code>min</code>, second <code>s</code>.</p>
+
+<p>The 24-hour clock is used.  Negative values of <code>h</code>,
+<code>min</code>, and <code>sec</code> are treating as counting backwards
+from the end of the next larger unit (e.g. a <code>min</code> of -2 is
+treated as 58).  No wraparound is performed.  If an invalid time portion is
+specified, an <a href="ArgumentError.html">ArgumentError</a> is raised.</p>
+
+<p><code>of</code> is the offset from UTC as a fraction of a day (defaults to
+0). <code>sg</code> specifies the Day of Calendar Reform.</p>
+
+<p><code>y</code> defaults to -4712, <code>w</code> to 1, and <code>d</code>
+to 1; this is Julian Day Number day 0. The time values default to 0.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-commercial_source')" id="l_method-c-commercial_source">show</a>
+                
+              </p>
+              <div id="method-c-commercial_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1649</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">commercial</span>(<span class="ruby-identifier">y</span>=<span class="ruby-number">-4712</span>, <span class="ruby-identifier">w</span>=<span class="ruby-number">1</span>, <span class="ruby-identifier">d</span>=<span class="ruby-number">1</span>, <span class="ruby-identifier">h</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">min</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">s</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">of</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">jd</span> = <span class="ruby-identifier">_valid_commercial?</span>(<span class="ruby-identifier">y</span>, <span class="ruby-identifier">w</span>, <span class="ruby-identifier">d</span>, <span class="ruby-identifier">sg</span>)) <span class="ruby-operator">&amp;&amp;</span>
+         (<span class="ruby-identifier">fr</span> = <span class="ruby-identifier">_valid_time?</span>(<span class="ruby-identifier">h</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">s</span>))
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'invalid date'</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">of</span>
+    <span class="ruby-identifier">of</span> = <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">zone_to_diff</span>(<span class="ruby-identifier">of</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>, <span class="ruby-number">86400</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">new!</span>(<span class="ruby-identifier">jd_to_ajd</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-identifier">fr</span>, <span class="ruby-identifier">of</span>), <span class="ruby-identifier">of</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-jd">
+            
+              <a name="method-c-jd"></a><b>jd</b>(jd=0, h=0, min=0, s=0, of=0, sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object corresponding to
+the specified Julian Day Number <code>jd</code> and hour <code>h</code>,
+minute <code>min</code>, second <code>s</code>.</p>
+
+<p>The 24-hour clock is used.  Negative values of <code>h</code>,
+<code>min</code>, and <code>sec</code> are treating as counting backwards
+from the end of the next larger unit (e.g. a <code>min</code> of -2 is
+treated as 58).  No wraparound is performed.  If an invalid time portion is
+specified, an <a href="ArgumentError.html">ArgumentError</a> is raised.</p>
+
+<p><code>of</code> is the offset from UTC as a fraction of a day (defaults to
+0). <code>sg</code> specifies the Day of Calendar Reform.</p>
+
+<p>All day/time values default to 0.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-jd_source')" id="l_method-c-jd_source">show</a>
+                
+              </p>
+              <div id="method-c-jd_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1571</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">jd</span>(<span class="ruby-identifier">jd</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">h</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">min</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">s</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">of</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">jd</span> = <span class="ruby-identifier">_valid_jd?</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-identifier">sg</span>)) <span class="ruby-operator">&amp;&amp;</span>
+         (<span class="ruby-identifier">fr</span> = <span class="ruby-identifier">_valid_time?</span>(<span class="ruby-identifier">h</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">s</span>))
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'invalid date'</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">of</span>
+    <span class="ruby-identifier">of</span> = <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">zone_to_diff</span>(<span class="ruby-identifier">of</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>, <span class="ruby-number">86400</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">new!</span>(<span class="ruby-identifier">jd_to_ajd</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-identifier">fr</span>, <span class="ruby-identifier">of</span>), <span class="ruby-identifier">of</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-json_create">
+            
+              <a name="method-c-json_create"></a><b>json_create</b>(object)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-json_create_source')" id="l_method-c-json_create_source">show</a>
+                
+              </p>
+              <div id="method-c-json_create_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/json/lib/json/add/core.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">json_create</span>(<span class="ruby-identifier">object</span>)
+  <span class="ruby-identifier">args</span> = <span class="ruby-identifier">object</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-string">'y'</span>, <span class="ruby-string">'m'</span>, <span class="ruby-string">'d'</span>, <span class="ruby-string">'H'</span>, <span class="ruby-string">'M'</span>, <span class="ruby-string">'S'</span>)
+  <span class="ruby-identifier">of_a</span>, <span class="ruby-identifier">of_b</span> = <span class="ruby-identifier">object</span>[<span class="ruby-string">'of'</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">'/'</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">of_b</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">of_b</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'0'</span>
+    <span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">of_a</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">of_b</span>.<span class="ruby-identifier">to_i</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">of_a</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">object</span>[<span class="ruby-string">'sg'</span>]
+  <span class="ruby-identifier">civil</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <a name="method-c-new"></a><b>new</b>(y=-4712, m=1, d=1, h=0, min=0, s=0, of=0, sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-now">
+            
+              <a name="method-c-now"></a><b>now</b>(sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object representing the
+current time.</p>
+
+<p><code>sg</code> specifies the Day of Calendar Reform.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-now_source')" id="l_method-c-now_source">show</a>
+                
+              </p>
+              <div id="method-c-now_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1819</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">now</span>(<span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-identifier">t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-identifier">jd</span> = <span class="ruby-identifier">civil_to_jd</span>(<span class="ruby-identifier">t</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">t</span>.<span class="ruby-identifier">mon</span>, <span class="ruby-identifier">t</span>.<span class="ruby-identifier">mday</span>, <span class="ruby-identifier">sg</span>)
+  <span class="ruby-identifier">fr</span> = <span class="ruby-identifier">time_to_day_fraction</span>(<span class="ruby-identifier">t</span>.<span class="ruby-identifier">hour</span>, <span class="ruby-identifier">t</span>.<span class="ruby-identifier">min</span>, [<span class="ruby-identifier">t</span>.<span class="ruby-identifier">sec</span>, <span class="ruby-number">59</span>].<span class="ruby-identifier">min</span>) <span class="ruby-operator">+</span>
+    <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">t</span>.<span class="ruby-identifier">subsec</span>, <span class="ruby-number">86400</span>)
+  <span class="ruby-identifier">of</span> = <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">t</span>.<span class="ruby-identifier">utc_offset</span>, <span class="ruby-number">86400</span>)
+  <span class="ruby-identifier">new!</span>(<span class="ruby-identifier">jd_to_ajd</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-identifier">fr</span>, <span class="ruby-identifier">of</span>), <span class="ruby-identifier">of</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-ordinal">
+            
+              <a name="method-c-ordinal"></a><b>ordinal</b>(y=-4712, d=1, h=0, min=0, s=0, of=0, sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object corresponding to
+the specified Ordinal <a href="Date.html">Date</a> and hour <code>h</code>,
+minute <code>min</code>, second <code>s</code>.</p>
+
+<p>The 24-hour clock is used.  Negative values of <code>h</code>,
+<code>min</code>, and <code>sec</code> are treating as counting backwards
+from the end of the next larger unit (e.g. a <code>min</code> of -2 is
+treated as 58).  No wraparound is performed.  If an invalid time portion is
+specified, an <a href="ArgumentError.html">ArgumentError</a> is raised.</p>
+
+<p><code>of</code> is the offset from UTC as a fraction of a day (defaults to
+0). <code>sg</code> specifies the Day of Calendar Reform.</p>
+
+<p><code>y</code> defaults to -4712, and <code>d</code> to 1; this is Julian
+Day Number day 0.  The time values default to 0.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-ordinal_source')" id="l_method-c-ordinal_source">show</a>
+                
+              </p>
+              <div id="method-c-ordinal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1596</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">ordinal</span>(<span class="ruby-identifier">y</span>=<span class="ruby-number">-4712</span>, <span class="ruby-identifier">d</span>=<span class="ruby-number">1</span>, <span class="ruby-identifier">h</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">min</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">s</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">of</span>=<span class="ruby-number">0</span>, <span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">jd</span> = <span class="ruby-identifier">_valid_ordinal?</span>(<span class="ruby-identifier">y</span>, <span class="ruby-identifier">d</span>, <span class="ruby-identifier">sg</span>)) <span class="ruby-operator">&amp;&amp;</span>
+         (<span class="ruby-identifier">fr</span> = <span class="ruby-identifier">_valid_time?</span>(<span class="ruby-identifier">h</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">s</span>))
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'invalid date'</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">of</span>
+    <span class="ruby-identifier">of</span> = <span class="ruby-constant">Rational</span>(<span class="ruby-identifier">zone_to_diff</span>(<span class="ruby-identifier">of</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>, <span class="ruby-number">86400</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">new!</span>(<span class="ruby-identifier">jd_to_ajd</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-identifier">fr</span>, <span class="ruby-identifier">of</span>), <span class="ruby-identifier">of</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-parse">
+            
+              <a name="method-c-parse"></a><b>parse</b>(str='-4712-01-01T00:00:00+00:00', comp=true, sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object by parsing from a
+String, without specifying the format.</p>
+
+<p><code>str</code> is a String holding a date-time representation.
+<code>comp</code> specifies whether to interpret 2-digit years as 19XX
+(&gt;= 69) or 20XX (&lt; 69); the default is not to. The method will
+attempt to parse a date-time from the String using various heuristics; see
+#_parse in date/format.rb for more details.  If parsing fails, an <a
+href="ArgumentError.html">ArgumentError</a> will be raised.</p>
+
+<p>The default <code>str</code> is ‘-4712-01-01T00:00:00+00:00’; this is
+Julian Day Number day 0.</p>
+
+<p><code>sg</code> specifies the Day of Calendar Reform.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-parse_source')" id="l_method-c-parse_source">show</a>
+                
+              </p>
+              <div id="method-c-parse_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1734</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>=<span class="ruby-string">'-4712-01-01T00:00:00+00:00'</span>, <span class="ruby-identifier">comp</span>=<span class="ruby-keyword">true</span>, <span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-identifier">elem</span> = <span class="ruby-identifier">_parse</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">comp</span>)
+  <span class="ruby-identifier">new_by_frags</span>(<span class="ruby-identifier">elem</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-strptime">
+            
+              <a name="method-c-strptime"></a><b>strptime</b>(str='-4712-01-01T00:00:00+00:00', fmt='%FT%T%z', sg=ITALY)
+            
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a new <a href="DateTime.html">DateTime</a> object by parsing from a
+String according to a specified format.</p>
+
+<p><code>str</code> is a String holding a date-time representation.
+<code>fmt</code> is the format that the date-time is in.  See
+date/format.rb for details on supported formats.</p>
+
+<p>The default <code>str</code> is ‘-4712-01-01T00:00:00+00:00’, and the
+default <code>fmt</code> is ‘%FT%T%z’.  This gives midnight on Julian Day
+Number day 0.</p>
+
+<p><code>sg</code> specifies the Day of Calendar Reform.</p>
+
+<p>An <a href="ArgumentError.html">ArgumentError</a> will be raised if
+<code>str</code> cannot be parsed.</p>
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-strptime_source')" id="l_method-c-strptime_source">show</a>
+                
+              </p>
+              <div id="method-c-strptime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1714</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">strptime</span>(<span class="ruby-identifier">str</span>=<span class="ruby-string">'-4712-01-01T00:00:00+00:00'</span>, <span class="ruby-identifier">fmt</span>=<span class="ruby-string">'%FT%T%z'</span>, <span class="ruby-identifier">sg</span>=<span class="ruby-constant">ITALY</span>)
+  <span class="ruby-identifier">elem</span> = <span class="ruby-identifier">_strptime</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">fmt</span>)
+  <span class="ruby-identifier">new_by_frags</span>(<span class="ruby-identifier">elem</span>, <span class="ruby-identifier">sg</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-iso8601">
+            
+              <a name="method-i-iso8601"></a><b>iso8601</b>(n=0)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-iso8601_source')" id="l_method-i-iso8601_source">show</a>
+                
+              </p>
+              <div id="method-i-iso8601_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date/format.rb, line 1301</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">iso8601</span>(<span class="ruby-identifier">n</span>=<span class="ruby-number">0</span>)
+  <span class="ruby-keyword">super</span>() <span class="ruby-operator">+</span> <span class="ruby-identifier">iso8601_timediv</span>(<span class="ruby-identifier">n</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-jisx0301">
+            
+              <a name="method-i-jisx0301"></a><b>jisx0301</b>(n=0)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-jisx0301_source')" id="l_method-i-jisx0301_source">show</a>
+                
+              </p>
+              <div id="method-i-jisx0301_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date/format.rb, line 1309</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">jisx0301</span>(<span class="ruby-identifier">n</span>=<span class="ruby-number">0</span>)
+  <span class="ruby-keyword">super</span>() <span class="ruby-operator">+</span> <span class="ruby-identifier">iso8601_timediv</span>(<span class="ruby-identifier">n</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rfc3339">
+            
+              <a name="method-i-rfc3339"></a><b>rfc3339</b>(n=0)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rfc3339_source')" id="l_method-i-rfc3339_source">show</a>
+                
+              </p>
+              <div id="method-i-rfc3339_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date/format.rb, line 1305</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">rfc3339</span>(<span class="ruby-identifier">n</span>=<span class="ruby-number">0</span>) <span class="ruby-identifier">iso8601</span>(<span class="ruby-identifier">n</span>) <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-strftime">
+            
+              <a name="method-i-strftime"></a><b>strftime</b>(fmt='%FT%T%:z')
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-strftime_source')" id="l_method-i-strftime_source">show</a>
+                
+              </p>
+              <div id="method-i-strftime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date/format.rb, line 1281</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">strftime</span>(<span class="ruby-identifier">fmt</span>=<span class="ruby-string">'%FT%T%:z'</span>)
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">fmt</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_date">
+            
+              <a name="method-i-to_date"></a><b>to_date</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_date_source')" id="l_method-i-to_date_source">show</a>
+                
+              </p>
+              <div id="method-i-to_date_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1843</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_date</span>() <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new!</span>(<span class="ruby-identifier">jd_to_ajd</span>(<span class="ruby-identifier">jd</span>, <span class="ruby-number">0</span>, <span class="ruby-number">0</span>), <span class="ruby-number">0</span>, <span class="ruby-ivar">@sg</span>) <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_datetime">
+            
+              <a name="method-i-to_datetime"></a><b>to_datetime</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_datetime_source')" id="l_method-i-to_datetime_source">show</a>
+                
+              </p>
+              <div id="method-i-to_datetime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1844</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_datetime</span>() <span class="ruby-keyword">self</span> <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_json">
+            
+              <a name="method-i-to_json"></a><b>to_json</b>(*args)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_json_source')" id="l_method-i-to_json_source">show</a>
+                
+              </p>
+              <div id="method-i-to_json_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/json/lib/json/add/core.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_json</span>(*<span class="ruby-identifier">args</span>)
+  {
+    <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">create_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>,
+    <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">year</span>,
+    <span class="ruby-string">'m'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">month</span>,
+    <span class="ruby-string">'d'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">day</span>,
+    <span class="ruby-string">'H'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hour</span>,
+    <span class="ruby-string">'M'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">min</span>,
+    <span class="ruby-string">'S'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sec</span>,
+    <span class="ruby-string">'of'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">offset</span>.<span class="ruby-identifier">to_s</span>,
+    <span class="ruby-string">'sg'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">start</span>,
+  }.<span class="ruby-identifier">to_json</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <a name="method-i-to_s"></a><b>to_s</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1774</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span> <span class="ruby-comment"># 4p</span>
+  <span class="ruby-identifier">format</span>(<span class="ruby-string">'%.4d-%02d-%02dT%02d:%02d:%02d%s'</span>,
+         <span class="ruby-identifier">year</span>, <span class="ruby-identifier">mon</span>, <span class="ruby-identifier">mday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">sec</span>, <span class="ruby-identifier">zone</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_time">
+            
+              <a name="method-i-to_time"></a><b>to_time</b>()
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_time_source')" id="l_method-i-to_time_source">show</a>
+                
+              </p>
+              <div id="method-i-to_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date.rb, line 1834</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_time</span>
+  <span class="ruby-identifier">d</span> = <span class="ruby-identifier">new_offset</span>(<span class="ruby-number">0</span>)
+  <span class="ruby-identifier">d</span>.<span class="ruby-identifier">instance_eval</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-constant">Time</span>.<span class="ruby-identifier">utc</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">mon</span>, <span class="ruby-identifier">mday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">sec</span> <span class="ruby-operator">+</span>
+             <span class="ruby-identifier">sec_fraction</span>)
+  <span class="ruby-keyword">end</span>.
+      <span class="ruby-identifier">getlocal</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-xmlschema">
+            
+              <a name="method-i-xmlschema"></a><b>xmlschema</b>(n=0)
+            
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-xmlschema_source')" id="l_method-i-xmlschema_source">show</a>
+                
+              </p>
+              <div id="method-i-xmlschema_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/date/format.rb, line 1307</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">xmlschema</span>(<span class="ruby-identifier">n</span>=<span class="ruby-number">0</span>) <span class="ruby-identifier">iso8601</span>(<span class="ruby-identifier">n</span>) <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+    </div>
+  </body>
+</html>    
